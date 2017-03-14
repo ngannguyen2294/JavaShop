@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import DataAccess.DAL;
 
 /**
  *
@@ -34,19 +35,12 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
          response.setContentType("text/html");  
         PrintWriter out=response.getWriter();  
-      //  request.getRequestDispatcher("link.html").include(request, response);  
+        out.print("adasdasd");
+        DAL dal=new DAL();
+         if(dal.excute("select 1 from Logins"))
+        out.print("ok");
           
-        HttpSession session=request.getSession(false);  
-        out.print(session);
-       
-        String name=(String)session.getAttribute("name");  
-           if(name!=null){  
-        out.print("Hello, "+name+" Welcome to Profile");  
-        }  
-        else{  
-           response.sendRedirect("../login.jsp");
-        }  
-        out.close();  
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

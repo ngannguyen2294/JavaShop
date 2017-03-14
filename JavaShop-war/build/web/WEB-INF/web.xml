@@ -11,6 +11,6 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   </servlet>  
   <servlet-mapping>  
     <servlet-name>LoginServlet</servlet-name>  
-    <url-pattern>/admin/*</url-pattern>  
+    <url-pattern>/admin/login</url-pattern>  
   </servlet-mapping>  
 </web-app>
