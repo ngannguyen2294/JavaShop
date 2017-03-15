@@ -22,11 +22,20 @@ public class DAL {
     static final String PASS = "abc@123abc";
     Connection conn = null;
     Statement stmt = null;
+    private static DAL instance = null;
 
-    public DAL() {
+    public static DAL getInstance() {
+        if (instance == null) {
+            instance = new DAL();
+        }
+        return instance;
+    }
+
+    private DAL() {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
         } catch (Exception ex) {
             System.out.println(ex.toString());
         }
@@ -34,7 +43,6 @@ public class DAL {
 
     public Boolean excute(String sql) {
         try {
-            stmt = conn.createStatement();
             stmt.executeQuery(sql);
             return true;
         } catch (SQLException se) {

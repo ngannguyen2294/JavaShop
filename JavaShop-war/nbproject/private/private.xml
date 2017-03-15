@@ -3,18 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/JavaShop/JavaShop-war/web/admin/login.jsp</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/JavaShop/JavaShop-war/web/admin/pages/sidebar.jsp</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/JavaShop/JavaShop-war/web/admin/inbox.html</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/JavaShop/JavaShop-war/web/admin/jquery-ui.html</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/JavaShop/JavaShop-war/src/java/Home.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/JavaShop/JavaShop-war/web/admin/homepage.jsp</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/JavaShop/JavaShop-war/web/index.html</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/JavaShop/JavaShop-war/web/admin/pages/navbar.jsp</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/JavaShop/JavaShop-war/web/admin/index.html</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/JavaShop/JavaShop-war/web/admin/base.jsp</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/JavaShop/JavaShop-war/web/admin/pages/header.jsp</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/JavaShop/JavaShop-war/src/conf/MANIFEST.MF</file>
+            <file>file:/D:/Study/J2EE/JavaShop/JavaShop-war/src/java/LoginServlet.java</file>
+            <file>file:/D:/Study/J2EE/JavaShop/JavaShop-war/web/login.jsp</file>
+            <file>file:/D:/Study/J2EE/JavaShop/JavaShop-war/src/java/DataAccess/DataProcess.java</file>
+            <file>file:/D:/Study/J2EE/JavaShop/JavaShop-war/src/java/DataAccess/DAL.java</file>
         </group>
     </open-files>
 </project-private>

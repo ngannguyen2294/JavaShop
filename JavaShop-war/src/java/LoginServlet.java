@@ -4,15 +4,19 @@
  * and open the template in the editor.
  */
 
+import DataAccess.DataProcess;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import DataAccess.DAL;
 
 /**
  *
@@ -35,12 +39,19 @@ public class LoginServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
          response.setContentType("text/html");  
         PrintWriter out=response.getWriter();  
-        out.print("adasdasd");
-        DAL dal=new DAL();
-         if(dal.excute("select 1 from Logins"))
-        out.print("ok");
+      //  request.getRequestDispatcher("link.html").include(request, response);  
           
-    
+        HttpSession session=request.getSession(false);  
+        out.print(session);
+       
+        String name=(String)session.getAttribute("name");  
+           if(name!=null){  
+        out.print("Hello, "+name+" Welcome to Profile");  
+        }  
+        else{  
+           response.sendRedirect("../login.jsp");
+        }  
+        out.close();  
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -56,6 +67,7 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+       
     }
 
     /**
@@ -69,7 +81,14 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         DataProcess dt=new DataProcess();
+        ResultSet rs = null;
+      
+            rs=dt.getTable("select * from Logins");
+       
+
+          
+                System.out.println(rs);
     }
 
     /**
