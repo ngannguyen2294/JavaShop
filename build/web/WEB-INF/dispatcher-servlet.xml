@@ -20,13 +20,14 @@
         <property name="mappings">
             <props>
                 <prop key="home.htm">indexController</prop>
+                <prop key="admin/home.htm">adminIndexController</prop>
             </props>
         </property>
     </bean>
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-          p:prefix="/WEB-INF/jsp/"
+          p:prefix="/WEB-INF/"
           p:suffix=".jsp" />
 
     <!--
@@ -34,6 +35,9 @@
     -->
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-          p:viewName="home" />
-
+          p:viewName="storePages/home" />
+   <bean name="adminIndexController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="admin/base" />
+   
 </beans>
