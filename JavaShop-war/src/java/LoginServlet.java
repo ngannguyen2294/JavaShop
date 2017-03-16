@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -37,21 +38,20 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         response.setContentType("text/html");  
-        PrintWriter out=response.getWriter();  
-      //  request.getRequestDispatcher("link.html").include(request, response);  
-          
-        HttpSession session=request.getSession(false);  
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+        //  request.getRequestDispatcher("link.html").include(request, response);  
+
+        HttpSession session = request.getSession(false);
         out.print(session);
-       
-        String name=(String)session.getAttribute("name");  
-           if(name!=null){  
-        out.print("Hello, "+name+" Welcome to Profile");  
-        }  
-        else{  
-           response.sendRedirect("../login.jsp");
-        }  
-        out.close();  
+
+        String name = (String) session.getAttribute("name");
+        if (name != null) {
+            out.print("Hello, " + name + " Welcome to Profile");
+        } else {
+            response.sendRedirect("../login.jsp");
+        }
+        out.close();
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-       
+
     }
 
     /**
@@ -81,14 +81,19 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         DataProcess dt=new DataProcess();
-        ResultSet rs = null;
-      
-            rs=dt.getTable("select * from Logins");
-       
-
-          
+        try {
+            DataProcess dt = new DataProcess();
+            ResultSet rs = null;
+            ArrayList<String> listparams = new ArrayList<String>();
+            listparams.add(request.getParameter("username"));
+            listparams.add(request.getParameter("password"));
+            rs = dt.getTable("select * from Logins where LOGIN_Username=? and LOGIN_Password=?", listparams);
+            if (!rs.first()) {
                 System.out.println(rs);
+            }
+        } catch (Exception ex) {
+
+        }
     }
 
     /**
