@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.Logins" table="Logins" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="loginId" type="int">
+            <column name="LOGIN_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="loginUsername" type="serializable">
+            <column name="LOGIN_Username" />
+        </property>
+        <property name="loginPassword" type="serializable">
+            <column name="LOGIN_Password" />
+        </property>
+        <property name="loginLive" type="serializable">
+            <column name="LOGIN_Live" />
+        </property>
+        <property name="loginOrders" type="serializable">
+            <column name="LOGIN_Orders" />
+        </property>
+        <property name="loginProducts" type="serializable">
+            <column name="LOGIN_Products" />
+        </property>
+        <property name="loginConfig" type="serializable">
+            <column name="LOGIN_Config" />
+        </property>
+        <property name="loginProtected" type="serializable">
+            <column name="LOGIN_Protected" />
+        </property>
+        <property name="loginLanguageId" type="serializable">
+            <column name="LOGIN_LanguageID" />
+        </property>
+        <property name="loginRandomHash" type="serializable">
+            <column name="LOGIN_RandomHash" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.AffiliatePayments" table="AffiliatePayments" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="afpId" type="int">
+            <column name="AFP_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="afpDateTime" type="timestamp">
+            <column name="AFP_DateTime" length="23" />
+        </property>
+        <property name="afpAffiliateId" type="java.lang.Integer">
+            <column name="AFP_AffiliateID" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.Products" table="Products" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="PId" type="int">
+            <column name="P_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="PLive" type="serializable">
+            <column name="P_Live" />
+        </property>
+        <property name="PName1" type="serializable">
+            <column name="P_Name1" />
+        </property>
+        <property name="PName2" type="serializable">
+            <column name="P_Name2" />
+        </property>
+        <property name="PName3" type="serializable">
+            <column name="P_Name3" />
+        </property>
+        <property name="PName4" type="serializable">
+            <column name="P_Name4" />
+        </property>
+        <property name="PName5" type="serializable">
+            <column name="P_Name5" />
+        </property>
+        <property name="PDesc1" type="serializable">
+            <column name="P_Desc1" />
+        </property>
+        <property name="PDesc2" type="serializable">
+            <column name="P_Desc2" />
+        </property>
+        <property name="PDesc3" type="serializable">
+            <column name="P_Desc3" />
+        </property>
+        <property name="PDesc4" type="serializable">
+            <column name="P_Desc4" />
+        </property>
+        <property name="PDesc5" type="serializable">
+            <column name="P_Desc5" />
+        </property>
+        <property name="PStrapLine1" type="serializable">
+            <column name="P_StrapLine1" />
+        </property>
+        <property name="PStrapLine2" type="serializable">
+            <column name="P_StrapLine2" />
+        </property>
+        <property name="PStrapLine3" type="serializable">
+            <column name="P_StrapLine3" />
+        </property>
+        <property name="PStrapLine4" type="serializable">
+            <column name="P_StrapLine4" />
+        </property>
+        <property name="PStrapLine5" type="serializable">
+            <column name="P_StrapLine5" />
+        </property>
+        <property name="PSpecTable1" type="serializable">
+            <column name="P_SpecTable1" />
+        </property>
+        <property name="PSpecTable2" type="serializable">
+            <column name="P_SpecTable2" />
+        </property>
+        <property name="PSpecTable3" type="serializable">
+            <column name="P_SpecTable3" />
+        </property>
+        <property name="PSpecTable4" type="serializable">
+            <column name="P_SpecTable4" />
+        </property>
+        <property name="PSpecTable5" type="serializable">
+            <column name="P_SpecTable5" />
+        </property>
+        <property name="PHyperlink1" type="serializable">
+            <column name="P_Hyperlink1" />
+        </property>
+        <property name="PHyperlink2" type="serializable">
+            <column name="P_Hyperlink2" />
+        </property>
+        <property name="PHyperlink3" type="serializable">
+            <column name="P_Hyperlink3" />
+        </property>
+        <property name="PHyperlink4" type="serializable">
+            <column name="P_Hyperlink4" />
+        </property>
+        <property name="PHyperlink5" type="serializable">
+            <column name="P_Hyperlink5" />
+        </property>
+        <property name="PFeatured" type="java.lang.Integer">
+            <column name="P_Featured" />
+        </property>
+        <property name="POrderByValue" type="java.lang.Double">
+            <column name="P_OrderByValue" precision="53" scale="0" />
+        </property>
+        <property name="POrderVersionsBy" type="serializable">
+            <column name="P_OrderVersionsBy" />
+        </property>
+        <property name="PVersionDisplayType" type="serializable">
+            <column name="P_VersionDisplayType" />
+        </property>
+        <property name="PReviews" type="serializable">
+            <column name="P_Reviews" />
+        </property>
+        <property name="PSupplierId" type="java.lang.Integer">
+            <column name="P_SupplierID" />
+        </property>
+        <property name="PType" type="serializable">
+            <column name="P_Type" />
+        </property>
+        <property name="PCustomerGroupId" type="java.lang.Integer">
+            <column name="P_CustomerGroupID" />
+        </property>
+        <property name="PAverageRating" type="java.lang.Double">
+            <column name="P_AverageRating" precision="53" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

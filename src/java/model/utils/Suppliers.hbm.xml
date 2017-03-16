@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.Suppliers" table="Suppliers" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="supId" type="int">
+            <column name="SUP_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="supName" type="serializable">
+            <column name="SUP_Name" />
+        </property>
+        <property name="supLive" type="serializable">
+            <column name="SUP_Live" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.ShippingMethods" table="ShippingMethods" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="smId" type="int">
+            <column name="SM_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="smName1" type="serializable">
+            <column name="SM_Name1" />
+        </property>
+        <property name="smName2" type="serializable">
+            <column name="SM_Name2" />
+        </property>
+        <property name="smName3" type="serializable">
+            <column name="SM_Name3" />
+        </property>
+        <property name="smName4" type="serializable">
+            <column name="SM_Name4" />
+        </property>
+        <property name="smName5" type="serializable">
+            <column name="SM_Name5" />
+        </property>
+        <property name="smDescription1" type="serializable">
+            <column name="SM_Description1" />
+        </property>
+        <property name="smDescription2" type="serializable">
+            <column name="SM_Description2" />
+        </property>
+        <property name="smDescription3" type="serializable">
+            <column name="SM_Description3" />
+        </property>
+        <property name="smDescription4" type="serializable">
+            <column name="SM_Description4" />
+        </property>
+        <property name="smDescription5" type="serializable">
+            <column name="SM_Description5" />
+        </property>
+        <property name="smLive" type="serializable">
+            <column name="SM_Live" />
+        </property>
+        <property name="smOrderByValue" type="java.lang.Integer">
+            <column name="SM_OrderByValue" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.WishList" table="WishList" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="wlId" type="int">
+            <column name="WL_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="wlCustomerId" type="java.lang.Integer">
+            <column name="WL_CustomerID" />
+        </property>
+        <property name="wlOwnerName" type="serializable">
+            <column name="WL_OwnerName" />
+        </property>
+        <property name="wlName" type="serializable">
+            <column name="WL_Name" />
+        </property>
+        <property name="wlPublicPassword" type="serializable">
+            <column name="WL_PublicPassword" />
+        </property>
+        <property name="wlMessage" type="serializable">
+            <column name="WL_Message" />
+        </property>
+        <property name="wlItems" type="serializable">
+            <column name="WL_Items" />
+        </property>
+        <property name="wlQuantity" type="serializable">
+            <column name="WL_Quantity" />
+        </property>
+        <property name="wlOptionGroups" type="serializable">
+            <column name="WL_OptionGroups" />
+        </property>
+        <property name="wlOptions" type="serializable">
+            <column name="WL_Options" />
+        </property>
+        <property name="wlOrigItems" type="serializable">
+            <column name="WL_OrigItems" />
+        </property>
+        <property name="wlOrigQuantity" type="serializable">
+            <column name="WL_OrigQuantity" />
+        </property>
+        <property name="wlOrigOptionGroups" type="serializable">
+            <column name="WL_OrigOptionGroups" />
+        </property>
+        <property name="wlOrigOptions" type="serializable">
+            <column name="WL_OrigOptions" />
+        </property>
+        <property name="wlDateTime" type="timestamp">
+            <column name="WL_DateTime" length="23" />
+        </property>
+    </class>
+</hibernate-mapping>

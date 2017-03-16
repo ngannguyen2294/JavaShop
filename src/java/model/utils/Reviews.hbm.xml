@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.Reviews" table="Reviews" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="revId" type="int">
+            <column name="REV_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="revProductId" type="java.lang.Integer">
+            <column name="REV_ProductID" />
+        </property>
+        <property name="revVersionId" type="java.lang.Integer">
+            <column name="REV_VersionID" />
+        </property>
+        <property name="revLanguageId" type="java.lang.Integer">
+            <column name="REV_LanguageID" />
+        </property>
+        <property name="revCustomerId" type="java.lang.Integer">
+            <column name="REV_CustomerID" />
+        </property>
+        <property name="revTitle" type="serializable">
+            <column name="REV_Title" />
+        </property>
+        <property name="revText" type="serializable">
+            <column name="REV_Text" />
+        </property>
+        <property name="revRating" type="java.lang.Integer">
+            <column name="REV_Rating" />
+        </property>
+        <property name="revName" type="serializable">
+            <column name="REV_Name" />
+        </property>
+        <property name="revEmail" type="serializable">
+            <column name="REV_Email" />
+        </property>
+        <property name="revLocation" type="serializable">
+            <column name="REV_Location" />
+        </property>
+        <property name="revLive" type="serializable">
+            <column name="REV_Live" />
+        </property>
+        <property name="revDateCreated" type="timestamp">
+            <column name="REV_DateCreated" length="23" />
+        </property>
+        <property name="revDateLastUpdated" type="timestamp">
+            <column name="REV_DateLastUpdated" length="23" />
+        </property>
+    </class>
+</hibernate-mapping>

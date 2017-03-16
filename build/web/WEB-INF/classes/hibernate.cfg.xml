@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<!--
+DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+
+Copyright (c) 2008, 2016 Oracle and/or its affiliates. All rights reserved.
+
+Oracle and Java are registered trademarks of Oracle and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+The contents of this file are subject to the terms of either the GNU
+General Public License Version 2 only ("GPL") or the Common
+Development and Distribution License("CDDL") (collectively, the
+"License"). You may not use this file except in compliance with the
+License. You can obtain a copy of the License at
+http://www.netbeans.org/cddl-gplv2.html
+or nbbuild/licenses/CDDL-GPL-2-CP. See the License for the
+specific language governing permissions and limitations under the
+License.  When distributing the software, include this License Header
+Notice in each file and include the License file at
+nbbuild/licenses/CDDL-GPL-2-CP.  Oracle designates this
+particular file as subject to the "Classpath" exception as provided
+by Oracle in the GPL Version 2 section of the License file that
+accompanied this code. If applicable, add the following below the
+License Header, with the fields enclosed by brackets [] replaced by
+your own identifying information:
+"Portions Copyrighted [year] [name of copyright owner]"
+
+If you wish your version of this file to be governed by only the CDDL
+or only the GPL Version 2, indicate your decision by adding
+"[Contributor] elects to include this software in this distribution
+under the [CDDL or GPL Version 2] license." If you do not indicate a
+single choice of license, a recipient has the option to distribute
+your version of this file under either the CDDL, the GPL Version 2 or
+to extend the choice of license to its licensees as provided above.
+However, if you add GPL Version 2 code and therefore, elected the GPL
+Version 2 license, then the option applies only if the new code is
+made subject to such option by the copyright holder.
+
+Contributor(s):
+-->
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+    <property name="hibernate.connection.url">jdbc:sqlserver://SS-THANHLUAN\LUANNT;databaseName=JavaShop</property>
+    <property name="hibernate.connection.username">sa</property>
+    <property name="hibernate.connection.password">abc@123abc</property>
+    <mapping resource="model/utils/ProductOptionGroupLink.hbm.xml"/>
+    <mapping resource="model/utils/QuantityDiscounts.hbm.xml"/>
+    <mapping resource="model/utils/LanguageStrings5.hbm.xml"/>
+    <mapping resource="model/utils/Promotions.hbm.xml"/>
+    <mapping resource="model/utils/Options.hbm.xml"/>
+    <mapping resource="model/utils/ShippingRates.hbm.xml"/>
+    <mapping resource="model/utils/CategoryHierachy.hbm.xml"/>
+    <mapping resource="model/utils/Orders.hbm.xml"/>
+    <mapping resource="model/utils/Logins.hbm.xml"/>
+    <mapping resource="model/utils/LanguageStrings1.hbm.xml"/>
+    <mapping resource="model/utils/OptionGroups.hbm.xml"/>
+    <mapping resource="model/utils/VersionSalesStats.hbm.xml"/>
+    <mapping resource="model/utils/Categories.hbm.xml"/>
+    <mapping resource="model/utils/Reviews.hbm.xml"/>
+    <mapping resource="model/utils/AttributeValues.hbm.xml"/>
+    <mapping resource="model/utils/Destination.hbm.xml"/>
+    <mapping resource="model/utils/SavedExports.hbm.xml"/>
+    <mapping resource="model/utils/News.hbm.xml"/>
+    <mapping resource="model/utils/ShippingMethods.hbm.xml"/>
+    <mapping resource="model/utils/WishList.hbm.xml"/>
+    <mapping resource="model/utils/ProductStats.hbm.xml"/>
+    <mapping resource="model/utils/Products.hbm.xml"/>
+    <mapping resource="model/utils/CustomerGroups.hbm.xml"/>
+    <mapping resource="model/utils/LanguageStrings2.hbm.xml"/>
+    <mapping resource="model/utils/ProductCategoryLink.hbm.xml"/>
+    <mapping resource="model/utils/VersionOptionLink.hbm.xml"/>
+    <mapping resource="model/utils/TaxRates.hbm.xml"/>
+    <mapping resource="model/utils/InvoiceRows.hbm.xml"/>
+    <mapping resource="model/utils/Languages.hbm.xml"/>
+    <mapping resource="model/utils/AffiliateLog.hbm.xml"/>
+    <mapping resource="model/utils/Currencies.hbm.xml"/>
+    <mapping resource="model/utils/AdminLog.hbm.xml"/>
+    <mapping resource="model/utils/CreditCards.hbm.xml"/>
+    <mapping resource="model/utils/LanguageStrings3.hbm.xml"/>
+    <mapping resource="model/utils/ShippingZones.hbm.xml"/>
+    <mapping resource="model/utils/Coupons.hbm.xml"/>
+    <mapping resource="model/utils/SessionValues.hbm.xml"/>
+    <mapping resource="model/utils/SaveBasket.hbm.xml"/>
+    <mapping resource="model/utils/Config.hbm.xml"/>
+    <mapping resource="model/utils/Pages.hbm.xml"/>
+    <mapping resource="model/utils/ConfigCategories.hbm.xml"/>
+    <mapping resource="model/utils/Versions.hbm.xml"/>
+    <mapping resource="model/utils/AffiliatePayments.hbm.xml"/>
+    <mapping resource="model/utils/Ups.hbm.xml"/>
+    <mapping resource="model/utils/ProductOptionLink.hbm.xml"/>
+    <mapping resource="model/utils/CustomerGroupPrices.hbm.xml"/>
+    <mapping resource="model/utils/Customers.hbm.xml"/>
+    <mapping resource="model/utils/LanguageStrings4.hbm.xml"/>
+    <mapping resource="model/utils/Sessions.hbm.xml"/>
+    <mapping resource="model/utils/Attributes.hbm.xml"/>
+    <mapping resource="model/utils/Suppliers.hbm.xml"/>
+    <mapping resource="model/utils/RelatedProducts.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

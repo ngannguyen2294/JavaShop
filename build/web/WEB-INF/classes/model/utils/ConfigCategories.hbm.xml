@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.ConfigCategories" table="ConfigCategories" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="cfgcId" type="int">
+            <column name="CFGC_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="cfgcParentId" type="java.lang.Integer">
+            <column name="CFGC_ParentID" />
+        </property>
+        <property name="cfgcCategory" type="serializable">
+            <column name="CFGC_Category" />
+        </property>
+        <property name="cfgcOrderByValue" type="java.lang.Integer">
+            <column name="CFGC_OrderByValue" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.LanguageStrings3" table="LanguageStrings3" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="lsId" type="int">
+            <column name="LS_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="lsFrontBack" type="serializable">
+            <column name="LS_FrontBack" />
+        </property>
+        <property name="lsName" type="serializable">
+            <column name="LS_Name" />
+        </property>
+        <property name="lsValue" type="serializable">
+            <column name="LS_Value" />
+        </property>
+        <property name="lsDescription" type="serializable">
+            <column name="LS_Description" />
+        </property>
+        <property name="lsVersionAdded" type="java.lang.Float">
+            <column name="LS_VersionAdded" precision="24" scale="0" />
+        </property>
+        <property name="lsDefaultValue" type="serializable">
+            <column name="LS_DefaultValue" />
+        </property>
+    </class>
+</hibernate-mapping>

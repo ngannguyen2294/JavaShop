@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.CategoryHierachy" table="CategoryHierachy" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <composite-id name="id" class="model.utils.CategoryHierachyId">
+            <key-property name="chParentId" type="java.lang.Integer">
+                <column name="CH_ParentID" />
+            </key-property>
+            <key-property name="chChildId" type="java.lang.Integer">
+                <column name="CH_ChildID" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

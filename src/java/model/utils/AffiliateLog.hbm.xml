@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.AffiliateLog" table="AffiliateLog" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="aflgId" type="int">
+            <column name="AFLG_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="aflgAffiliateId" type="java.lang.Integer">
+            <column name="AFLG_AffiliateID" />
+        </property>
+        <property name="aflgReferer" type="serializable">
+            <column name="AFLG_referer" />
+        </property>
+        <property name="aflgIp" type="serializable">
+            <column name="AFLG_IP" />
+        </property>
+        <property name="aflgRequestedItem" type="serializable">
+            <column name="AFLG_RequestedItem" />
+        </property>
+        <property name="aflgDateTime" type="timestamp">
+            <column name="AFLG_DateTime" length="23" />
+        </property>
+    </class>
+</hibernate-mapping>

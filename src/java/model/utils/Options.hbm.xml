@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.Options" table="Options" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="optId" type="int">
+            <column name="OPT_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="optOptionGroupId" type="java.lang.Integer">
+            <column name="OPT_OptionGroupID" />
+        </property>
+        <property name="optName1" type="serializable">
+            <column name="OPT_Name1" />
+        </property>
+        <property name="optName2" type="serializable">
+            <column name="OPT_Name2" />
+        </property>
+        <property name="optName3" type="serializable">
+            <column name="OPT_Name3" />
+        </property>
+        <property name="optName4" type="serializable">
+            <column name="OPT_Name4" />
+        </property>
+        <property name="optName5" type="serializable">
+            <column name="OPT_Name5" />
+        </property>
+        <property name="optCheckBoxValue" type="serializable">
+            <column name="OPT_CheckBoxValue" />
+        </property>
+        <property name="optDefPriceChange" type="java.lang.Double">
+            <column name="OPT_DefPriceChange" precision="53" scale="0" />
+        </property>
+        <property name="optDefWeightChange" type="java.lang.Double">
+            <column name="OPT_DefWeightChange" precision="53" scale="0" />
+        </property>
+        <property name="optDefOrderByValue" type="java.lang.Float">
+            <column name="OPT_DefOrderByValue" precision="24" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

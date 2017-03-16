@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.Currencies" table="Currencies" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="curId" type="int">
+            <column name="CUR_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="curSymbol" type="serializable">
+            <column name="CUR_Symbol" />
+        </property>
+        <property name="curIsocode" type="serializable">
+            <column name="CUR_ISOCode" />
+        </property>
+        <property name="curName1" type="serializable">
+            <column name="CUR_Name1" />
+        </property>
+        <property name="curName2" type="serializable">
+            <column name="CUR_Name2" />
+        </property>
+        <property name="curName3" type="serializable">
+            <column name="CUR_Name3" />
+        </property>
+        <property name="curName4" type="serializable">
+            <column name="CUR_Name4" />
+        </property>
+        <property name="curName5" type="serializable">
+            <column name="CUR_Name5" />
+        </property>
+        <property name="curExchangeRate" type="java.lang.Float">
+            <column name="CUR_ExchangeRate" precision="24" scale="0" />
+        </property>
+        <property name="curHasDecimals" type="serializable">
+            <column name="CUR_HasDecimals" />
+        </property>
+        <property name="curLive" type="serializable">
+            <column name="CUR_Live" />
+        </property>
+        <property name="curFormat" type="serializable">
+            <column name="CUR_Format" />
+        </property>
+        <property name="curIsoFormat" type="serializable">
+            <column name="CUR_IsoFormat" />
+        </property>
+        <property name="curDecimalPoint" type="serializable">
+            <column name="CUR_DecimalPoint" />
+        </property>
+    </class>
+</hibernate-mapping>

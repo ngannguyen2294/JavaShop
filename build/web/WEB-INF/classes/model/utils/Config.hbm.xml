@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.Config" table="Config" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="cfgName" type="serializable">
+            <column name="CFG_Name" />
+            <generator class="assigned" />
+        </id>
+        <property name="cfgValue" type="serializable">
+            <column name="CFG_Value" />
+        </property>
+        <property name="cfgDataType" type="serializable">
+            <column name="CFG_DataType" />
+        </property>
+        <property name="cfgDisplayType" type="serializable">
+            <column name="CFG_DisplayType" />
+        </property>
+        <property name="cfgDisplayInfo" type="serializable">
+            <column name="CFG_DisplayInfo" />
+        </property>
+        <property name="cfgDescription" type="serializable">
+            <column name="CFG_Description" />
+        </property>
+        <property name="cfgVersionAdded" type="java.lang.Float">
+            <column name="CFG_VersionAdded" precision="24" scale="0" />
+        </property>
+        <property name="cfgDefaultValue" type="serializable">
+            <column name="CFG_DefaultValue" />
+        </property>
+        <property name="cfgConfigCategoryId" type="java.lang.Integer">
+            <column name="CFG_ConfigCategoryID" />
+        </property>
+    </class>
+</hibernate-mapping>

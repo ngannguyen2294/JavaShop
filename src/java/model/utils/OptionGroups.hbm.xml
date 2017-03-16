@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.OptionGroups" table="OptionGroups" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="optgId" type="int">
+            <column name="OPTG_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="optgBackendName" type="serializable">
+            <column name="OPTG_BackendName" />
+        </property>
+        <property name="optgName1" type="serializable">
+            <column name="OPTG_Name1" />
+        </property>
+        <property name="optgName2" type="serializable">
+            <column name="OPTG_Name2" />
+        </property>
+        <property name="optgName3" type="serializable">
+            <column name="OPTG_Name3" />
+        </property>
+        <property name="optgName4" type="serializable">
+            <column name="OPTG_Name4" />
+        </property>
+        <property name="optgName5" type="serializable">
+            <column name="OPTG_Name5" />
+        </property>
+        <property name="optgDesc1" type="serializable">
+            <column name="OPTG_Desc1" />
+        </property>
+        <property name="optgDesc2" type="serializable">
+            <column name="OPTG_Desc2" />
+        </property>
+        <property name="optgDesc3" type="serializable">
+            <column name="OPTG_Desc3" />
+        </property>
+        <property name="optgDesc4" type="serializable">
+            <column name="OPTG_Desc4" />
+        </property>
+        <property name="optgDesc5" type="serializable">
+            <column name="OPTG_Desc5" />
+        </property>
+        <property name="optgOptionDisplayType" type="serializable">
+            <column name="OPTG_OptionDisplayType" />
+        </property>
+        <property name="optgDefOrderByValue" type="java.lang.Integer">
+            <column name="OPTG_DefOrderByValue" />
+        </property>
+    </class>
+</hibernate-mapping>

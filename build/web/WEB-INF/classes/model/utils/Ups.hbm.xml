@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.Ups" table="UPS" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="upsId" type="int">
+            <column name="UPS_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="upsCode" type="serializable">
+            <column name="UPS_Code" />
+        </property>
+        <property name="upsRegion" type="serializable">
+            <column name="UPS_Region" />
+        </property>
+        <property name="upsName" type="serializable">
+            <column name="UPS_Name" />
+        </property>
+    </class>
+</hibernate-mapping>

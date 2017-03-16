@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.Pages" table="Pages" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="pageId" type="serializable">
+            <column name="PAGE_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="pageTitle1" type="serializable">
+            <column name="PAGE_Title1" />
+        </property>
+        <property name="pageText1" type="serializable">
+            <column name="PAGE_Text1" />
+        </property>
+        <property name="pageMetaDescription1" type="serializable">
+            <column name="PAGE_MetaDescription1" />
+        </property>
+        <property name="pageMetaKeywords1" type="serializable">
+            <column name="PAGE_MetaKeywords1" />
+        </property>
+        <property name="pageTitle2" type="serializable">
+            <column name="PAGE_Title2" />
+        </property>
+        <property name="pageText2" type="serializable">
+            <column name="PAGE_Text2" />
+        </property>
+        <property name="pageMetaDescription2" type="serializable">
+            <column name="PAGE_MetaDescription2" />
+        </property>
+        <property name="pageMetaKeywords2" type="serializable">
+            <column name="PAGE_MetaKeywords2" />
+        </property>
+        <property name="pageTitle3" type="serializable">
+            <column name="PAGE_Title3" />
+        </property>
+        <property name="pageText3" type="serializable">
+            <column name="PAGE_Text3" />
+        </property>
+        <property name="pageMetaDescription3" type="serializable">
+            <column name="PAGE_MetaDescription3" />
+        </property>
+        <property name="pageMetaKeywords3" type="serializable">
+            <column name="PAGE_MetaKeywords3" />
+        </property>
+        <property name="pageTitle4" type="serializable">
+            <column name="PAGE_Title4" />
+        </property>
+        <property name="pageText4" type="serializable">
+            <column name="PAGE_Text4" />
+        </property>
+        <property name="pageMetaDescription4" type="serializable">
+            <column name="PAGE_MetaDescription4" />
+        </property>
+        <property name="pageMetaKeywords4" type="serializable">
+            <column name="PAGE_MetaKeywords4" />
+        </property>
+        <property name="pageTitle5" type="serializable">
+            <column name="PAGE_Title5" />
+        </property>
+        <property name="pageText5" type="serializable">
+            <column name="PAGE_Text5" />
+        </property>
+        <property name="pageMetaDescription5" type="serializable">
+            <column name="PAGE_MetaDescription5" />
+        </property>
+        <property name="pageMetaKeywords5" type="serializable">
+            <column name="PAGE_MetaKeywords5" />
+        </property>
+        <property name="pageLive" type="serializable">
+            <column name="PAGE_Live" />
+        </property>
+    </class>
+</hibernate-mapping>

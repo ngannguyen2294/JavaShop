@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.AttributeValues" table="AttributeValues" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <composite-id name="id" class="model.utils.AttributeValuesId">
+            <key-property name="attribvProductId" type="java.lang.Integer">
+                <column name="ATTRIBV_ProductID" />
+            </key-property>
+            <key-property name="attribvAttributeId" type="java.lang.Integer">
+                <column name="ATTRIBV_AttributeID" />
+            </key-property>
+            <key-property name="attribvValue1" type="serializable">
+                <column name="ATTRIBV_Value1" />
+            </key-property>
+            <key-property name="attribvValue2" type="serializable">
+                <column name="ATTRIBV_Value2" />
+            </key-property>
+            <key-property name="attribvValue3" type="serializable">
+                <column name="ATTRIBV_Value3" />
+            </key-property>
+            <key-property name="attribvValue4" type="serializable">
+                <column name="ATTRIBV_Value4" />
+            </key-property>
+            <key-property name="attribvValue5" type="serializable">
+                <column name="ATTRIBV_Value5" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

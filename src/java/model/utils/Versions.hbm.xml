@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.Versions" table="Versions" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="VId" type="int">
+            <column name="V_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="VName1" type="serializable">
+            <column name="V_Name1" />
+        </property>
+        <property name="VName2" type="serializable">
+            <column name="V_Name2" />
+        </property>
+        <property name="VName3" type="serializable">
+            <column name="V_Name3" />
+        </property>
+        <property name="VName4" type="serializable">
+            <column name="V_Name4" />
+        </property>
+        <property name="VName5" type="serializable">
+            <column name="V_Name5" />
+        </property>
+        <property name="VCodeNumber" type="serializable">
+            <column name="V_CodeNumber" />
+        </property>
+        <property name="VProductId" type="java.lang.Integer">
+            <column name="V_ProductID" />
+        </property>
+        <property name="VPrice" type="java.lang.Double">
+            <column name="V_Price" precision="53" scale="0" />
+        </property>
+        <property name="VTax" type="java.lang.Double">
+            <column name="V_Tax" precision="53" scale="0" />
+        </property>
+        <property name="VWeight" type="java.lang.Double">
+            <column name="V_Weight" precision="53" scale="0" />
+        </property>
+        <property name="VDeliveryTime" type="java.lang.Integer">
+            <column name="V_DeliveryTime" />
+        </property>
+        <property name="VQuantity" type="java.lang.Integer">
+            <column name="V_Quantity" />
+        </property>
+        <property name="VQuantityWarnLevel" type="java.lang.Integer">
+            <column name="V_QuantityWarnLevel" />
+        </property>
+        <property name="VDesc1" type="serializable">
+            <column name="V_Desc1" />
+        </property>
+        <property name="VDesc2" type="serializable">
+            <column name="V_Desc2" />
+        </property>
+        <property name="VDesc3" type="serializable">
+            <column name="V_Desc3" />
+        </property>
+        <property name="VDesc4" type="serializable">
+            <column name="V_Desc4" />
+        </property>
+        <property name="VDesc5" type="serializable">
+            <column name="V_Desc5" />
+        </property>
+        <property name="VLive" type="serializable">
+            <column name="V_Live" />
+        </property>
+        <property name="VDownLoadInfo" type="serializable">
+            <column name="V_DownLoadInfo" />
+        </property>
+        <property name="VDownloadType" type="serializable">
+            <column name="V_DownloadType" />
+        </property>
+        <property name="VOrderByValue" type="java.lang.Integer">
+            <column name="V_OrderByValue" />
+        </property>
+        <property name="VRrp" type="java.lang.Double">
+            <column name="V_RRP" precision="53" scale="0" />
+        </property>
+        <property name="VType" type="serializable">
+            <column name="V_Type" />
+        </property>
+        <property name="VCustomerGroupId" type="java.lang.Integer">
+            <column name="V_CustomerGroupID" />
+        </property>
+    </class>
+</hibernate-mapping>
