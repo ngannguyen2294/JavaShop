@@ -21,7 +21,8 @@
             <props>
                 <prop key="home.htm">indexController</prop>
                 <prop key="admin/admin.htm">adminIndexController</prop>
-
+                <prop key="admin/logout.htm">adminIndexController</prop>
+                  <prop key="admin/actionlogin.htm">adminPageController</prop>
             </props>
         </property>
     </bean>
@@ -30,7 +31,9 @@
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/"
           p:suffix=".jsp" />
-
+   <bean id="adminPageController"
+          class="controller.LoginController"
+          />
     <!--
     The index controller.
     -->
