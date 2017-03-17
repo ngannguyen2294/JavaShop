@@ -8,31 +8,31 @@
             <column name="LOGIN_ID" />
             <generator class="assigned" />
         </id>
-        <property name="loginUsername" type="serializable">
+        <property name="loginUsername" type="string">
             <column name="LOGIN_Username" />
         </property>
-        <property name="loginPassword" type="serializable">
+        <property name="loginPassword" type="string">
             <column name="LOGIN_Password" />
         </property>
-        <property name="loginLive" type="serializable">
+        <property name="loginLive" type="string">
             <column name="LOGIN_Live" />
         </property>
-        <property name="loginOrders" type="serializable">
+        <property name="loginOrders" type="string">
             <column name="LOGIN_Orders" />
         </property>
-        <property name="loginProducts" type="serializable">
+        <property name="loginProducts" type="string">
             <column name="LOGIN_Products" />
         </property>
-        <property name="loginConfig" type="serializable">
+        <property name="loginConfig" type="string">
             <column name="LOGIN_Config" />
         </property>
-        <property name="loginProtected" type="serializable">
+        <property name="loginProtected" type="string">
             <column name="LOGIN_Protected" />
         </property>
-        <property name="loginLanguageId" type="serializable">
+        <property name="loginLanguageId" type="string">
             <column name="LOGIN_LanguageID" />
         </property>
-        <property name="loginRandomHash" type="serializable">
+        <property name="loginRandomHash" type="string">
             <column name="LOGIN_RandomHash" />
         </property>
     </class>

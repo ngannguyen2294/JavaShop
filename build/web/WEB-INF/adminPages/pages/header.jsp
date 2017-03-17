@@ -3,7 +3,6 @@
     Created on : Mar 12, 2017, 11:09:21 PM
     Author     : NGANNV
 --%>
-  <head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
 		<title>Dashboard - Ace Admin</title>
@@ -44,4 +43,11 @@
 		<script src="../js/html5shiv.min.js"></script>
 		<script src="../js/respond.min.js"></script>
 		<![endif]-->
-	</head>
+<% 
+        if(session.getAttribute("Username")==null)
+        {
+            out.print("<script>"
+                    + "window.location='../admin/login.htm';"
+                    + "</script>");
+        }
+%>

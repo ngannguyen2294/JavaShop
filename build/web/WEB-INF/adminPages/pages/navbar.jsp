@@ -286,7 +286,7 @@
 								<img class="nav-user-photo" src="../images/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
-									Jason
+                                                                        <% out.print(session.getAttribute("Username")); %>
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>
@@ -310,7 +310,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="#">
+									<a href="${pageContext.request.contextPath}/admin/logout.htm">
 										<i class="ace-icon fa fa-power-off"></i>
 										Logout
 									</a>

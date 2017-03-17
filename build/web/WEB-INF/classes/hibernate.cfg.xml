@@ -42,9 +42,10 @@ Contributor(s):
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-    <property name="hibernate.connection.url">jdbc:sqlserver://SS-THANHLUAN\LUANNT;databaseName=JavaShop</property>
+    <property name="hibernate.connection.url">jdbc:sqlserver://NGANNV\NGANNV;databaseName=JavaShop</property>
     <property name="hibernate.connection.username">sa</property>
     <property name="hibernate.connection.password">abc@123abc</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
     <mapping resource="model/utils/ProductOptionGroupLink.hbm.xml"/>
     <mapping resource="model/utils/QuantityDiscounts.hbm.xml"/>
     <mapping resource="model/utils/LanguageStrings5.hbm.xml"/>
