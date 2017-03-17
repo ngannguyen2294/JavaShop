@@ -6,16 +6,40 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!-- Google Fonts -->
-        <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
-        <link href='https://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
+
     </head>
     <body>
         <!--header-->
         <jsp:include page="header.jsp"></jsp:include>
         <jsp:include page="banner.jsp"></jsp:include>
-        <jsp:include page="menu.jsp"></jsp:include>
+            <div id="undefined-sticky-wrapper" class="sticky-wrapper" style="height: 60px;">
+                <div class="mainmenu-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                            </div> 
+                            <div class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a href="http://localhost:8080/J2eeShop/shop.htm">Home</a></li>
+                                    <li><a href="http://localhost:8080/J2eeShop/shop.htm">Shop page</a></li>
+                                    <li><a href="https://www.freshdesignweb.com/demo/template/ustora/single-product.htm">Single product</a></li>
+                                    <li><a href="https://www.freshdesignweb.com/demo/template/ustora/cart.htm">Cart</a></li>
+                                    <li><a href="https://www.freshdesignweb.com/demo/template/ustora/checkout.htm">Checkout</a></li>
+                                    <li><a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm#">Category</a></li>
+                                    <li><a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm#">Others</a></li>
+                                    <li><a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm#">Contact</a></li>
+                                </ul>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End mainmenu area -->
 
             <div class="slider-area">
                 <!-- Slider -->
