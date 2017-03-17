@@ -20,7 +20,8 @@
         <property name="mappings">
             <props>
                 <prop key="home.htm">indexController</prop>
-                <prop key="admin/home.htm">adminIndexController</prop>
+                <prop key="admin/admin.htm">adminIndexController</prop>
+
             </props>
         </property>
     </bean>
@@ -38,6 +39,9 @@
           p:viewName="storePages/home" />
    <bean name="adminIndexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-          p:viewName="admin/base" />
+          p:viewName="adminPages/base" />
    
+
+
+
 </beans>
