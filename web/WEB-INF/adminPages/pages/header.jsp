@@ -45,3 +45,11 @@
 		<script src="../js/respond.min.js"></script>
 		<![endif]-->
 	</head>
+<% 
+        if(session.getAttribute("Username")==null)
+        {
+            out.print("<script>"
+                    + "window.location='../admin/login.htm';"
+                    + "</script>");
+        }
+%>

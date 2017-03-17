@@ -21,7 +21,8 @@
             <props>
                 <prop key="home.htm">indexController</prop>
                 <prop key="admin/admin.htm">adminIndexController</prop>
-                <prop key="admin/logout.htm">adminIndexController</prop>
+                <prop key="admin/logout.htm">adminPageController</prop>
+                  <prop key="admin/login.htm">loginPageController</prop>
                   <prop key="admin/actionlogin.htm">adminPageController</prop>
             </props>
         </property>
@@ -43,7 +44,9 @@
    <bean name="adminIndexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="adminPages/base" />
-   
+    <bean name="loginPageController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="adminPages/pages/login" />
 
 
 
