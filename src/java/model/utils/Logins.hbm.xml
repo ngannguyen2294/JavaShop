@@ -1,39 +1,21 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Mar 19, 2017 8:47:26 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="model.utils.Logins" table="Logins" schema="dbo" catalog="JavaShop" optimistic-lock="version">
-        <id name="loginId" type="int">
-            <column name="LOGIN_ID" />
+        <id name="loginId" type="long">
+            <column name="LoginID" />
             <generator class="assigned" />
         </id>
-        <property name="loginUsername" type="string">
-            <column name="LOGIN_Username" />
+        <many-to-one name="employees" class="model.utils.Employees" fetch="select">
+            <column name="EmployeeID" />
+        </many-to-one>
+        <property name="username" type="string">
+            <column name="Username" length="50" />
         </property>
-        <property name="loginPassword" type="string">
-            <column name="LOGIN_Password" />
-        </property>
-        <property name="loginLive" type="string">
-            <column name="LOGIN_Live" />
-        </property>
-        <property name="loginOrders" type="string">
-            <column name="LOGIN_Orders" />
-        </property>
-        <property name="loginProducts" type="string">
-            <column name="LOGIN_Products" />
-        </property>
-        <property name="loginConfig" type="string">
-            <column name="LOGIN_Config" />
-        </property>
-        <property name="loginProtected" type="string">
-            <column name="LOGIN_Protected" />
-        </property>
-        <property name="loginLanguageId" type="string">
-            <column name="LOGIN_LanguageID" />
-        </property>
-        <property name="loginRandomHash" type="string">
-            <column name="LOGIN_RandomHash" />
+        <property name="passwordHash" type="string">
+            <column name="PasswordHash" />
         </property>
     </class>
 </hibernate-mapping>

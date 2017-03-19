@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 19, 2017 8:47:26 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.Shippers" table="Shippers" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="shipperId" type="int">
+            <column name="ShipperID" />
+            <generator class="assigned" />
+        </id>
+        <property name="companyName" type="serializable">
+            <column name="CompanyName" not-null="true" />
+        </property>
+        <property name="phone" type="serializable">
+            <column name="Phone" />
+        </property>
+        <set name="orderses" table="Orders" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ShipVia" />
+            </key>
+            <one-to-many class="model.utils.Orders" />
+        </set>
+    </class>
+</hibernate-mapping>

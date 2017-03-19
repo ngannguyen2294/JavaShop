@@ -1,117 +1,45 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Mar 19, 2017 8:47:26 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="model.utils.Products" table="Products" schema="dbo" catalog="JavaShop" optimistic-lock="version">
-        <id name="PId" type="int">
-            <column name="P_ID" />
+        <id name="productId" type="int">
+            <column name="ProductID" />
             <generator class="assigned" />
         </id>
-        <property name="PLive" type="serializable">
-            <column name="P_Live" />
+        <many-to-one name="categories" class="model.utils.Categories" fetch="select">
+            <column name="CategoryID" />
+        </many-to-one>
+        <many-to-one name="suppliers" class="model.utils.Suppliers" fetch="select">
+            <column name="SupplierID" />
+        </many-to-one>
+        <property name="productName" type="serializable">
+            <column name="ProductName" not-null="true" />
         </property>
-        <property name="PName1" type="serializable">
-            <column name="P_Name1" />
+        <property name="quantityPerUnit" type="serializable">
+            <column name="QuantityPerUnit" />
         </property>
-        <property name="PName2" type="serializable">
-            <column name="P_Name2" />
+        <property name="unitPrice" type="big_decimal">
+            <column name="UnitPrice" scale="4" />
         </property>
-        <property name="PName3" type="serializable">
-            <column name="P_Name3" />
+        <property name="unitsInStock" type="java.lang.Short">
+            <column name="UnitsInStock" />
         </property>
-        <property name="PName4" type="serializable">
-            <column name="P_Name4" />
+        <property name="unitsOnOrder" type="java.lang.Short">
+            <column name="UnitsOnOrder" />
         </property>
-        <property name="PName5" type="serializable">
-            <column name="P_Name5" />
+        <property name="reorderLevel" type="java.lang.Short">
+            <column name="ReorderLevel" />
         </property>
-        <property name="PDesc1" type="serializable">
-            <column name="P_Desc1" />
+        <property name="discontinued" type="boolean">
+            <column name="Discontinued" not-null="true" />
         </property>
-        <property name="PDesc2" type="serializable">
-            <column name="P_Desc2" />
-        </property>
-        <property name="PDesc3" type="serializable">
-            <column name="P_Desc3" />
-        </property>
-        <property name="PDesc4" type="serializable">
-            <column name="P_Desc4" />
-        </property>
-        <property name="PDesc5" type="serializable">
-            <column name="P_Desc5" />
-        </property>
-        <property name="PStrapLine1" type="serializable">
-            <column name="P_StrapLine1" />
-        </property>
-        <property name="PStrapLine2" type="serializable">
-            <column name="P_StrapLine2" />
-        </property>
-        <property name="PStrapLine3" type="serializable">
-            <column name="P_StrapLine3" />
-        </property>
-        <property name="PStrapLine4" type="serializable">
-            <column name="P_StrapLine4" />
-        </property>
-        <property name="PStrapLine5" type="serializable">
-            <column name="P_StrapLine5" />
-        </property>
-        <property name="PSpecTable1" type="serializable">
-            <column name="P_SpecTable1" />
-        </property>
-        <property name="PSpecTable2" type="serializable">
-            <column name="P_SpecTable2" />
-        </property>
-        <property name="PSpecTable3" type="serializable">
-            <column name="P_SpecTable3" />
-        </property>
-        <property name="PSpecTable4" type="serializable">
-            <column name="P_SpecTable4" />
-        </property>
-        <property name="PSpecTable5" type="serializable">
-            <column name="P_SpecTable5" />
-        </property>
-        <property name="PHyperlink1" type="serializable">
-            <column name="P_Hyperlink1" />
-        </property>
-        <property name="PHyperlink2" type="serializable">
-            <column name="P_Hyperlink2" />
-        </property>
-        <property name="PHyperlink3" type="serializable">
-            <column name="P_Hyperlink3" />
-        </property>
-        <property name="PHyperlink4" type="serializable">
-            <column name="P_Hyperlink4" />
-        </property>
-        <property name="PHyperlink5" type="serializable">
-            <column name="P_Hyperlink5" />
-        </property>
-        <property name="PFeatured" type="java.lang.Integer">
-            <column name="P_Featured" />
-        </property>
-        <property name="POrderByValue" type="java.lang.Double">
-            <column name="P_OrderByValue" precision="53" scale="0" />
-        </property>
-        <property name="POrderVersionsBy" type="serializable">
-            <column name="P_OrderVersionsBy" />
-        </property>
-        <property name="PVersionDisplayType" type="serializable">
-            <column name="P_VersionDisplayType" />
-        </property>
-        <property name="PReviews" type="serializable">
-            <column name="P_Reviews" />
-        </property>
-        <property name="PSupplierId" type="java.lang.Integer">
-            <column name="P_SupplierID" />
-        </property>
-        <property name="PType" type="serializable">
-            <column name="P_Type" />
-        </property>
-        <property name="PCustomerGroupId" type="java.lang.Integer">
-            <column name="P_CustomerGroupID" />
-        </property>
-        <property name="PAverageRating" type="java.lang.Double">
-            <column name="P_AverageRating" precision="53" scale="0" />
-        </property>
+        <set name="orderDetailses" table="`Order Details`" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ProductID" not-null="true" />
+            </key>
+            <one-to-many class="model.utils.OrderDetails" />
+        </set>
     </class>
 </hibernate-mapping>

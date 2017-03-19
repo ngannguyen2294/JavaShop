@@ -1,126 +1,56 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Mar 19, 2017 8:47:26 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="model.utils.Customers" table="Customers" schema="dbo" catalog="JavaShop" optimistic-lock="version">
-        <id name="CId" type="int">
-            <column name="C_ID" />
+        <id name="customerId" type="serializable">
+            <column name="CustomerID" />
             <generator class="assigned" />
         </id>
-        <property name="CEmailAddress" type="serializable">
-            <column name="C_EmailAddress" />
+        <property name="companyName" type="serializable">
+            <column name="CompanyName" not-null="true" />
         </property>
-        <property name="CTelephone" type="serializable">
-            <column name="C_Telephone" />
+        <property name="contactName" type="serializable">
+            <column name="ContactName" />
         </property>
-        <property name="CPassword" type="serializable">
-            <column name="C_Password" />
+        <property name="contactTitle" type="serializable">
+            <column name="ContactTitle" />
         </property>
-        <property name="CCustomerDiscount" type="java.lang.Float">
-            <column name="C_CustomerDiscount" precision="24" scale="0" />
+        <property name="address" type="serializable">
+            <column name="Address" />
         </property>
-        <property name="CCardholderName" type="serializable">
-            <column name="C_CardholderName" />
+        <property name="city" type="serializable">
+            <column name="City" />
         </property>
-        <property name="CCardholderCompany" type="serializable">
-            <column name="C_CardholderCompany" />
+        <property name="region" type="serializable">
+            <column name="Region" />
         </property>
-        <property name="CCardholderEuvatnum" type="serializable">
-            <column name="C_CardholderEUVATNum" />
+        <property name="postalCode" type="serializable">
+            <column name="PostalCode" />
         </property>
-        <property name="CCardNumber" type="serializable">
-            <column name="C_Card_Number" />
+        <property name="country" type="serializable">
+            <column name="Country" />
         </property>
-        <property name="CCardType" type="serializable">
-            <column name="C_Card_Type" />
+        <property name="phone" type="serializable">
+            <column name="Phone" />
         </property>
-        <property name="CCardStartDate" type="serializable">
-            <column name="C_Card_StartDate" />
+        <property name="fax" type="serializable">
+            <column name="Fax" />
         </property>
-        <property name="CCardExpiry" type="serializable">
-            <column name="C_Card_Expiry" />
-        </property>
-        <property name="CCardIssueNumber" type="serializable">
-            <column name="C_Card_IssueNumber" />
-        </property>
-        <property name="CCardSecurityNumber" type="serializable">
-            <column name="C_Card_SecurityNumber" />
-        </property>
-        <property name="CCardholderStreetAddress" type="serializable">
-            <column name="C_CardholderStreetAddress" />
-        </property>
-        <property name="CCardholderTownCity" type="serializable">
-            <column name="C_CardholderTownCity" />
-        </property>
-        <property name="CCardholderCounty" type="serializable">
-            <column name="C_CardholderCounty" />
-        </property>
-        <property name="CCardholderPostCode" type="serializable">
-            <column name="C_CardholderPostCode" />
-        </property>
-        <property name="CCardholderCountry" type="java.lang.Integer">
-            <column name="C_CardholderCountry" />
-        </property>
-        <property name="CShippingName" type="serializable">
-            <column name="C_ShippingName" />
-        </property>
-        <property name="CShippingCompany" type="serializable">
-            <column name="C_ShippingCompany" />
-        </property>
-        <property name="CShippingStreetAddress" type="serializable">
-            <column name="C_ShippingStreetAddress" />
-        </property>
-        <property name="CShippingTownCity" type="serializable">
-            <column name="C_ShippingTownCity" />
-        </property>
-        <property name="CShippingCounty" type="serializable">
-            <column name="C_ShippingCounty" />
-        </property>
-        <property name="CShippingPostCode" type="serializable">
-            <column name="C_ShippingPostCode" />
-        </property>
-        <property name="CShippingCountry" type="java.lang.Integer">
-            <column name="C_ShippingCountry" />
-        </property>
-        <property name="CAffiliateId" type="java.lang.Integer">
-            <column name="C_AffiliateID" />
-        </property>
-        <property name="CApproved" type="serializable">
-            <column name="C_Approved" />
-        </property>
-        <property name="CCustomerGroupiD" type="java.lang.Integer">
-            <column name="C_CustomerGroupiD" />
-        </property>
-        <property name="CIsAffiliate" type="serializable">
-            <column name="C_IsAffiliate" />
-        </property>
-        <property name="CAffiliateCommission" type="java.lang.Float">
-            <column name="C_AffiliateCommission" precision="24" scale="0" />
-        </property>
-        <property name="CLanguageId" type="java.lang.Integer">
-            <column name="C_LanguageID" />
-        </property>
-        <property name="CMlSignupDateTime" type="timestamp">
-            <column name="C_ML_SignupDateTime" length="23" />
-        </property>
-        <property name="CMlSignupIp" type="serializable">
-            <column name="C_ML_SignupIP" />
-        </property>
-        <property name="CMlConfirmationDateTime" type="timestamp">
-            <column name="C_ML_ConfirmationDateTime" length="23" />
-        </property>
-        <property name="CMlConfirmationIp" type="serializable">
-            <column name="C_ML_ConfirmationIP" />
-        </property>
-        <property name="CMlRandomKey" type="serializable">
-            <column name="C_ML_RandomKey" />
-        </property>
-        <property name="CMlFormat" type="serializable">
-            <column name="C_ML_Format" />
-        </property>
-        <property name="CMlSendMail" type="serializable">
-            <column name="C_ML_SendMail" />
-        </property>
+        <set name="orderses" table="Orders" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CustomerID" />
+            </key>
+            <one-to-many class="model.utils.Orders" />
+        </set>
+        <set name="customerDemographicses" table="CustomerCustomerDemo" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="CustomerID" not-null="true" />
+            </key>
+            <many-to-many entity-name="model.utils.CustomerDemographics">
+                <column name="CustomerTypeID" not-null="true" />
+            </many-to-many>
+        </set>
     </class>
 </hibernate-mapping>

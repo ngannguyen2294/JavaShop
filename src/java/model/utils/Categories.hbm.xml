@@ -1,60 +1,27 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Mar 19, 2017 8:47:26 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="model.utils.Categories" table="Categories" schema="dbo" catalog="JavaShop" optimistic-lock="version">
-        <id name="catId" type="int">
-            <column name="CAT_ID" />
+        <id name="categoryId" type="int">
+            <column name="CategoryID" />
             <generator class="assigned" />
         </id>
-        <property name="catLive" type="serializable">
-            <column name="CAT_Live" />
+        <property name="categoryName" type="serializable">
+            <column name="CategoryName" not-null="true" />
         </property>
-        <property name="catName1" type="serializable">
-            <column name="CAT_Name1" />
+        <property name="description" type="serializable">
+            <column name="Description" />
         </property>
-        <property name="catName2" type="serializable">
-            <column name="CAT_Name2" />
+        <property name="picture" type="binary">
+            <column name="Picture" />
         </property>
-        <property name="catName3" type="serializable">
-            <column name="CAT_Name3" />
-        </property>
-        <property name="catName4" type="serializable">
-            <column name="CAT_Name4" />
-        </property>
-        <property name="catName5" type="serializable">
-            <column name="CAT_Name5" />
-        </property>
-        <property name="catDesc1" type="serializable">
-            <column name="CAT_Desc1" />
-        </property>
-        <property name="catDesc2" type="serializable">
-            <column name="CAT_Desc2" />
-        </property>
-        <property name="catDesc3" type="serializable">
-            <column name="CAT_Desc3" />
-        </property>
-        <property name="catDesc4" type="serializable">
-            <column name="CAT_Desc4" />
-        </property>
-        <property name="catDesc5" type="serializable">
-            <column name="CAT_Desc5" />
-        </property>
-        <property name="catProductDisplayType" type="serializable">
-            <column name="CAT_ProductDisplayType" />
-        </property>
-        <property name="catSubCatDisplayType" type="serializable">
-            <column name="CAT_SubCatDisplayType" />
-        </property>
-        <property name="catOrderByValue" type="java.lang.Double">
-            <column name="CAT_OrderByValue" precision="53" scale="0" />
-        </property>
-        <property name="catOrderProductsBy" type="serializable">
-            <column name="CAT_OrderProductsBy" />
-        </property>
-        <property name="catCustomerGroupId" type="java.lang.Integer">
-            <column name="CAT_CustomerGroupID" />
-        </property>
+        <set name="productses" table="Products" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="CategoryID" />
+            </key>
+            <one-to-many class="model.utils.Products" />
+        </set>
     </class>
 </hibernate-mapping>

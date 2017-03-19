@@ -41,4 +41,18 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="JavaShop" match-schema="dbo"/>
+  <table-filter match-name="Region"/>
+  <table-filter match-name="Shippers"/>
+  <table-filter match-name="CustomerDemographics"/>
+  <table-filter match-name="CustomerCustomerDemo"/>
+  <table-filter match-name="Products"/>
+  <table-filter match-name="Categories"/>
+  <table-filter match-name="Suppliers"/>
+  <table-filter match-name="Orders"/>
+  <table-filter match-name="Employees"/>
+  <table-filter match-name="Order Details"/>
+  <table-filter match-name="EmployeeTerritories"/>
+  <table-filter match-name="Logins"/>
+  <table-filter match-name="Territories"/>
+  <table-filter match-name="Customers"/>
 </hibernate-reverse-engineering>

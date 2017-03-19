@@ -28,7 +28,7 @@
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
                                 <li class="active"><a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm">Home</a></li>
-                                <li><a href="https://www.freshdesignweb.com/demo/template/ustora/shop.htm">Shop page</a></li>
+                                <li><a href="http://localhost:8080/J2eeShop/shop.htm">Shop page</a></li>
                                 <li><a href="https://www.freshdesignweb.com/demo/template/ustora/single-product.htm">Single product</a></li>
                                 <li><a href="https://www.freshdesignweb.com/demo/template/ustora/cart.htm">Cart</a></li>
                                 <li><a href="https://www.freshdesignweb.com/demo/template/ustora/checkout.htm">Checkout</a></li>

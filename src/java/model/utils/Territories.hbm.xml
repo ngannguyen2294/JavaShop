@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 19, 2017 8:47:26 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.Territories" table="Territories" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <id name="territoryId" type="serializable">
+            <column name="TerritoryID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="region" class="model.utils.Region" fetch="select">
+            <column name="RegionID" not-null="true" />
+        </many-to-one>
+        <property name="territoryDescription" type="serializable">
+            <column name="TerritoryDescription" not-null="true" />
+        </property>
+        <set name="employeeses" table="EmployeeTerritories" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="TerritoryID" not-null="true" />
+            </key>
+            <many-to-many entity-name="model.utils.Employees">
+                <column name="EmployeeID" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

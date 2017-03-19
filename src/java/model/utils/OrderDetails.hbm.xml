@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 19, 2017 8:47:26 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="model.utils.OrderDetails" table="`Order Details`" schema="dbo" catalog="JavaShop" optimistic-lock="version">
+        <composite-id name="id" class="model.utils.OrderDetailsId">
+            <key-property name="orderId" type="int">
+                <column name="OrderID" />
+            </key-property>
+            <key-property name="productId" type="int">
+                <column name="ProductID" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="orders" class="model.utils.Orders" update="false" insert="false" fetch="select">
+            <column name="OrderID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="products" class="model.utils.Products" update="false" insert="false" fetch="select">
+            <column name="ProductID" not-null="true" />
+        </many-to-one>
+        <property name="unitPrice" type="big_decimal">
+            <column name="UnitPrice" scale="4" not-null="true" />
+        </property>
+        <property name="quantity" type="short">
+            <column name="Quantity" not-null="true" />
+        </property>
+        <property name="discount" type="float">
+            <column name="Discount" precision="24" scale="0" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

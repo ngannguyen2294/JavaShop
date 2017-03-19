@@ -42,61 +42,20 @@ Contributor(s):
 <hibernate-configuration>
   <session-factory>
     <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
-    <property name="hibernate.connection.url">jdbc:sqlserver://NGANNV\NGANNV;databaseName=JavaShop</property>
+    <property name="hibernate.connection.url">jdbc:sqlserver://192.168.1.192\NGANNV:14482;databaseName=JavaShop</property>
     <property name="hibernate.connection.username">sa</property>
     <property name="hibernate.connection.password">abc@123abc</property>
-    <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
-    <mapping resource="model/utils/ProductOptionGroupLink.hbm.xml"/>
-    <mapping resource="model/utils/QuantityDiscounts.hbm.xml"/>
-    <mapping resource="model/utils/LanguageStrings5.hbm.xml"/>
-    <mapping resource="model/utils/Promotions.hbm.xml"/>
-    <mapping resource="model/utils/Options.hbm.xml"/>
-    <mapping resource="model/utils/ShippingRates.hbm.xml"/>
-    <mapping resource="model/utils/CategoryHierachy.hbm.xml"/>
-    <mapping resource="model/utils/Orders.hbm.xml"/>
-    <mapping resource="model/utils/Logins.hbm.xml"/>
-    <mapping resource="model/utils/LanguageStrings1.hbm.xml"/>
-    <mapping resource="model/utils/OptionGroups.hbm.xml"/>
-    <mapping resource="model/utils/VersionSalesStats.hbm.xml"/>
-    <mapping resource="model/utils/Categories.hbm.xml"/>
-    <mapping resource="model/utils/Reviews.hbm.xml"/>
-    <mapping resource="model/utils/AttributeValues.hbm.xml"/>
-    <mapping resource="model/utils/Destination.hbm.xml"/>
-    <mapping resource="model/utils/SavedExports.hbm.xml"/>
-    <mapping resource="model/utils/News.hbm.xml"/>
-    <mapping resource="model/utils/ShippingMethods.hbm.xml"/>
-    <mapping resource="model/utils/WishList.hbm.xml"/>
-    <mapping resource="model/utils/ProductStats.hbm.xml"/>
     <mapping resource="model/utils/Products.hbm.xml"/>
-    <mapping resource="model/utils/CustomerGroups.hbm.xml"/>
-    <mapping resource="model/utils/LanguageStrings2.hbm.xml"/>
-    <mapping resource="model/utils/ProductCategoryLink.hbm.xml"/>
-    <mapping resource="model/utils/VersionOptionLink.hbm.xml"/>
-    <mapping resource="model/utils/TaxRates.hbm.xml"/>
-    <mapping resource="model/utils/InvoiceRows.hbm.xml"/>
-    <mapping resource="model/utils/Languages.hbm.xml"/>
-    <mapping resource="model/utils/AffiliateLog.hbm.xml"/>
-    <mapping resource="model/utils/Currencies.hbm.xml"/>
-    <mapping resource="model/utils/AdminLog.hbm.xml"/>
-    <mapping resource="model/utils/CreditCards.hbm.xml"/>
-    <mapping resource="model/utils/LanguageStrings3.hbm.xml"/>
-    <mapping resource="model/utils/ShippingZones.hbm.xml"/>
-    <mapping resource="model/utils/Coupons.hbm.xml"/>
-    <mapping resource="model/utils/SessionValues.hbm.xml"/>
-    <mapping resource="model/utils/SaveBasket.hbm.xml"/>
-    <mapping resource="model/utils/Config.hbm.xml"/>
-    <mapping resource="model/utils/Pages.hbm.xml"/>
-    <mapping resource="model/utils/ConfigCategories.hbm.xml"/>
-    <mapping resource="model/utils/Versions.hbm.xml"/>
-    <mapping resource="model/utils/AffiliatePayments.hbm.xml"/>
-    <mapping resource="model/utils/Ups.hbm.xml"/>
-    <mapping resource="model/utils/ProductOptionLink.hbm.xml"/>
-    <mapping resource="model/utils/CustomerGroupPrices.hbm.xml"/>
-    <mapping resource="model/utils/Customers.hbm.xml"/>
-    <mapping resource="model/utils/LanguageStrings4.hbm.xml"/>
-    <mapping resource="model/utils/Sessions.hbm.xml"/>
-    <mapping resource="model/utils/Attributes.hbm.xml"/>
+    <mapping resource="model/utils/Logins.hbm.xml"/>
+    <mapping resource="model/utils/Region.hbm.xml"/>
+    <mapping resource="model/utils/Shippers.hbm.xml"/>
+    <mapping resource="model/utils/Territories.hbm.xml"/>
     <mapping resource="model/utils/Suppliers.hbm.xml"/>
-    <mapping resource="model/utils/RelatedProducts.hbm.xml"/>
+    <mapping resource="model/utils/Orders.hbm.xml"/>
+    <mapping resource="model/utils/Employees.hbm.xml"/>
+    <mapping resource="model/utils/OrderDetails.hbm.xml"/>
+    <mapping resource="model/utils/Customers.hbm.xml"/>
+    <mapping resource="model/utils/Categories.hbm.xml"/>
+    <mapping resource="model/utils/CustomerDemographics.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

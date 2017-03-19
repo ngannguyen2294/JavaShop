@@ -1,129 +1,57 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 16, 2017 4:57:42 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Mar 19, 2017 8:47:26 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="model.utils.Orders" table="Orders" schema="dbo" catalog="JavaShop" optimistic-lock="version">
-        <id name="OId" type="int">
-            <column name="O_ID" />
+        <id name="orderId" type="int">
+            <column name="OrderID" />
             <generator class="assigned" />
         </id>
-        <property name="OCustomerId" type="java.lang.Integer">
-            <column name="O_CustomerID" />
+        <many-to-one name="customers" class="model.utils.Customers" fetch="select">
+            <column name="CustomerID" />
+        </many-to-one>
+        <many-to-one name="employees" class="model.utils.Employees" fetch="select">
+            <column name="EmployeeID" />
+        </many-to-one>
+        <many-to-one name="shippers" class="model.utils.Shippers" fetch="select">
+            <column name="ShipVia" />
+        </many-to-one>
+        <property name="orderDate" type="timestamp">
+            <column name="OrderDate" length="23" />
         </property>
-        <property name="ODetails" type="serializable">
-            <column name="O_Details" />
+        <property name="requiredDate" type="timestamp">
+            <column name="RequiredDate" length="23" />
         </property>
-        <property name="OShippingPrice" type="java.lang.Double">
-            <column name="O_ShippingPrice" precision="53" scale="0" />
+        <property name="shippedDate" type="timestamp">
+            <column name="ShippedDate" length="23" />
         </property>
-        <property name="OShippingTax" type="java.lang.Double">
-            <column name="O_ShippingTax" precision="53" scale="0" />
+        <property name="freight" type="big_decimal">
+            <column name="Freight" scale="4" />
         </property>
-        <property name="ODiscountPercentage" type="java.lang.Double">
-            <column name="O_DiscountPercentage" precision="53" scale="0" />
+        <property name="shipName" type="serializable">
+            <column name="ShipName" />
         </property>
-        <property name="OAffiliatePercentage" type="java.lang.Double">
-            <column name="O_AffiliatePercentage" precision="53" scale="0" />
+        <property name="shipAddress" type="serializable">
+            <column name="ShipAddress" />
         </property>
-        <property name="OTotalPrice" type="java.lang.Double">
-            <column name="O_TotalPrice" precision="53" scale="0" />
+        <property name="shipCity" type="serializable">
+            <column name="ShipCity" />
         </property>
-        <property name="ODate" type="timestamp">
-            <column name="O_Date" length="23" />
+        <property name="shipRegion" type="serializable">
+            <column name="ShipRegion" />
         </property>
-        <property name="OPurchaseOrderNo" type="serializable">
-            <column name="O_PurchaseOrderNo" />
+        <property name="shipPostalCode" type="serializable">
+            <column name="ShipPostalCode" />
         </property>
-        <property name="OSecurityId" type="java.lang.Integer">
-            <column name="O_SecurityID" />
+        <property name="shipCountry" type="serializable">
+            <column name="ShipCountry" />
         </property>
-        <property name="OSent" type="serializable">
-            <column name="O_Sent" />
-        </property>
-        <property name="OInvoiced" type="serializable">
-            <column name="O_Invoiced" />
-        </property>
-        <property name="OShipped" type="serializable">
-            <column name="O_Shipped" />
-        </property>
-        <property name="OPaid" type="serializable">
-            <column name="O_Paid" />
-        </property>
-        <property name="OStatus" type="serializable">
-            <column name="O_Status" />
-        </property>
-        <property name="OLastModified" type="timestamp">
-            <column name="O_LastModified" length="23" />
-        </property>
-        <property name="OWishListId" type="java.lang.Integer">
-            <column name="O_WishListID" />
-        </property>
-        <property name="OCouponCode" type="serializable">
-            <column name="O_CouponCode" />
-        </property>
-        <property name="OCouponDiscountTotal" type="java.lang.Float">
-            <column name="O_CouponDiscountTotal" precision="24" scale="0" />
-        </property>
-        <property name="OPricesIncTax" type="serializable">
-            <column name="O_PricesIncTax" />
-        </property>
-        <property name="OTaxDue" type="java.lang.Integer">
-            <column name="O_TaxDue" />
-        </property>
-        <property name="OPaymentGateWay" type="serializable">
-            <column name="O_PaymentGateWay" />
-        </property>
-        <property name="OReferenceCode" type="serializable">
-            <column name="O_ReferenceCode" />
-        </property>
-        <property name="OLanguageId" type="java.lang.Integer">
-            <column name="O_LanguageID" />
-        </property>
-        <property name="OCurrencyId" type="java.lang.Integer">
-            <column name="O_CurrencyID" />
-        </property>
-        <property name="OTotalPriceGateway" type="java.lang.Double">
-            <column name="O_TotalPriceGateway" precision="53" scale="0" />
-        </property>
-        <property name="OCurrencyIdgateway" type="java.lang.Integer">
-            <column name="O_CurrencyIDGateway" />
-        </property>
-        <property name="OAffiliatePaymentId" type="java.lang.Integer">
-            <column name="O_AffiliatePaymentID" />
-        </property>
-        <property name="OAffiliateTotalPrice" type="java.lang.Double">
-            <column name="O_AffiliateTotalPrice" precision="53" scale="0" />
-        </property>
-        <property name="OSendOrderUpdateEmail" type="serializable">
-            <column name="O_SendOrderUpdateEmail" />
-        </property>
-        <property name="OOrderHandlingCharge" type="java.lang.Double">
-            <column name="O_OrderHandlingCharge" precision="53" scale="0" />
-        </property>
-        <property name="OOrderHandlingChargeTax" type="java.lang.Double">
-            <column name="O_OrderHandlingChargeTax" precision="53" scale="0" />
-        </property>
-        <property name="OCurrencyRate" type="java.lang.Double">
-            <column name="O_CurrencyRate" precision="53" scale="0" />
-        </property>
-        <property name="OShippingMethod" type="serializable">
-            <column name="O_ShippingMethod" />
-        </property>
-        <property name="OShippingMethodDesc" type="serializable">
-            <column name="O_ShippingMethodDesc" />
-        </property>
-        <property name="OBillingAddress" type="serializable">
-            <column name="O_BillingAddress" />
-        </property>
-        <property name="OShippingAddress" type="serializable">
-            <column name="O_ShippingAddress" />
-        </property>
-        <property name="OPromotionDiscountTotal" type="java.lang.Float">
-            <column name="O_PromotionDiscountTotal" precision="24" scale="0" />
-        </property>
-        <property name="OPromotionDescription" type="serializable">
-            <column name="O_PromotionDescription" />
-        </property>
+        <set name="orderDetailses" table="`Order Details`" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="OrderID" not-null="true" />
+            </key>
+            <one-to-many class="model.utils.OrderDetails" />
+        </set>
     </class>
 </hibernate-mapping>
