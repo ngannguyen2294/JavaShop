@@ -8,10 +8,10 @@
             <column name="CategoryID" />
             <generator class="assigned" />
         </id>
-        <property name="categoryName" type="serializable">
+        <property name="categoryName" type="string">
             <column name="CategoryName" not-null="true" />
         </property>
-        <property name="description" type="serializable">
+        <property name="description" type="string">
             <column name="Description" />
         </property>
         <property name="picture" type="binary">

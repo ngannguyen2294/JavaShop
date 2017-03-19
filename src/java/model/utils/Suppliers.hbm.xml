@@ -8,37 +8,37 @@
             <column name="SupplierID" />
             <generator class="assigned" />
         </id>
-        <property name="companyName" type="serializable">
+        <property name="companyName" type="string">
             <column name="CompanyName" not-null="true" />
         </property>
-        <property name="contactName" type="serializable">
+        <property name="contactName" type="string">
             <column name="ContactName" />
         </property>
-        <property name="contactTitle" type="serializable">
+        <property name="contactTitle" type="string">
             <column name="ContactTitle" />
         </property>
-        <property name="address" type="serializable">
+        <property name="address" type="string">
             <column name="Address" />
         </property>
-        <property name="city" type="serializable">
+        <property name="city" type="string">
             <column name="City" />
         </property>
-        <property name="region" type="serializable">
+        <property name="region" type="string">
             <column name="Region" />
         </property>
-        <property name="postalCode" type="serializable">
+        <property name="postalCode" type="string">
             <column name="PostalCode" />
         </property>
-        <property name="country" type="serializable">
+        <property name="country" type="string">
             <column name="Country" />
         </property>
-        <property name="phone" type="serializable">
+        <property name="phone" type="string">
             <column name="Phone" />
         </property>
-        <property name="fax" type="serializable">
+        <property name="fax" type="string">
             <column name="Fax" />
         </property>
-        <property name="homePage" type="serializable">
+        <property name="homePage" type="string">
             <column name="HomePage" />
         </property>
         <set name="productses" table="Products" inverse="true" lazy="true" fetch="select">

@@ -13,8 +13,8 @@ public class Categories  implements java.io.Serializable {
 
 
      private int categoryId;
-     private Serializable categoryName;
-     private Serializable description;
+     private String categoryName;
+     private String description;
      private byte[] picture;
      private Set productses = new HashSet(0);
 
@@ -22,11 +22,11 @@ public class Categories  implements java.io.Serializable {
     }
 
 	
-    public Categories(int categoryId, Serializable categoryName) {
+    public Categories(int categoryId, String categoryName) {
         this.categoryId = categoryId;
         this.categoryName = categoryName;
     }
-    public Categories(int categoryId, Serializable categoryName, Serializable description, byte[] picture, Set productses) {
+    public Categories(int categoryId, String categoryName, String description, byte[] picture, Set productses) {
        this.categoryId = categoryId;
        this.categoryName = categoryName;
        this.description = description;
@@ -41,18 +41,18 @@ public class Categories  implements java.io.Serializable {
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
-    public Serializable getCategoryName() {
+    public String getCategoryName() {
         return this.categoryName;
     }
     
-    public void setCategoryName(Serializable categoryName) {
+    public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
-    public Serializable getDescription() {
+    public String getDescription() {
         return this.description;
     }
     
-    public void setDescription(Serializable description) {
+    public void setDescription(String description) {
         this.description = description;
     }
     public byte[] getPicture() {

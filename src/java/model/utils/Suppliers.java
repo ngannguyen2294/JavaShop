@@ -13,28 +13,28 @@ public class Suppliers  implements java.io.Serializable {
 
 
      private int supplierId;
-     private Serializable companyName;
-     private Serializable contactName;
-     private Serializable contactTitle;
-     private Serializable address;
-     private Serializable city;
-     private Serializable region;
-     private Serializable postalCode;
-     private Serializable country;
-     private Serializable phone;
-     private Serializable fax;
-     private Serializable homePage;
+     private String companyName;
+     private String contactName;
+     private String contactTitle;
+     private String address;
+     private String city;
+     private String region;
+     private String postalCode;
+     private String country;
+     private String phone;
+     private String fax;
+     private String homePage;
      private Set productses = new HashSet(0);
 
     public Suppliers() {
     }
 
 	
-    public Suppliers(int supplierId, Serializable companyName) {
+    public Suppliers(int supplierId, String companyName) {
         this.supplierId = supplierId;
         this.companyName = companyName;
     }
-    public Suppliers(int supplierId, Serializable companyName, Serializable contactName, Serializable contactTitle, Serializable address, Serializable city, Serializable region, Serializable postalCode, Serializable country, Serializable phone, Serializable fax, Serializable homePage, Set productses) {
+    public Suppliers(int supplierId, String companyName, String contactName, String contactTitle, String address, String city, String region, String postalCode, String country, String phone, String fax, String homePage, Set productses) {
        this.supplierId = supplierId;
        this.companyName = companyName;
        this.contactName = contactName;
@@ -57,81 +57,81 @@ public class Suppliers  implements java.io.Serializable {
     public void setSupplierId(int supplierId) {
         this.supplierId = supplierId;
     }
-    public Serializable getCompanyName() {
+    public String getCompanyName() {
         return this.companyName;
     }
     
-    public void setCompanyName(Serializable companyName) {
+    public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
-    public Serializable getContactName() {
+    public String getContactName() {
         return this.contactName;
     }
     
-    public void setContactName(Serializable contactName) {
+    public void setContactName(String contactName) {
         this.contactName = contactName;
     }
-    public Serializable getContactTitle() {
+    public String getContactTitle() {
         return this.contactTitle;
     }
     
-    public void setContactTitle(Serializable contactTitle) {
+    public void setContactTitle(String contactTitle) {
         this.contactTitle = contactTitle;
     }
-    public Serializable getAddress() {
+    public String getAddress() {
         return this.address;
     }
     
-    public void setAddress(Serializable address) {
+    public void setAddress(String address) {
         this.address = address;
     }
-    public Serializable getCity() {
+    public String getCity() {
         return this.city;
     }
     
-    public void setCity(Serializable city) {
+    public void setCity(String city) {
         this.city = city;
     }
-    public Serializable getRegion() {
+    public String getRegion() {
         return this.region;
     }
     
-    public void setRegion(Serializable region) {
+    public void setRegion(String region) {
         this.region = region;
     }
-    public Serializable getPostalCode() {
+    public String getPostalCode() {
         return this.postalCode;
     }
     
-    public void setPostalCode(Serializable postalCode) {
+    public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
-    public Serializable getCountry() {
+    public String getCountry() {
         return this.country;
     }
     
-    public void setCountry(Serializable country) {
+    public void setCountry(String country) {
         this.country = country;
     }
-    public Serializable getPhone() {
+    public String getPhone() {
         return this.phone;
     }
     
-    public void setPhone(Serializable phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
-    public Serializable getFax() {
+    public String getFax() {
         return this.fax;
     }
     
-    public void setFax(Serializable fax) {
+    public void setFax(String fax) {
         this.fax = fax;
     }
-    public Serializable getHomePage() {
+    public String getHomePage() {
         return this.homePage;
     }
     
-    public void setHomePage(Serializable homePage) {
+    public void setHomePage(String homePage) {
         this.homePage = homePage;
     }
     public Set getProductses() {
