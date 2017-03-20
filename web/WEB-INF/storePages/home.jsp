@@ -26,8 +26,8 @@
                             </div> 
                             <div class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav">
-                                    <li class="active"><a href="http://localhost:8080/J2eeShop/shop.htm">Home</a></li>
-                                    <li><a href="http://localhost:8080/J2eeShop/shop.htm">Shop page</a></li>
+                                    <li class="active"><a href="home.htm">Home</a></li>
+                                    <li><a href="shop.htm">Shop page</a></li>
                                     <li><a href="https://www.freshdesignweb.com/demo/template/ustora/single-product.htm">Single product</a></li>
                                     <li><a href="https://www.freshdesignweb.com/demo/template/ustora/cart.htm">Cart</a></li>
                                     <li><a href="https://www.freshdesignweb.com/demo/template/ustora/checkout.htm">Checkout</a></li>

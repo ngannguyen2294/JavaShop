@@ -20,7 +20,7 @@
         <property name="quantityPerUnit" type="string">
             <column name="QuantityPerUnit" />
         </property>
-         <property name="productNo" type="int">
+        <property name="productNo" type="int">
             <column name="ProductNo" />
         </property>
         <property name="unitPrice" type="big_decimal">
@@ -37,6 +37,9 @@
         </property>
         <property name="discontinued" type="boolean">
             <column name="Discontinued" not-null="true" />
+        </property>
+        <property name="imageProduct" type="string">
+            <column name="Image" not-null="true" />
         </property>
         <set name="orderDetailses" table="`Order Details`" inverse="true" lazy="true" fetch="select">
             <key>

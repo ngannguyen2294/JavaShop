@@ -20,11 +20,12 @@
         <property name="mappings">
             <props>
                 <prop key="home.htm">indexController</prop>
+                <prop key="shop.htm">shopController</prop>
                 <prop key="admin/admin.htm">adminIndexController</prop>
                 <prop key="admin/logout.htm">adminPageController</prop>
-                  <prop key="admin/login.htm">loginPageController</prop>
-                  <prop key="admin/actionlogin.htm">adminPageController</prop>
-                  <prop key="admin/productlist.htm">productPageController</prop>
+                <prop key="admin/login.htm">loginPageController</prop>
+                <prop key="admin/actionlogin.htm">adminPageController</prop>
+                <prop key="admin/productlist.htm">productPageController</prop>
                   
             </props>
         </property>
@@ -34,22 +35,25 @@
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/"
           p:suffix=".jsp" />
-   <bean id="adminPageController"
+    <bean id="adminPageController"
           class="controller.LoginController"
-          />
+    />
     <!--
     The index controller.
     -->
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="storePages/home" />
-   <bean name="adminIndexController"
+    <bean name="shopController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="storePages/shop" />
+    <bean name="adminIndexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="adminPages/base" />
     <bean name="loginPageController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="adminPages/pages/login" />
-  <bean name="productPageController"
+    <bean name="productPageController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="adminPages/pages/product/list" />
 

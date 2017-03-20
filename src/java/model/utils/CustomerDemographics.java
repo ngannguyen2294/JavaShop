@@ -12,18 +12,18 @@ import java.util.Set;
 public class CustomerDemographics  implements java.io.Serializable {
 
 
-     private Serializable customerTypeId;
-     private Serializable customerDesc;
+     private String customerTypeId;
+     private String customerDesc;
      private Set customerses = new HashSet(0);
 
     public CustomerDemographics() {
     }
 
 	
-    public CustomerDemographics(Serializable customerTypeId) {
+    public CustomerDemographics(String customerTypeId) {
         this.customerTypeId = customerTypeId;
     }
-    public CustomerDemographics(Serializable customerTypeId, Serializable customerDesc, Set customerses) {
+    public CustomerDemographics(String customerTypeId, String customerDesc, Set customerses) {
        this.customerTypeId = customerTypeId;
        this.customerDesc = customerDesc;
        this.customerses = customerses;
@@ -33,14 +33,14 @@ public class CustomerDemographics  implements java.io.Serializable {
         return this.customerTypeId;
     }
     
-    public void setCustomerTypeId(Serializable customerTypeId) {
+    public void setCustomerTypeId(String customerTypeId) {
         this.customerTypeId = customerTypeId;
     }
-    public Serializable getCustomerDesc() {
+    public String getCustomerDesc() {
         return this.customerDesc;
     }
     
-    public void setCustomerDesc(Serializable customerDesc) {
+    public void setCustomerDesc(String customerDesc) {
         this.customerDesc = customerDesc;
     }
     public Set getCustomerses() {

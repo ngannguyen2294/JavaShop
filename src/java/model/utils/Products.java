@@ -27,6 +27,15 @@ public class Products implements java.io.Serializable {
     private Short unitsOnOrder;
     private Short reorderLevel;
     private boolean discontinued;
+    private String imageProduct;
+
+    public String getImageProduct() {
+        return imageProduct;
+    }
+
+    public void setImageProduct(String imageProduct) {
+        this.imageProduct = imageProduct;
+    }
     private Set orderDetailses = new HashSet(0);
 
     public Products() {
@@ -149,7 +158,7 @@ public class Products implements java.io.Serializable {
     public void setOrderDetailses(Set orderDetailses) {
         this.orderDetailses = orderDetailses;
     }
-
+    
     public List<Products> getAllProduct() {
         Session session = getSessionFactory().openSession();
         SQLQuery query = session.createSQLQuery("select * from Products");

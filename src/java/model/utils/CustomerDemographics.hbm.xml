@@ -4,11 +4,11 @@
 <!-- Generated Mar 19, 2017 8:47:26 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="model.utils.CustomerDemographics" table="CustomerDemographics" schema="dbo" catalog="JavaShop" optimistic-lock="version">
-        <id name="customerTypeId" type="serializable">
+        <id name="customerTypeId" type="string">
             <column name="CustomerTypeID" />
             <generator class="assigned" />
         </id>
-        <property name="customerDesc" type="serializable">
+        <property name="customerDesc" type="string">
             <column name="CustomerDesc" />
         </property>
         <set name="customerses" table="CustomerCustomerDemo" inverse="true" lazy="true" fetch="select">

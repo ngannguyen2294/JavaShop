@@ -8,7 +8,7 @@
             <column name="RegionID" />
             <generator class="assigned" />
         </id>
-        <property name="regionDescription" type="serializable">
+        <property name="regionDescription" type="string">
             <column name="RegionDescription" not-null="true" />
         </property>
         <set name="territorieses" table="Territories" inverse="true" lazy="true" fetch="select">

@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="logo">
-                            <h1><a href="http://localhost:8080/J2eeShop/"><img style="width:130px;height: 100px" src="img/logo.png"></a></h1>
+                            <h1><a href="../storePages/home.htm"><img style="width:130px;height: 100px" src="img/logo.png"></a></h1>
                         </div>
                     </div>
 
