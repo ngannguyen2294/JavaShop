@@ -8,10 +8,10 @@
             <column name="ShipperID" />
             <generator class="assigned" />
         </id>
-        <property name="companyName" type="serializable">
+        <property name="companyName" type="string">
             <column name="CompanyName" not-null="true" />
         </property>
-        <property name="phone" type="serializable">
+        <property name="phone" type="string">
             <column name="Phone" />
         </property>
         <set name="orderses" table="Orders" inverse="true" lazy="true" fetch="select">

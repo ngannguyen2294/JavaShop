@@ -29,22 +29,22 @@
         <property name="freight" type="big_decimal">
             <column name="Freight" scale="4" />
         </property>
-        <property name="shipName" type="serializable">
+        <property name="shipName" type="string">
             <column name="ShipName" />
         </property>
-        <property name="shipAddress" type="serializable">
+        <property name="shipAddress" type="string">
             <column name="ShipAddress" />
         </property>
-        <property name="shipCity" type="serializable">
+        <property name="shipCity" type="string">
             <column name="ShipCity" />
         </property>
-        <property name="shipRegion" type="serializable">
+        <property name="shipRegion" type="string">
             <column name="ShipRegion" />
         </property>
-        <property name="shipPostalCode" type="serializable">
+        <property name="shipPostalCode" type="string">
             <column name="ShipPostalCode" />
         </property>
-        <property name="shipCountry" type="serializable">
+        <property name="shipCountry" type="string">
             <column name="ShipCountry" />
         </property>
         <set name="orderDetailses" table="`Order Details`" inverse="true" lazy="true" fetch="select">

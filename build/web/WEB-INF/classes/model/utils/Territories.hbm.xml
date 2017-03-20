@@ -4,14 +4,14 @@
 <!-- Generated Mar 19, 2017 8:47:26 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="model.utils.Territories" table="Territories" schema="dbo" catalog="JavaShop" optimistic-lock="version">
-        <id name="territoryId" type="serializable">
+        <id name="territoryId" type="string">
             <column name="TerritoryID" />
             <generator class="assigned" />
         </id>
         <many-to-one name="region" class="model.utils.Region" fetch="select">
             <column name="RegionID" not-null="true" />
         </many-to-one>
-        <property name="territoryDescription" type="serializable">
+        <property name="territoryDescription" type="string">
             <column name="TerritoryDescription" not-null="true" />
         </property>
         <set name="employeeses" table="EmployeeTerritories" inverse="true" lazy="true" fetch="select">

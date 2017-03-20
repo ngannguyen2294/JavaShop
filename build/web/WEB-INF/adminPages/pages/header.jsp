@@ -58,3 +58,31 @@
     }
 %>
 
+ <!-- basic scripts -->
+
+		<!--[if !IE]> -->
+		<script src="../js/jquery-2.1.4.min.js"></script>
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+<script src="../js/jquery-1.11.3.min.js"></script>
+<![endif]-->
+		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='../js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="../js/bootstrap.min.js"></script>
+
+		<!-- page specific plugin scripts -->
+		<script src="../js/jquery.dataTables.min.js"></script>
+		<script src="../js/jquery.dataTables.bootstrap.min.js"></script>
+		<script src="../js/dataTables.buttons.min.js"></script>
+		<script src="../js/buttons.flash.min.js"></script>
+		<script src="../js/buttons.html5.min.js"></script>
+		<script src="../js/buttons.print.min.js"></script>
+		<script src="../js/buttons.colVis.min.js"></script>
+		<script src="../js/dataTables.select.min.js"></script>
+
+		<!-- ace scripts -->
+		<script src="../js/ace-elements.min.js"></script>
+		<script src="../js/ace.min.js"></script>
