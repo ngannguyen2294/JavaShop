@@ -3,14 +3,20 @@
     Created on : Mar 17, 2017, 11:27:54 PM
     Author     : NGANNV
 --%>
-
+<%@page import="model.utils.Suppliers"%>
 <%@page import="model.utils.Categories"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="model.utils.Products"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<jsp:useBean id = "Products" class = "model.utils.Products" 
+<jsp:useBean id = "Products" class = "model.bussiness.ProductBussiness" 
+             scope = "page"/>
+<jsp:useBean id = "Supplier" class = "model.bussiness.SupplierBussiness" 
+             scope = "page"/>
+<jsp:useBean id = "Categories" class = "model.bussiness.CategoryBussiness" 
+             scope = "page"/>
+<jsp:useBean id = "html" class = "model.utils.HtmlUtils" 
              scope = "page"/>
 <html>
     <head>
@@ -94,83 +100,144 @@
                                                 <th> Unit Price</th>
                                                 <th> Units In Stock</th>
                                                 <th> Units On Order</th>
-                                                <th>Image</th>
+                                                <th>Image</th>  
+                                                <th>Edit</th>
+                                                <th>Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <c:set var="root" value="${request.contextPath}/" />
-                                            <%                                                try {
-                                                    List<Products> productlist = Products.getAllProductListInfor();
-                                                    for (Products product : productlist) {
-                                                        out.print("<tr>"
-                                                                + "<td></td>"
-                                                                + "<td>" + product.getProductNo() + "</td>"
-                                                                + "<td>" + product.getProductName() + "</td>"
-                                                                + "<td>" + product.getSuppliers().getCompanyName() + "</td>"
-                                                                + "<td>" + product.getCategories().getCategoryName() + "</td>"
-                                                                + "<td>" + product.getQuantityPerUnit() + "</td>"
-                                                                + "<td>" + product.getUnitPrice() + "</td>"
-                                                                + "<td>" + product.getUnitsInStock() + "</td>"
-                                                                + "<td>" + product.getUnitsOnOrder() + "</td>"
-                                                                + "<td><img src='.."+ product.getImageProduct()+ "' height='70' width='70'/></td>"
-                                                                + "</tr>");
-                                                    }
-                                                } catch (Exception ex) {
-                                                    out.print(ex.toString());
+                                        <c:set var="root" value="${request.contextPath}/" />
+                                        <%                                                try {
+                                                List<Products> productlist = Products.getAllProductListInfor();
+                                                for (Products product : productlist) {
+                                                    out.print("<tr>"
+                                                            + "<td></td>"
+                                                            + "<td>" + product.getProductNo() + "</td>"
+                                                            + "<td>" + product.getProductName() + "</td>"
+                                                            + "<td>" + product.getSuppliers().getCompanyName() + "</td>"
+                                                            + "<td>" + product.getCategories().getCategoryName() + "</td>"
+                                                            + "<td>" + product.getQuantityPerUnit() + "</td>"
+                                                            + "<td>" + product.getUnitPrice() + "</td>"
+                                                            + "<td>" + product.getUnitsInStock() + "</td>"
+                                                            + "<td>" + product.getUnitsOnOrder() + "</td>"
+                                                            + "<td><img id='productImage' src='.." + product.getImageProduct() + "' height='70' width='70' onclick='showImage(this)'/></td>"
+                                                            + "<td onclick='showModalEdit(this)'><a href='#' class='tooltip-success' data-rel='tooltip' title='Edit'><span class='green'><i class='ace-icon fa fa-pencil-square-o bigger-120'></i></span></a></td>"
+                                                            + "<td><a href='#' class='tooltip-error' data-rel='tooltip' title='Delete'><span class='red'><i class='ace-icon fa fa-trash-o bigger-120'></i></span></a></td>"
+                                                            + "</tr>");
                                                 }
-                                            %>
+                                            } catch (Exception ex) {
+                                                out.print(ex.toString());
+                                            }
+                                        %>
 
-                                        </tbody>
+                                        </tbody> 
                                     </table>
                                 </div>
                             </div>
 
                         </div>  </div> </div></div>
         </div>
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" 
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close" 
+                                data-dismiss="modal">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            Edit Product
+                        </h4>
+                    </div>
+
+                    <!-- Modal Body -->
+                    <div class="modal-body">
+
+                        <form role="form">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="productName">Product Name</label>
+                                    <input type="text" class="form-control"
+                                           id="productName"/>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="supplier">Supplier</label>
+                                    <select id="supplier" class="form-control">
+                                        <% List<Suppliers> supplierList = Supplier.getAllSupplier();
+                                            for (Suppliers sup : supplierList) {
+                                                out.print("<option>" + sup.getCompanyName() + "</option>");
+                                            }
+                                        %>              
+
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="category">Category</label>
+                                    <select id="category" class="form-control">
+                                        <% List<Categories> categoriesList = Categories.getAllCategories();
+                                            for (Categories cate : categoriesList) {
+                                                out.print("<option>" + cate.getCategoryName() + "</option>");
+                                            }
+                                        %>              
+
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="supplier">Supplier</label>
+                                    <select id="supplier" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"/> Check me out
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+
+
+                    </div>
+
+                    <!-- Modal Footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default"
+                                data-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            Save changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
         <!-- inline scripts related to this page -->
         <script type="text/javascript">
+            var myTable =
+                    $('#dynamic-table').DataTable();
+            function showModalEdit(obj)
+            {
+                $('#editModal').modal('show');
+                var table = $('#dynamic-table').DataTable();
+                $('#dynamic-table').on('click', 'tr', function () {
+                   var data= table.row(this).data();
+                   $("#productName").val(data[2]);
+                     $("#supplier").val(data[3]);
+                     $("#category").val(data[4]);
+                });
+            }
+
             jQuery(function ($) {
                 //initiate dataTables plugin
-                var myTable =
-                        $('#dynamic-table')
-                        //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
-                        .DataTable(
-//                                {
-//					bAutoWidth: false,
-//					"aoColumns": [
-//					  { "bSortable": false },
-//					  null, null,null, null, null,
-//					  { "bSortable": false }
-//					],
-//					"aaSorting": [],
-//					
-//					
-//					//"bProcessing": true,
-//			        //"bServerSide": true,
-//			        //"sAjaxSource": "http://127.0.0.1/table.php"	,
-//			
-//					//,
-//					//"sScrollY": "200px",
-//					//"bPaginate": false,
-//			
-//					//"sScrollX": "100%",
-//					//"sScrollXInner": "120%",
-//					//"bScrollCollapse": true,
-//					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
-//					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
-//			
-//					//"iDisplayLength": 50
-//			
-//			
-//					select: {
-//						style: 'multi'
-//					}
-//			    } 
-                                );
-
-
-
                 $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
 
                 new $.fn.dataTable.Buttons(myTable, {
@@ -375,8 +442,128 @@
                  */
 
 
-            })
+            }
+            )
         </script>
+        <style>
+            #productImage {
+                border-radius: 5px;
+                cursor: pointer;
+                transition: 0.3s;
+            }
 
+            #productImage:hover {opacity: 0.7;}
+
+            /* The Modal (background) */
+            .modal2 {
+                display: none; /* Hidden by default */
+                position: fixed; /* Stay in place */
+                z-index: 1; /* Sit on top */
+                padding-top: 100px; /* Location of the box */
+                left: 0;
+                top: 0;
+                width: 100%; /* Full width */
+                height: 100%; /* Full height */
+                overflow: auto; /* Enable scroll if needed */
+                background-color: rgb(0,0,0); /* Fallback color */
+                background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+            }
+
+            /* Modal Content (image) */
+            .modal-content2 {
+                margin: auto;
+                display: block;
+                width: 80%;
+                max-width: 700px;
+            }
+
+            /* Caption of Modal Image */
+            #caption {
+                margin: auto;
+                display: block;
+                width: 80%;
+                max-width: 700px;
+                text-align: center;
+                color: #ccc;
+                padding: 10px 0;
+                height: 150px;
+            }
+
+            /* Add Animation */
+            .modal-content2, #caption {    
+                -webkit-animation-name: zoom;
+                -webkit-animation-duration: 0.6s;
+                animation-name: zoom;
+                animation-duration: 0.6s;
+            }
+
+            @-webkit-keyframes zoom {
+                from {-webkit-transform:scale(0)} 
+                to {-webkit-transform:scale(1)}
+            }
+
+            @keyframes zoom {
+                from {transform:scale(0)} 
+                to {transform:scale(1)}
+            }
+
+            /* The Close Button */
+            .close {
+                position: absolute;
+                top: 15px;
+                right: 35px;
+                color: #f1f1f1;
+                font-size: 40px;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+
+            .close:hover,
+            .close:focus {
+                color: #bbb;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+            /* 100% Image Width on Smaller Screens */
+            @media only screen and (max-width: 700px){
+                .modal-content {
+                    width: 100%;
+                }
+            }
+        </style>
+
+
+        <!-- The Modal -->
+        <div id="imageModal" class="modal2">
+            <span class="close" id="closeImage">&times;</span>
+            <img class="modal-content2" id="img01">
+            <div id="caption"></div>
+        </div>
+
+        <script>
+            function showImage(obj)
+            {
+                // Get the modal
+                var modal = document.getElementById('imageModal');
+
+                // Get the image and insert it inside the modal - use its "alt" text as a caption
+
+                var modalImg = document.getElementById("img01");
+                var captionText = document.getElementById("caption");
+                modal.style.display = "block";
+                modalImg.src = obj.src;
+                captionText.innerHTML = obj.alt;
+
+                // Get the <span> element that closes the modal
+
+            }
+
+
+            // When the user clicks on <span> (x), close the modal
+            $("#closeImage").click(function () {
+                $("#imageModal").css("display", "none");
+            });
+        </script>
     </body>
 </html>
