@@ -106,12 +106,12 @@
                                         <tbody>
                                         <c:set var="root" value="${request.contextPath}/" />
                                         <%                                                try {
-                                                List<Products> productlist = Products.getAllProductListInfor();
-                                                int i=1;
+                                                List<Products> productlist = Products.GetAllProductListInfor();
+                                                int i = 1;
                                                 for (Products product : productlist) {
                                                     out.print("<tr>"
                                                             + "<td></td>"
-                                                            + "<td>"+(i++)+"</td>"
+                                                            + "<td>" + (i++) + "</td>"
                                                             + "<td>" + product.getProductName() + "</td>"
                                                             + "<td id='" + product.getCategories().getCategoryId() + "'>" + product.getSuppliers().getCompanyName() + "</td>"
                                                             + "<td>" + product.getCategories().getCategoryName() + "</td>"
@@ -119,7 +119,7 @@
                                                             + "<td>" + product.getUnitPrice() + "</td>"
                                                             + "<td>" + product.getUnitsInStock() + "</td>"
                                                             + "<td>" + product.getUnitsOnOrder() + "</td>"
-                                                            + "<td><img id='productImage' src='.." + product.getImage()+ "' height='70' width='70' onclick='showImage(this)'/></td>"
+                                                            + "<td><img id='productImage' src='.." + product.getImage() + "' height='70' width='70' onclick='showImage(this)'/></td>"
                                                             + "<td id='" + product.getProductId() + "' onclick='showModalEdit(this)'><a href='#' class='tooltip-success' data-rel='tooltip' title='Edit'><span class='green'><i class='ace-icon fa fa-pencil-square-o bigger-120'></i></span></a></td>"
                                                             + "<td><a href='#' class='tooltip-error' data-rel='tooltip' title='Delete'><span class='red'><i class='ace-icon fa fa-trash-o bigger-120'></i></span></a></td>"
                                                             + "</tr>");
@@ -161,17 +161,17 @@
                     <!-- Modal Body -->
                     <div class="modal-body">
 
-                        <form role="form">
+                        <form id="productform" role="form" method="post">
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <input type="hidden" id="productID"/>
                                     <label for="productName">Product Name</label>
                                     <input type="text" class="form-control"
-                                           id="productName"/>
+                                           id="productName" name="productName"/>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="supplier">Supplier</label>
-                                    <select id="supplier" class="form-control">
+                                    <select id="supplier" name="supplier" class="form-control">
                                         <% List<Suppliers> supplierList = Supplier.getAllSupplier();
                                             for (Suppliers sup : supplierList) {
                                                 out.print("<option supID='" + sup.getSupplierId() + "'>" + sup.getCompanyName() + "</option>");
@@ -185,7 +185,7 @@
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="category">Category</label>
-                                    <select id="category" class="form-control">
+                                    <select id="category" name="category" class="form-control">
                                         <% List<Categories> categoriesList = Categories.getAllCategories();
                                             for (Categories cate : categoriesList) {
                                                 out.print("<option catID='" + cate.getCategoryId() + "'>" + cate.getCategoryName() + "</option>");
@@ -196,23 +196,23 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="quantityperunit">Quantity per Unit</label>
-                                    <input type="text" id="quantityperunit" class="form-control"/>
+                                    <input type="text" id="quantityperunit" name="quantityperunit" class="form-control"/>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="unitprice">Unit Price</label>
-                                    <input type="text" id="unitprice" class="form-control"/>
+                                    <input type="text" id="unitprice" name="unitprice" class="form-control"/>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="unitinstock">Units In Stock</label>
-                                    <input type="text" id="unitinstock" class="form-control"/>
+                                    <input type="text" id="unitinstock" name="unitinstock" name="unitinstock" class="form-control"/>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="unitonorder">Units On Orders</label>
-                                    <input type="text" id="unitonorder" class="form-control"/>
+                                    <input type="text" id="unitonorder"  name="unitonorder" class="form-control"/>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="image">Image</label>
@@ -226,18 +226,19 @@
                                     <div id="image"></div>
                                 </div>
                             </div>
-                        </form>
                     </div>
-
+                    </form>
                     <!-- Modal Footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default"
                                 data-dismiss="modal">
                             Close
                         </button>
-                        <button type="button" class="btn btn-primary">
+                        <button type="button" id="submit" class="btn btn-primary">
                             Save changes
                         </button>
+
+
                     </div>
                 </div>
             </div>
@@ -269,7 +270,22 @@
 
                 });
             }
-
+            $("#submit").on('click', function () {
+                $.ajax({
+                    url: '../admin/productBussiness.htm', // url where to submit the request
+                    type: "POST", // type of action POST || GET
+                    dataType: 'json', // data type
+                    data: $("#productform").serialize(), // post data || get data
+                    success: function (result) {
+                        // you can see the result from the console
+                        // tab of the developer tools
+                        alert(result);
+                    },
+                    error: function (xhr, resp, text) {
+                        console.log(xhr, resp, text);
+                    }
+                })
+            });
             jQuery(function ($) {
                 //initiate dataTables plugin
                 $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';

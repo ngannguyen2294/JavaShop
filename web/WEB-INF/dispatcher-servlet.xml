@@ -26,7 +26,7 @@
                 <prop key="admin/login.htm">loginPageController</prop>
                 <prop key="admin/actionlogin.htm">adminPageController</prop>
                 <prop key="admin/productlist.htm">productPageController</prop>
-                  
+                   <prop key="admin/productBussiness.htm">productBussinessController</prop>
             </props>
         </property>
     </bean>
@@ -37,6 +37,9 @@
           p:suffix=".jsp" />
     <bean id="adminPageController"
           class="controller.LoginController"
+    />
+     <bean id="productBussinessController"
+          class="controller.ProductController"
     />
     <!--
     The index controller.

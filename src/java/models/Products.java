@@ -28,6 +28,8 @@ public class Products  implements java.io.Serializable {
 
     public Products() {
     }
+  public Products(Integer productID, String productName) {
+    }
 
 	
     public Products(String productName, boolean discontinued, String image, int unitPriceSale) {

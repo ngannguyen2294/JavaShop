@@ -18,17 +18,21 @@ import static models.HibernateUtil.getSessionFactory;
  */
 public class ProductBussiness {
 
-    public List<Products> getAllProduct() {
-        Session session = getSessionFactory().openSession();
+    Session session;
+
+    public ProductBussiness() {
+        session = getSessionFactory().openSession();
+    }
+
+    public List<Products> GetAllProduct() {
         SQLQuery query = session.createSQLQuery("select * from Products");
         query.addEntity(Products.class);
         List<Products> list = query.list();
         return list;
     }
 
-    public List<Products> getAllProductListInfor() {
+    public List<Products> GetAllProductListInfor() {
         try {
-            Session session = getSessionFactory().openSession();
             SQLQuery query = session.createSQLQuery("select * from products as p, categories c where p.CategoryID=c.CategoryID");
             query.addEntity(Products.class);
             // query.addJoin("");
@@ -39,5 +43,26 @@ public class ProductBussiness {
             System.out.println(ex.toString());
         }
         return null;
+    }
+
+    public int UpdateProduct(Integer productID, String productName, Integer supplierID, Integer categoryID, String quantityPerUnit,
+            String unitsInStock, String unitsOnOrder, String image) {
+        try {
+            SQLQuery query = session.createSQLQuery("update products set ProductName= :productname,SupplierID= :supplierid,"
+                    + "CategoryID= :categoryid,QuantityPerUnit =:quantityperunit,UnitsInStock= :unitsinstock, UnitsOnOder= :unitsonorder,"
+                    + "Image= :image where ProductID= :productid");
+            query.setParameter("productname", productName);
+            query.setParameter("supplierid", supplierID);
+            query.setParameter("categoryid", categoryID);
+            query.setParameter("quantityperunit", quantityPerUnit);
+            query.setParameter("unitsinstock", unitsInStock);
+            query.setParameter("unitsonorder", unitsOnOrder);
+            query.setParameter("image", image);
+            query.setParameter("productid", productID);
+            return query.executeUpdate();
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+            return -1;
+        }
     }
 }
