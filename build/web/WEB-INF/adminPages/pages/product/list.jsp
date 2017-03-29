@@ -107,7 +107,7 @@
                                         <c:set var="root" value="${request.contextPath}/" />
                                         <%                                                try {
                                                 List<Products> productlist = Products.getAllProductListInfor();
-                                                int i=0;
+                                                int i=1;
                                                 for (Products product : productlist) {
                                                     out.print("<tr>"
                                                             + "<td></td>"
