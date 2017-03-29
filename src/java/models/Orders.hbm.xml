@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2017 4:38:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="models.Orders" table="orders" catalog="javashop" optimistic-lock="version">
+        <id name="orderId" type="java.lang.Integer">
+            <column name="OrderID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="customers" class="models.Customers" fetch="select">
+            <column name="CustomerID" length="5" />
+        </many-to-one>
+        <many-to-one name="employees" class="models.Employees" fetch="select">
+            <column name="EmployeeID" />
+        </many-to-one>
+        <many-to-one name="shippers" class="models.Shippers" fetch="select">
+            <column name="ShipVia" />
+        </many-to-one>
+        <property name="orderDate" type="date">
+            <column name="OrderDate" length="10" />
+        </property>
+        <property name="requiredDate" type="date">
+            <column name="RequiredDate" length="10" />
+        </property>
+        <property name="shippedDate" type="date">
+            <column name="ShippedDate" length="10" />
+        </property>
+        <property name="freight" type="big_decimal">
+            <column name="Freight" precision="10" scale="4" />
+        </property>
+        <property name="shipName" type="string">
+            <column name="ShipName" length="40" />
+        </property>
+        <property name="shipAddress" type="string">
+            <column name="ShipAddress" length="60" />
+        </property>
+        <property name="shipCity" type="string">
+            <column name="ShipCity" length="15" />
+        </property>
+        <property name="shipRegion" type="string">
+            <column name="ShipRegion" length="15" />
+        </property>
+        <property name="shipPostalCode" type="string">
+            <column name="ShipPostalCode" length="10" />
+        </property>
+        <property name="shipCountry" type="string">
+            <column name="ShipCountry" length="15" />
+        </property>
+        <set name="orderdetailses" table="orderdetails" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="OrderID" not-null="true" />
+            </key>
+            <one-to-many class="models.Orderdetails" />
+        </set>
+    </class>
+</hibernate-mapping>

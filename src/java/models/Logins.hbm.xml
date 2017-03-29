@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2017 4:38:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="models.Logins" table="logins" catalog="javashop" optimistic-lock="version">
+        <id name="loginId" type="java.lang.Long">
+            <column name="LoginID" />
+            <generator class="identity" />
+        </id>
+        <property name="username" type="string">
+            <column name="Username" length="50" />
+        </property>
+        <property name="passwordHash" type="string">
+            <column name="PasswordHash" />
+        </property>
+        <property name="employeeId" type="java.lang.Integer">
+            <column name="EmployeeID" />
+        </property>
+    </class>
+</hibernate-mapping>

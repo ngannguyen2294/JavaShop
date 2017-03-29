@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 29, 2017 4:38:48 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="models.Region" table="region" catalog="javashop" optimistic-lock="version">
+        <id name="regionId" type="int">
+            <column name="RegionID" />
+            <generator class="assigned" />
+        </id>
+        <property name="regionDescription" type="string">
+            <column name="RegionDescription" length="50" not-null="true" />
+        </property>
+        <set name="territorieses" table="territories" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="RegionID" not-null="true" />
+            </key>
+            <one-to-many class="models.Territories" />
+        </set>
+    </class>
+</hibernate-mapping>
