@@ -2,21 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/ngan.nv/JavaShop/src/java/hibernate.reveng.xml</file>
-            <file>file:/D:/ngan.nv/JavaShop/src/java/utils/HibernateUtil.java</file>
-            <file>file:/D:/ngan.nv/JavaShop/src/java/model/bussiness/SupplierBussiness.java</file>
-            <file>file:/D:/ngan.nv/JavaShop/web/WEB-INF/adminPages/pages/header.jsp</file>
-            <file>file:/D:/ngan.nv/JavaShop/src/java/utils/Products.java</file>
-            <file>file:/D:/ngan.nv/JavaShop/src/java/model/bussiness/CategoryBussiness.java</file>
-            <file>file:/D:/ngan.nv/JavaShop/web/WEB-INF/adminPages/pages/login.jsp</file>
-            <file>file:/D:/ngan.nv/JavaShop/src/java/utils/shaSecure.java</file>
-            <file>file:/D:/ngan.nv/JavaShop/src/java/utils/Products.hbm.xml</file>
-            <file>file:/D:/ngan.nv/JavaShop/web/WEB-INF/adminPages/pages/product/list.jsp</file>
-            <file>file:/D:/ngan.nv/JavaShop/src/java/hibernate.cfg.xml</file>
-            <file>file:/D:/ngan.nv/JavaShop/src/java/controller/LoginController.java</file>
-            <file>file:/D:/ngan.nv/JavaShop/src/java/model/bussiness/ProductBussiness.java</file>
-        </group>
         <group name="JavaShop">
             <file>file:/D:/Study/J2EE/JavaShop/src/java/hibernate.cfg.xml</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/hibernate.reveng.xml</file>
@@ -30,6 +15,9 @@
             <file>file:/D:/Study/J2EE/JavaShop/src/java/controller/ProductController.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/login.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/model/bussiness/SupplierBussiness.java</file>
+        </group>
+        <group>
+            <file>file:/D:/ngan.nv/JavaShop/src/java/controller/ProductController.java</file>
         </group>
     </open-files>
 </project-private>

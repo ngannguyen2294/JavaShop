@@ -45,24 +45,29 @@ public class ProductBussiness {
         return null;
     }
 
-    public int UpdateProduct(Integer productID, String productName, Integer supplierID, Integer categoryID, String quantityPerUnit,
+    public Boolean UpdateProduct(String productID, String productName, String supplierID,
+            String categoryID, String quantityPerUnit, String unitPrice,
             String unitsInStock, String unitsOnOrder, String image) {
         try {
-            SQLQuery query = session.createSQLQuery("update products set ProductName= :productname,SupplierID= :supplierid,"
-                    + "CategoryID= :categoryid,QuantityPerUnit =:quantityperunit,UnitsInStock= :unitsinstock, UnitsOnOder= :unitsonorder,"
-                    + "Image= :image where ProductID= :productid");
-            query.setParameter("productname", productName);
-            query.setParameter("supplierid", supplierID);
-            query.setParameter("categoryid", categoryID);
-            query.setParameter("quantityperunit", quantityPerUnit);
-            query.setParameter("unitsinstock", unitsInStock);
-            query.setParameter("unitsonorder", unitsOnOrder);
-            query.setParameter("image", image);
-            query.setParameter("productid", productID);
-            return query.executeUpdate();
+             SQLQuery query = session.createSQLQuery("update `products` set ProductName=123 where ProductID='1'");
+//            SQLQuery query = session.createSQLQuery("update `products` set ProductName= :productname,SupplierID= :supplierid,"
+//                    + "CategoryID= :categoryid,QuantityPerUnit= :quantityperunit,UnitPrice= :unitprice,"
+//                    + "UnitsInStock= :unitsinstock, UnitsOnOder= :unitsonorder,"
+//                    + "Image= :image where ProductID= :productid");
+                    query.addEntity(Products.class);
+//            query.setParameter("productname", productName);
+//            query.setParameter("supplierid", supplierID);
+//            query.setParameter("categoryid", categoryID);
+//            query.setParameter("quantityperunit", quantityPerUnit);
+//            query.setParameter("unitprice", unitPrice);
+//            query.setParameter("unitsinstock", unitsInStock);
+//            query.setParameter("unitsonorder", unitsOnOrder);
+//            query.setParameter("image", image);
+//            query.setParameter("productid",productID);
+            query.executeUpdate();
+            return true;
         } catch (Exception ex) {
-            System.out.println(ex.toString());
-            return -1;
+            return false;
         }
     }
 }

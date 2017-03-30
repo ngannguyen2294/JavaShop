@@ -23,17 +23,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ProductController {
 
     @RequestMapping(value = "admin/productBussiness.htm", method = RequestMethod.POST)
-    public Boolean UpdateProduct(HttpServletRequest request, HttpServletResponse response, 
+    public Boolean UpdateProduct(HttpServletRequest request, HttpServletResponse response,
             @RequestParam(value = "productName") String productName,
             @RequestParam(value = "productID") String productID,
-             @RequestParam(value = "supplierID") int supplierID,
-             @RequestParam(value = "categoryID") int categoryID) {
+            @RequestParam(value = "supplierID") String supplierID,
+            @RequestParam(value = "categoryID") String categoryID,
+            @RequestParam(value = "quantityPerUnit") String quantityPerUnit,
+            @RequestParam(value = "unitPrice") String unitPrice,
+            @RequestParam(value = "unitsInStock") String unitsInStock,
+            @RequestParam(value = "unitsOnOrder") String unitsOnOrder,
+            @RequestParam(value = "image") String image) {
         try {
             ProductBussiness pb = new ProductBussiness();
-       pb.UpdateProduct(supplierID, productName, categoryID, Integer.BYTES, productID, productID, productID, productID);
-        } catch (Exception ex) {
-            return false;
+        return    pb.UpdateProduct(productID, productName, supplierID, categoryID, quantityPerUnit, unitPrice, unitsInStock, unitsOnOrder, image);
+        } 
+        catch (Exception ex) {
+            
         }
-        return false;
+        return true;
     }
 }

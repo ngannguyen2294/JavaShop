@@ -113,14 +113,14 @@
                                                             + "<td></td>"
                                                             + "<td>" + (i++) + "</td>"
                                                             + "<td>" + product.getProductName() + "</td>"
-                                                            + "<td id='" + product.getCategories().getCategoryId() + "'>" + product.getSuppliers().getCompanyName() + "</td>"
+                                                            + "<td>" + product.getSuppliers().getCompanyName() + "</td>"
                                                             + "<td>" + product.getCategories().getCategoryName() + "</td>"
                                                             + "<td>" + product.getQuantityPerUnit() + "</td>"
                                                             + "<td>" + product.getUnitPrice() + "</td>"
                                                             + "<td>" + product.getUnitsInStock() + "</td>"
                                                             + "<td>" + product.getUnitsOnOrder() + "</td>"
                                                             + "<td><img id='productImage' src='.." + product.getImage() + "' height='70' width='70' onclick='showImage(this)'/></td>"
-                                                            + "<td id='" + product.getProductId() + "' onclick='showModalEdit(this)'><a href='#' class='tooltip-success' data-rel='tooltip' title='Edit'><span class='green'><i class='ace-icon fa fa-pencil-square-o bigger-120'></i></span></a></td>"
+                                                            + "<td productID='" + product.getProductId() + "' cateID='"+product.getCategories().getCategoryId()+"' supID='" + product.getSuppliers().getSupplierId() + "' onclick='showModalEdit(this)'><a href='#' class='tooltip-success' data-rel='tooltip' title='Edit'><span class='green'><i class='ace-icon fa fa-pencil-square-o bigger-120'></i></span></a></td>"
                                                             + "<td><a href='#' class='tooltip-error' data-rel='tooltip' title='Delete'><span class='red'><i class='ace-icon fa fa-trash-o bigger-120'></i></span></a></td>"
                                                             + "</tr>");
                                                 }
@@ -164,14 +164,15 @@
                         <form id="productform" role="form" method="post">
                             <div class="row">
                                 <div class="form-group col-md-6">
-                                    <input type="hidden" id="productID"/>
+                                    <input type="hidden" id="productID" name="productID"/>
                                     <label for="productName">Product Name</label>
                                     <input type="text" class="form-control"
                                            id="productName" name="productName"/>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="supplier">Supplier</label>
-                                    <select id="supplier" name="supplier" class="form-control">
+                                    <input type="hidden" name="supplierID" id="supplierID"/>
+                                    <select id="supplier" class="form-control" onchange="selectSupplier(this)">
                                         <% List<Suppliers> supplierList = Supplier.getAllSupplier();
                                             for (Suppliers sup : supplierList) {
                                                 out.print("<option supID='" + sup.getSupplierId() + "'>" + sup.getCompanyName() + "</option>");
@@ -185,10 +186,11 @@
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="category">Category</label>
-                                    <select id="category" name="category" class="form-control">
+                                    <input type="hidden" name="categoryID" id="categoryID"/>
+                                    <select id="category" class="form-control" onchange="selectCate(this)">
                                         <% List<Categories> categoriesList = Categories.getAllCategories();
                                             for (Categories cate : categoriesList) {
-                                                out.print("<option catID='" + cate.getCategoryId() + "'>" + cate.getCategoryName() + "</option>");
+                                                out.print("<option cateID='" + cate.getCategoryId() + "'>" + cate.getCategoryName() + "</option>");
                                             }
                                         %>              
 
@@ -196,27 +198,28 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="quantityperunit">Quantity per Unit</label>
-                                    <input type="text" id="quantityperunit" name="quantityperunit" class="form-control"/>
+                                    <input type="text" id="quantityperunit" name="quantityPerUnit" class="form-control"/>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="unitprice">Unit Price</label>
-                                    <input type="text" id="unitprice" name="unitprice" class="form-control"/>
+                                    <input type="text" id="unitprice" name="unitPrice" class="form-control"/>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="unitinstock">Units In Stock</label>
-                                    <input type="text" id="unitinstock" name="unitinstock" name="unitinstock" class="form-control"/>
+                                    <input type="text" id="unitinstock" name="unitsInStock" name="unitinstock" class="form-control"/>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="unitonorder">Units On Orders</label>
-                                    <input type="text" id="unitonorder"  name="unitonorder" class="form-control"/>
+                                    <input type="text" id="unitonorder"  name="unitsOnOrder" class="form-control"/>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="image">Image</label>
-                                    <input type="file" name="pic" accept="image/*">
+                                    <input type="hidden" name="image" id="image"/>
+                                    <input type="file" accept="image/*" onchange="selectImage(this)">
                                 </div>
                             </div>
                             <div class="row">
@@ -248,16 +251,33 @@
 
         <!-- inline scripts related to this page -->
         <script type="text/javascript">
+            function selectImage(obj)
+            {
+               $("#image").val("/img/product-1.jpg");
+            }
+            function selectCate(obj)
+            {
+               $("#categoryID").val(($(obj).find(":selected").attr("cateID")));
+            }
+            function selectSupplier(obj)
+            {
+               $("#supplierID").val(($(obj).find(":selected").attr("supID")));
+            }
             var myTable =
                     $('#dynamic-table').DataTable();
             function showModalEdit(obj)
             {
-                var productID = obj.id;
+                 $("#image").val("/img/product-1.jpg");
+                var productID = $(obj).attr("productID");
+                var cateID= $(obj).attr("cateID");
+                var supID= $(obj).attr("supID");
                 $('#editModal').modal('show');
                 var table = $('#dynamic-table').DataTable();
                 $('#dynamic-table').on('click', 'tr', function () {
                     var data = table.row(this).data();
                     $("#productID").val(productID);
+                    $("#categoryID").val(cateID);
+                    $("#supplierID").val(supID);
                     $("#productName").val(data[2]);
                     $("#supplier").val(data[3]);
                     $("#category").val(data[4]);
@@ -265,16 +285,17 @@
                     $("#unitprice").val(data[6]);
                     $("#unitinstock").val(data[7]);
                     $("#unitonorder").val(data[8]);
-                    $("#image").html(data[9]).attr("disabled", "true");
                     ;
 
                 });
             }
+            
             $("#submit").on('click', function () {
+              console.log($("#productform").serialize());
                 $.ajax({
                     url: '../admin/productBussiness.htm', // url where to submit the request
                     type: "POST", // type of action POST || GET
-                    dataType: 'json', // data type
+                   
                     data: $("#productform").serialize(), // post data || get data
                     success: function (result) {
                         // you can see the result from the console
@@ -282,7 +303,7 @@
                         alert(result);
                     },
                     error: function (xhr, resp, text) {
-                        console.log(xhr, resp, text);
+                        console.log(xhr.responseText);
                     }
                 })
             });
