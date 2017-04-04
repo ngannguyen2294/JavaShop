@@ -109,18 +109,18 @@
                                                 List<Products> productlist = Products.GetAllProductListInfor();
                                                 int i = 1;
                                                 for (Products product : productlist) {
-                                                    out.print("<tr>"
+                                                    out.print("<tr id='productID-" + product.getProductId() + "'>"
                                                             + "<td></td>"
                                                             + "<td>" + (i++) + "</td>"
-                                                            + "<td>" + product.getProductName() + "</td>"
-                                                            + "<td>" + product.getSuppliers().getCompanyName() + "</td>"
-                                                            + "<td>" + product.getCategories().getCategoryName() + "</td>"
-                                                            + "<td>" + product.getQuantityPerUnit() + "</td>"
-                                                            + "<td>" + product.getUnitPrice() + "</td>"
-                                                            + "<td>" + product.getUnitsInStock() + "</td>"
-                                                            + "<td>" + product.getUnitsOnOrder() + "</td>"
-                                                            + "<td><img id='productImage' src='.." + product.getImage() + "' height='70' width='70' onclick='showImage(this)'/></td>"
-                                                            + "<td productID='" + product.getProductId() + "' cateID='"+product.getCategories().getCategoryId()+"' supID='" + product.getSuppliers().getSupplierId() + "' onclick='showModalEdit(this)'><a href='#' class='tooltip-success' data-rel='tooltip' title='Edit'><span class='green'><i class='ace-icon fa fa-pencil-square-o bigger-120'></i></span></a></td>"
+                                                            + "<td class='productname'>" + product.getProductName() + "</td>"
+                                                            + "<td class='supplier'>" + product.getSuppliers().getCompanyName() + "</td>"
+                                                            + "<td class='category'>" + product.getCategories().getCategoryName() + "</td>"
+                                                            + "<td class='quantityperunit'>" + product.getQuantityPerUnit() + "</td>"
+                                                            + "<td class='unitprice'>" + product.getUnitPrice() + "</td>"
+                                                            + "<td class='unitinstock'>" + product.getUnitsInStock() + "</td>"
+                                                            + "<td class='unitonorder'>" + product.getUnitsOnOrder() + "</td>"
+                                                            + "<td class='image'><img id='productImage' src='.." + product.getImage() + "' height='70' width='70' onclick='showImage(this)'/></td>"
+                                                            + "<td class='catesupID' productID='" + product.getProductId() + "' cateID='" + product.getCategories().getCategoryId() + "' supID='" + product.getSuppliers().getSupplierId() + "' onclick='showModalEdit(this)'><a href='#' class='tooltip-success' data-rel='tooltip' title='Edit'><span class='green'><i class='ace-icon fa fa-pencil-square-o bigger-120'></i></span></a></td>"
                                                             + "<td><a href='#' class='tooltip-error' data-rel='tooltip' title='Delete'><span class='red'><i class='ace-icon fa fa-trash-o bigger-120'></i></span></a></td>"
                                                             + "</tr>");
                                                 }
@@ -253,60 +253,72 @@
         <script type="text/javascript">
             function selectImage(obj)
             {
-               $("#image").val("/img/product-1.jpg");
+                $("#image").val("/img/product-1.jpg");
             }
             function selectCate(obj)
             {
-               $("#categoryID").val(($(obj).find(":selected").attr("cateID")));
+                $("#categoryID").val(($(obj).find(":selected").attr("cateID")));
             }
             function selectSupplier(obj)
             {
-               $("#supplierID").val(($(obj).find(":selected").attr("supID")));
+                $("#supplierID").val(($(obj).find(":selected").attr("supID")));
             }
             var myTable =
                     $('#dynamic-table').DataTable();
             function showModalEdit(obj)
             {
-                 $("#image").val("/img/product-1.jpg");
+                $("#image").val("/img/product-1.jpg");
                 var productID = $(obj).attr("productID");
-                var cateID= $(obj).attr("cateID");
-                var supID= $(obj).attr("supID");
+                var cateID = $(obj).attr("cateID");
+                var supID = $(obj).attr("supID");
                 $('#editModal').modal('show');
                 var table = $('#dynamic-table').DataTable();
+
                 $('#dynamic-table').on('click', 'tr', function () {
                     var data = table.row(this).data();
                     $("#productID").val(productID);
                     $("#categoryID").val(cateID);
                     $("#supplierID").val(supID);
-                    $("#productName").val(data[2]);
-                    $("#supplier").val(data[3]);
-                    $("#category").val(data[4]);
-                    $("#quantityperunit").val(data[5]);
-                    $("#unitprice").val(data[6]);
-                    $("#unitinstock").val(data[7]);
-                    $("#unitonorder").val(data[8]);
-                    ;
+                    $("#productName").val($("#productID-" + productID + " td.productname").text());
+                    $("#supplier").val($("#productID-" + productID + " td.supplier").text());
+                    $("#category").val($("#productID-" + productID + " td.category").text());
+                    $("#quantityperunit").val($("#productID-" + productID + " td.quantityperunit").text());
+                    $("#unitprice").val($("#productID-" + productID + " td.unitprice").text());
+                    $("#unitinstock").val($("#productID-" + productID + " td.unitinstock").text());
+                    $("#unitonorder").val($("#productID-" + productID + " td.unitonorder").text());
+                });
+                $("#submit").on('click', function () {
+                    console.log($("#productform").serialize());
+                    $.ajax({
+                        url: '../admin/productBussiness.htm', // url where to submit the request
+                        type: "POST", // type of action POST || GET
 
+                        data: $("#productform").serialize(), // post data || get data
+                        success: function (result) {
+                            var data = JSON.parse(result);
+                            if (data.status == 'ok')
+                            {
+                                $('#editModal').modal('hide');
+                                $("#productID-" + productID + " td.productname").text($("#productName").val());
+                                $("#productID-" + productID + " td.supplier").text($("#supplier").val());
+                                $("#productID-" + productID + " td.category").text($("#category").val());
+                                $("#productID-" + productID + " td.quantityperunit").text($("#quantityperunit").val());
+                                $("#productID-" + productID + " td.unitprice").text($("#unitprice").val());
+                                $("#productID-" + productID + " td.unitinstock").text($("#unitinstock").val());
+                                $("#productID-" + productID + " td.unitonorder").text($("#unitonorder").val());
+                                //  $("#productID-" + productID + " td.image").html();
+                                $("#productID-" + productID + " td.catesupID").attr('cateID', $("#categoryID").val()).attr('supID', $("#supplierID").val());
+
+                            }
+                        },
+                        error: function (xhr, resp, text) {
+                            console.log(xhr.responseText);
+                        }
+                    })
                 });
             }
-            
-            $("#submit").on('click', function () {
-              console.log($("#productform").serialize());
-                $.ajax({
-                    url: '../admin/productBussiness.htm', // url where to submit the request
-                    type: "POST", // type of action POST || GET
-                   
-                    data: $("#productform").serialize(), // post data || get data
-                    success: function (result) {
-                        // you can see the result from the console
-                        // tab of the developer tools
-                        alert(result);
-                    },
-                    error: function (xhr, resp, text) {
-                        console.log(xhr.responseText);
-                    }
-                })
-            });
+
+
             jQuery(function ($) {
                 //initiate dataTables plugin
                 $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
