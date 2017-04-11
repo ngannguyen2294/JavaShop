@@ -121,7 +121,7 @@
                                                             + "<td class='unitonorder'>" + product.getUnitsOnOrder() + "</td>"
                                                             + "<td class='image'><img id='productImage' src='.." + product.getImage() + "' height='70' width='70' onclick='showImage(this)'/></td>"
                                                             + "<td class='catesupID' productID='" + product.getProductId() + "' cateID='" + product.getCategories().getCategoryId() + "' supID='" + product.getSuppliers().getSupplierId() + "' onclick='showModalEdit(this)'><a href='#' class='tooltip-success' data-rel='tooltip' title='Edit'><span class='green'><i class='ace-icon fa fa-pencil-square-o bigger-120'></i></span></a></td>"
-                                                            + "<td><a href='#' class='tooltip-error' data-rel='tooltip' title='Delete'><span class='red'><i class='ace-icon fa fa-trash-o bigger-120'></i></span></a></td>"
+                                                            + "<td class='deleteProduct' productID='" + product.getProductId() + "' onclick='' ><a data-href='' class='tooltip-error' data-toggle='modal' data-target='#confirm-delete' data-rel='tooltip' title='Delete'><span class='red'><i class='ace-icon fa fa-trash-o bigger-120'></i></span></a></td>"
                                                             + "</tr>");
                                                 }
                                             } catch (Exception ex) {
@@ -135,6 +135,22 @@
                             </div>
 
                         </div>  </div> </div></div>
+        </div>
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        Warning!
+                    </div>
+                    <div class="modal-body">
+                        Are you sure want to delete this product?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-danger btn-ok">Delete</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="imageModal" class="modal2">
             <span class="close" id="closeImage">&times;</span>
@@ -251,6 +267,41 @@
 
         <!-- inline scripts related to this page -->
         <script type="text/javascript">
+            var myTable =
+                    $('#dynamic-table').DataTable();
+            function deleteProduct() {
+
+                myTable
+                        .row($(this).parents('tr'))
+                        .remove()
+                        .draw();
+            }
+            ;
+            $('#dynamic-table').on('click', 'tr', function (e) {
+                if ($(this).hasClass('selected')) {
+                    $(this).removeClass('selected');
+                } else {
+                    myTable.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+                }
+            }
+            );
+            $('.btn-ok').on('click', function (e) {
+                var productID = $('.selected').find('.deleteProduct').attr('productid');
+                $.ajax({
+                    url: '../admin/deleteProduct.htm', // url where to submit the request
+                    type: "POST", // type of action POST || GET
+
+                    data: {productID: productID}, // post data || get data
+                    success: function (result) {
+                        var data = JSON.parse(result);
+                        if (data.status == 'ok')
+                        {
+                            myTable.row('.selected').remove().draw(false);
+                            $("#confirm-delete").modal('hide');
+                        }
+                    }})
+            });
             function selectImage(obj)
             {
                 $("#image").val("/img/product-1.jpg");
@@ -263,8 +314,7 @@
             {
                 $("#supplierID").val(($(obj).find(":selected").attr("supID")));
             }
-            var myTable =
-                    $('#dynamic-table').DataTable();
+
             function showModalEdit(obj)
             {
                 $("#image").val("/img/product-1.jpg");
@@ -273,7 +323,6 @@
                 var supID = $(obj).attr("supID");
                 $('#editModal').modal('show');
                 var table = $('#dynamic-table').DataTable();
-
                 $('#dynamic-table').on('click', 'tr', function () {
                     var data = table.row(this).data();
                     $("#productID").val(productID);
@@ -290,7 +339,7 @@
                 $("#submit").on('click', function () {
                     console.log($("#productform").serialize());
                     $.ajax({
-                        url: '../admin/productBussiness.htm', // url where to submit the request
+                        url: '../admin/updateProduct.htm', // url where to submit the request
                         type: "POST", // type of action POST || GET
 
                         data: $("#productform").serialize(), // post data || get data
@@ -308,7 +357,6 @@
                                 $("#productID-" + productID + " td.unitonorder").text($("#unitonorder").val());
                                 //  $("#productID-" + productID + " td.image").html();
                                 $("#productID-" + productID + " td.catesupID").attr('cateID', $("#categoryID").val()).attr('supID', $("#supplierID").val());
-
                             }
                         },
                         error: function (xhr, resp, text) {
@@ -322,7 +370,6 @@
             jQuery(function ($) {
                 //initiate dataTables plugin
                 $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
-
                 new $.fn.dataTable.Buttons(myTable, {
                     buttons: [
                         {
@@ -361,21 +408,16 @@
                     ]
                 });
                 myTable.buttons().container().appendTo($('.tableTools-container'));
-
                 //style the message box
                 var defaultCopyAction = myTable.button(1).action();
                 myTable.button(1).action(function (e, dt, button, config) {
                     defaultCopyAction(e, dt, button, config);
                     $('.dt-button-info').addClass('gritter-item-wrapper gritter-info gritter-center white');
                 });
-
-
                 var defaultColvisAction = myTable.button(0).action();
                 myTable.button(0).action(function (e, dt, button, config) {
 
                     defaultColvisAction(e, dt, button, config);
-
-
                     if ($('.dt-button-collection > .dropdown-menu').length == 0) {
                         $('.dt-button-collection')
                                 .wrapInner('<ul class="dropdown-menu dropdown-light dropdown-caret dropdown-caret" />')
@@ -383,7 +425,6 @@
                     }
                     $('.dt-button-collection').appendTo('.tableTools-container .dt-buttons')
                 });
-
                 ////
 
                 setTimeout(function () {
@@ -395,11 +436,6 @@
                             $(this).tooltip({container: 'body', title: $(this).text()});
                     });
                 }, 500);
-
-
-
-
-
                 myTable.on('select', function (e, dt, type, index) {
                     if (type === 'row') {
                         $(myTable.row(index).node()).find('input:checkbox').prop('checked', true);
@@ -410,17 +446,12 @@
                         $(myTable.row(index).node()).find('input:checkbox').prop('checked', false);
                     }
                 });
-
-
-
-
                 /////////////////////////////////
                 //table checkboxes
                 $('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
-
                 //select/deselect all rows according to table header checkbox
                 $('#dynamic-table > thead > tr > th input[type=checkbox], #dynamic-table_wrapper input[type=checkbox]').eq(0).on('click', function () {
-                    var th_checked = this.checked;//checkbox inside "TH" table header
+                    var th_checked = this.checked; //checkbox inside "TH" table header
 
                     $('#dynamic-table').find('tbody > tr').each(function () {
                         var row = this;
@@ -430,7 +461,6 @@
                             myTable.row(row).deselect();
                     });
                 });
-
                 //select/deselect a row when the checkbox is checked/unchecked
                 $('#dynamic-table').on('click', 'td input[type=checkbox]', function () {
                     var row = $(this).closest('tr').get(0);
@@ -439,22 +469,16 @@
                     else
                         myTable.row(row).select();
                 });
-
-
-
                 $(document).on('click', '#dynamic-table .dropdown-toggle', function (e) {
                     e.stopImmediatePropagation();
                     e.stopPropagation();
                     e.preventDefault();
                 });
-
-
-
                 //And for the first simple table, which doesn't have TableTools or dataTables
                 //select/deselect all rows according to table header checkbox
                 var active_class = 'active';
                 $('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function () {
-                    var th_checked = this.checked;//checkbox inside "TH" table header
+                    var th_checked = this.checked; //checkbox inside "TH" table header
 
                     $(this).closest('table').find('tbody > tr').each(function () {
                         var row = this;
@@ -464,7 +488,6 @@
                             $(row).removeClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', false);
                     });
                 });
-
                 //select/deselect a row when the checkbox is checked/unchecked
                 $('#simple-table').on('click', 'td input[type=checkbox]', function () {
                     var $row = $(this).closest('tr');
@@ -475,20 +498,15 @@
                     else
                         $row.removeClass(active_class);
                 });
-
-
-
                 /********************************/
                 //add tooltip for small view action buttons in dropdown menu
                 $('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
-
                 //tooltip placement on right or left
                 function tooltip_placement(context, source) {
                     var $source = $(source);
                     var $parent = $source.closest('table')
                     var off1 = $parent.offset();
                     var w1 = $parent.width();
-
                     var off2 = $source.offset();
                     //var w2 = $source.width();
 
@@ -624,7 +642,6 @@
             {
                 // Get the modal
                 var modal = document.getElementById('imageModal');
-
                 // Get the image and insert it inside the modal - use its "alt" text as a caption
 
                 var modalImg = document.getElementById("img01");
@@ -632,7 +649,6 @@
                 modal.style.display = "block";
                 modalImg.src = obj.src;
                 captionText.innerHTML = obj.alt;
-
                 // Get the <span> element that closes the modal
 
             }

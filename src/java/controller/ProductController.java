@@ -25,7 +25,7 @@ import utils.CommonUtil;
 @Controller
 public class ProductController {
 
-    @RequestMapping(value = "admin/productBussiness.htm", method = RequestMethod.POST)
+    @RequestMapping(value = "admin/updateProduct.htm", method = RequestMethod.POST)
     @ResponseBody
     public String UpdateProduct(HttpServletRequest request, HttpServletResponse response,
             @RequestParam(value = "productName") String productName,
@@ -49,4 +49,17 @@ public class ProductController {
         }
         return "";
     }
+
+    @RequestMapping(value = "admin/deleteProduct.htm", method = RequestMethod.POST)
+    @ResponseBody
+    public String UpdateProduct(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam(value = "productID") String productID) {
+        ProductBussiness pb = new ProductBussiness();
+        if (pb.DeleteProduct(productID)) {
+            return CommonUtil.JsonResponseOK("true");
+        } else {
+            return CommonUtil.JsonResponseFail("false");
+        }
+    }
+
 }

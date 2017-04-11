@@ -45,17 +45,32 @@ public class ProductBussiness {
         return null;
     }
 
+    public Boolean DeleteProduct(String productID) {
+        try {
+            session.getTransaction().begin();
+            SQLQuery query = session.createSQLQuery("DELETE FROM products WHERE ProductID = :productid ;");
+            query.addEntity(Products.class);
+            query.setParameter("productid", productID);
+            query.executeUpdate();
+            session.getTransaction().commit();
+            session.close();
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
+
     public Boolean UpdateProduct(String productID, String productName, String supplierID,
             String categoryID, String quantityPerUnit, String unitPrice,
             String unitsInStock, String unitsOnOrder, String image) {
         try {
             session.getTransaction().begin();
-          //   SQLQuery query = session.createSQLQuery("update `products` set ProductName=123 where ProductID='1'");
+            //   SQLQuery query = session.createSQLQuery("update `products` set ProductName=123 where ProductID='1'");
             SQLQuery query = session.createSQLQuery("update products set ProductName = :productname,SupplierID = :supplierid,"
                     + "CategoryID = :categoryid,QuantityPerUnit = :quantityperunit,UnitPrice = :unitprice,"
                     + "UnitsInStock = :unitsinstock, UnitsOnOrder = :unitsonorder,"
                     + "Image = :image where ProductID = :productid ;");
-                    query.addEntity(Products.class);
+            query.addEntity(Products.class);
             query.setParameter("productname", productName);
             query.setParameter("supplierid", supplierID);
             query.setParameter("categoryid", categoryID);
@@ -64,7 +79,7 @@ public class ProductBussiness {
             query.setParameter("unitsinstock", unitsInStock);
             query.setParameter("unitsonorder", unitsOnOrder);
             query.setParameter("image", image);
-            query.setParameter("productid",productID);
+            query.setParameter("productid", productID);
             query.executeUpdate();
             session.getTransaction().commit();
             session.close();

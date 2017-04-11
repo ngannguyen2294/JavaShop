@@ -26,7 +26,8 @@
                 <prop key="admin/login.htm">loginPageController</prop>
                 <prop key="admin/actionlogin.htm">adminPageController</prop>
                 <prop key="admin/productlist.htm">productPageController</prop>
-                   <prop key="admin/productBussiness.htm">productBussinessController</prop>
+                   <prop key="admin/updateProduct.htm">productBussinessController</prop>
+                   <prop key="admin/deleteProduct.htm">productBussinessController</prop>
             </props>
         </property>
     </bean>
