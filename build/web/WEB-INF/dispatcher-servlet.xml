@@ -21,6 +21,7 @@
             <props>
                 <prop key="home.htm">indexController</prop>
                 <prop key="shop.htm">shopController</prop>
+                <prop key="product.htm">productController</prop>
                 <prop key="admin/admin.htm">adminIndexController</prop>
                 <prop key="admin/logout.htm">adminPageController</prop>
                 <prop key="admin/login.htm">loginPageController</prop>
@@ -51,6 +52,9 @@
     <bean name="shopController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="storePages/shop" />
+    <bean name="productController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="storePages/product" />
     <bean name="adminIndexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="adminPages/base" />
