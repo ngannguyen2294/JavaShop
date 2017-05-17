@@ -63,8 +63,10 @@
                                 <h3 class="header smaller lighter blue">All Products</h3>
 
                                 <div class="clearfix">
+                                       <button class="btn btn-primary" onclick="location.href='../admin/addProduct.htm'"><i class="fa fa-plus" aria-hidden="true"></i> Add New Product</button>
                                     <div class="pull-right tableTools-container"></div>
                                 </div>
+                             
                                 <div class="table-header">
                                     Product List
                                 </div>
@@ -234,15 +236,17 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="image">Image</label>
-                                    <input type="hidden" name="image" id="image"/>
-                                    <input type="file" accept="image/*" onchange="selectImage(this)">
+                                    <input type="hidden" name="image" id="imagePath"/>
+                                    <input id="imageFile" type="file" accept="image/*">
+                                    <button class="btn btn-primary" type="button" onclick="uploadImage()">Upload</button>
+
                                 </div>
                             </div>
                             <div class="row">
 
                                 <div class="form-group col-md-12">
                                     <label for="image">Image</label>
-                                    <div id="image"></div>
+                                    <img class="img-responsive" id="image" src=""/>
                                 </div>
                             </div>
                     </div>
@@ -267,6 +271,22 @@
 
         <!-- inline scripts related to this page -->
         <script type="text/javascript">
+            function uploadImage() {
+                var data = new FormData();
+                data.append('file', $('#imageFile')[0].files[0]);
+                $.ajax({
+                    url: '../image/upload.htm', // url where to submit the request
+                    type: "POST", // type of action POST || GET
+                    enctype: 'multipart/form-data',
+                    processData: false, // tell jQuery not to process the data
+                    contentType: false, // tell jQuery not to set contentType
+                    data: data, // post data || get data
+                    success: function (data) {
+                        $("#imagePath").val(data);
+                        $("#image").attr('src', "../" + data);
+                    }
+                })
+            }
             var myTable =
                     $('#dynamic-table').DataTable();
             function deleteProduct() {
@@ -302,10 +322,7 @@
                         }
                     }})
             });
-            function selectImage(obj)
-            {
-                $("#image").val("/img/product-1.jpg");
-            }
+
             function selectCate(obj)
             {
                 $("#categoryID").val(($(obj).find(":selected").attr("cateID")));
@@ -317,8 +334,9 @@
 
             function showModalEdit(obj)
             {
-                $("#image").val("/img/product-1.jpg");
                 var productID = $(obj).attr("productID");
+                 $("#imagePath").val($("#productID-" + productID + " td.image img").attr('src'));
+                  $("#image").attr('src',   $("#productID-" + productID + " td.image img").attr('src'));
                 var cateID = $(obj).attr("cateID");
                 var supID = $(obj).attr("supID");
                 $('#editModal').modal('show');
@@ -357,6 +375,7 @@
                                 $("#productID-" + productID + " td.unitonorder").text($("#unitonorder").val());
                                 //  $("#productID-" + productID + " td.image").html();
                                 $("#productID-" + productID + " td.catesupID").attr('cateID', $("#categoryID").val()).attr('supID', $("#supplierID").val());
+                                $("tr.selected td.image img").attr('src', $("#image").attr('src'));
                             }
                         },
                         error: function (xhr, resp, text) {
@@ -368,6 +387,8 @@
 
 
             jQuery(function ($) {
+
+
                 //initiate dataTables plugin
                 $.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
                 new $.fn.dataTable.Buttons(myTable, {

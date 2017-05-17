@@ -26,9 +26,14 @@
                 <prop key="admin/logout.htm">adminPageController</prop>
                 <prop key="admin/login.htm">loginPageController</prop>
                 <prop key="admin/actionlogin.htm">adminPageController</prop>
+                <prop key="image/upload.htm">ImageUploadController</prop>
+                
+                
+                
                 <prop key="admin/productlist.htm">productPageController</prop>
                    <prop key="admin/updateProduct.htm">productBussinessController</prop>
                    <prop key="admin/deleteProduct.htm">productBussinessController</prop>
+                    <prop key="admin/addProduct.htm">addProduct</prop>
             </props>
         </property>
     </bean>
@@ -43,6 +48,10 @@
      <bean id="productBussinessController"
           class="controller.ProductController"
     />
+      <bean id="ImageUploadController"
+          class="controller.ImageUploadController"
+    />
+
     <!--
     The index controller.
     -->
@@ -64,6 +73,8 @@
     <bean name="productPageController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="adminPages/pages/product/list" />
-
+    <bean name="addProduct"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="adminPages/pages/product/addProduct" />
 
 </beans>
