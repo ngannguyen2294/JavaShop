@@ -34,6 +34,7 @@
                    <prop key="admin/updateProduct.htm">productBussinessController</prop>
                    <prop key="admin/deleteProduct.htm">productBussinessController</prop>
                     <prop key="admin/addProduct.htm">addProduct</prop>
+                     <prop key="admin/addProductAction.htm">productBussinessController</prop>
             </props>
         </property>
     </bean>

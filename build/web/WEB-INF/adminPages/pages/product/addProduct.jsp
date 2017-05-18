@@ -61,7 +61,7 @@
                             <div class="col-xs-12">
                                 <h3 class="header smaller lighter blue">Add Product</h3>
 
-                                <form id="productform" role="form" method="post">
+                                <form id="productform" role="form" method="post"    enctype="multipart/form-data" action="../admin/addProductAction.htm">
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <input type="hidden" id="productID" name="productID"/>
@@ -71,9 +71,11 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="supplier">Supplier</label>
-                                            <input type="hidden" name="supplierID" id="supplierID"/>
+
+                                            <% List<Suppliers> supplierList = Supplier.getAllSupplier(); %>
+                                            <input type="hidden" value="<% out.print(supplierList.get(0).getSupplierId()); %>" name="supplierID" id="supplierID"/>
                                             <select id="supplier" class="form-control" onchange="selectSupplier(this)">
-                                                <% List<Suppliers> supplierList = Supplier.getAllSupplier();
+                                                <%
                                                     for (Suppliers sup : supplierList) {
                                                         out.print("<option supID='" + sup.getSupplierId() + "'>" + sup.getCompanyName() + "</option>");
                                                     }
@@ -86,9 +88,10 @@
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label for="category">Category</label>
-                                            <input type="hidden" name="categoryID" id="categoryID"/>
+                                            <% List<Categories> categoriesList = Categories.getAllCategories(); %>
+                                            <input type="hidden" value="<% out.print(categoriesList.get(0).getCategoryId());%>" name="categoryID" id="categoryID"/>
                                             <select id="category" class="form-control" onchange="selectCate(this)">
-                                                <% List<Categories> categoriesList = Categories.getAllCategories();
+                                                <%
                                                     for (Categories cate : categoriesList) {
                                                         out.print("<option cateID='" + cate.getCategoryId() + "'>" + cate.getCategoryName() + "</option>");
                                                     }
@@ -117,10 +120,10 @@
                                             <input type="text" id="unitonorder"  name="unitsOnOrder" class="form-control"/>
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="image">Image</label>
+                                            <label for="file">Image</label>
                                             <input type="hidden" name="image" id="imagePath"/>
-                                            <input id="imageFile" type="file" accept="image/*" >
-                                            <button class="btn btn-primary" type="button" onclick="uploadImage()">Upload</button>
+                                            <input id="imageFile" type="file" name="file" accept="image/*"  required>
+
 
                                         </div>
                                     </div>
@@ -132,25 +135,25 @@
                                         </div>
                                     </div>
                             </div>
-                                             <button type="submit" class="btn btn-primary" id="submit">Save</button>     </form> </div>  </div>  </div>  </div>  </div> 
+                            <button type="submit" class="btn btn-primary" id="submit">Save</button>     </form> </div>  </div>  </div>  </div>  </div> 
     </body>
     <script>
-          function uploadImage() {
-                var data = new FormData();
-                data.append('file', $('#imageFile')[0].files[0]);
-                $.ajax({
-                    url: '../image/upload.htm', // url where to submit the request
-                    type: "POST", // type of action POST || GET
-                    enctype: 'multipart/form-data',
-                    processData: false, // tell jQuery not to process the data
-                    contentType: false, // tell jQuery not to set contentType
-                    data: data, // post data || get data
-                    success: function (data) {
-                        $("#imagePath").val(data);
-                        $("#image").attr('src', "../" + data);
-                    }
-                })
-            }
+        function uploadImage() {
+            var data = new FormData();
+            data.append('file', $('#imageFile')[0].files[0]);
+            $.ajax({
+                url: '../image/upload.htm', // url where to submit the request
+                type: "POST", // type of action POST || GET
+                enctype: 'multipart/form-data',
+                processData: false, // tell jQuery not to process the data
+                contentType: false, // tell jQuery not to set contentType
+                data: data, // post data || get data
+                success: function (data) {
+                    $("#imagePath").val(data);
+                    $("#image").attr('src', "../" + data);
+                }
+            })
+        }
         function selectCate(obj)
         {
             $("#categoryID").val(($(obj).find(":selected").attr("cateID")));

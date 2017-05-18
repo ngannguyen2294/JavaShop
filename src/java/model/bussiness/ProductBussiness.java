@@ -56,6 +56,7 @@ public class ProductBussiness {
             session.close();
             return true;
         } catch (Exception ex) {
+             session.close();
             return false;
         }
     }
@@ -85,6 +86,34 @@ public class ProductBussiness {
             session.close();
             return true;
         } catch (Exception ex) {
+            return false;
+        }
+    }
+     public Boolean AddProduct(String productID, String productName, String supplierID,
+            String categoryID, String quantityPerUnit, String unitPrice,
+            String unitsInStock, String unitsOnOrder, String image) {
+        try {
+            session.getTransaction().begin();
+            //   SQLQuery query = session.createSQLQuery("update `products` set ProductName=123 where ProductID='1'");
+            SQLQuery query = session.createSQLQuery("INSERT INTO products"
+                    + "(ProductName, SupplierID, CategoryID, QuantityPerUnit,UnitPrice, UnitsInStock, UnitsOnOrder, Image,UnitPriceSale)"
+                    + " values (:productname,:supplierid,:categoryid,:quantityperunit,:unitprice,:unitsinstock,"
+                    + ":unitsonorder,:image,1)");
+            query.addEntity(Products.class);
+            query.setParameter("productname", productName);
+            query.setParameter("supplierid", supplierID);
+            query.setParameter("categoryid", categoryID);
+            query.setParameter("quantityperunit", quantityPerUnit);
+            query.setParameter("unitprice", unitPrice);
+            query.setParameter("unitsinstock", unitsInStock);
+            query.setParameter("unitsonorder", unitsOnOrder);
+            query.setParameter("image", image);
+            query.executeUpdate();
+            session.getTransaction().commit();
+            session.close();
+            return true;
+        } catch (Exception ex) {
+             session.close();
             return false;
         }
     }

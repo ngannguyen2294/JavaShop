@@ -299,7 +299,7 @@
             ;
             $('#dynamic-table').on('click', 'tr', function (e) {
                 if ($(this).hasClass('selected')) {
-                    $(this).removeClass('selected');
+                 //   $(this).removeClass('selected');
                 } else {
                     myTable.$('tr.selected').removeClass('selected');
                     $(this).addClass('selected');
