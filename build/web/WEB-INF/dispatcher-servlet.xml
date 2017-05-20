@@ -28,14 +28,18 @@
                 <prop key="admin/login.htm">loginPageController</prop>
                 <prop key="admin/actionlogin.htm">adminPageController</prop>
                 <prop key="image/upload.htm">ImageUploadController</prop>
-                
+                   <prop key="image/uploadToBase64.htm">ImageUploadController</prop>
                 
                 
                 <prop key="admin/productlist.htm">productPageController</prop>
                    <prop key="admin/updateProduct.htm">productBussinessController</prop>
+                      <prop key="admin/updateCategory.htm">productBussinessController</prop>
+                       <prop key="admin/deleteCategory.htm">productBussinessController</prop>
                    <prop key="admin/deleteProduct.htm">productBussinessController</prop>
                     <prop key="admin/addProduct.htm">addProduct</prop>
+                     <prop key="admin/addCategory.htm">addCategory</prop>
                      <prop key="admin/addProductAction.htm">productBussinessController</prop>
+                     <prop key="admin/addCategoryAction.htm">productBussinessController</prop>
             </props>
         </property>
     </bean>
@@ -78,6 +82,9 @@
     <bean name="addProduct"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="adminPages/pages/product/addProduct" />
+      <bean name="addCategory"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="adminPages/pages/product/addCategory" />
     <bean name="categoryController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="adminPages/pages/product/category" />

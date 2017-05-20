@@ -6,6 +6,7 @@
 package model.bussiness;
 
 import java.util.List;
+import models.Categories;
 import org.hibernate.Query;
 import models.Products;
 import org.hibernate.SQLQuery;
@@ -60,6 +61,21 @@ public class ProductBussiness {
             return false;
         }
     }
+      public Boolean DeleteCategory(String cateID) {
+        try {
+            session.getTransaction().begin();
+            SQLQuery query = session.createSQLQuery("DELETE FROM categories WHERE CategoryID = :cateID ;");
+            query.addEntity(Categories.class);
+            query.setParameter("cateID", cateID);
+            query.executeUpdate();
+            session.getTransaction().commit();
+            session.close();
+            return true;
+        } catch (Exception ex) {
+             session.close();
+            return false;
+        }
+    }
 
     public Boolean UpdateProduct(String productID, String productName, String supplierID,
             String categoryID, String quantityPerUnit, String unitPrice,
@@ -89,6 +105,24 @@ public class ProductBussiness {
             return false;
         }
     }
+     public Boolean UpdateCategory(String cateID, String cateName, String description, byte[] image) {
+        try {
+            session.getTransaction().begin();
+            SQLQuery query = session.createSQLQuery("update categories set CategoryName = :cateName,Description = :description,"
+                    + "Picture = :image where CategoryID = :cateID ;");
+            query.addEntity(Categories.class);
+            query.setParameter("cateName", cateName);
+            query.setParameter("cateID", cateID);
+            query.setParameter("description", description);
+            query.setParameter("image", image);
+            query.executeUpdate();
+            session.getTransaction().commit();
+            session.close();
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
+    }
      public Boolean AddProduct(String productID, String productName, String supplierID,
             String categoryID, String quantityPerUnit, String unitPrice,
             String unitsInStock, String unitsOnOrder, String image) {
@@ -107,6 +141,25 @@ public class ProductBussiness {
             query.setParameter("unitprice", unitPrice);
             query.setParameter("unitsinstock", unitsInStock);
             query.setParameter("unitsonorder", unitsOnOrder);
+            query.setParameter("image", image);
+            query.executeUpdate();
+            session.getTransaction().commit();
+            session.close();
+            return true;
+        } catch (Exception ex) {
+             session.close();
+            return false;
+        }
+    }
+      public Boolean AddCategory(String cateName, String description,
+          byte[] image) {
+        try {
+            session.getTransaction().begin();
+            SQLQuery query = session.createSQLQuery("INSERT INTO categories(CategoryName, Description, Picture)"
+                    + " values (:cateName,:description,:image )");
+            query.addEntity(Categories.class);
+            query.setParameter("cateName", cateName);
+            query.setParameter("description", description);
             query.setParameter("image", image);
             query.executeUpdate();
             session.getTransaction().commit();

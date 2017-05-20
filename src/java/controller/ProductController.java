@@ -5,6 +5,7 @@
  */
 package controller;
 
+import com.sun.org.apache.xml.internal.security.utils.Base64;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -59,12 +60,45 @@ public class ProductController {
         return "";
     }
 
+    @RequestMapping(value = "admin/updateCategory.htm", method = RequestMethod.POST)
+    @ResponseBody
+    public String UpdateCategory(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam(value = "cateName") String cateName,
+            @RequestParam(value = "description") String description,
+            @RequestParam(value = "cateID") String cateID,
+            @RequestParam(value = "image") String image) {
+        try {
+            image = image.replace("data:image/jpeg;base64", "");
+            ProductBussiness pb = new ProductBussiness();
+            if (pb.UpdateCategory(cateID, cateName, description, Base64.decode(image))) {
+                return CommonUtil.JsonResponseOK("true");
+            } else {
+                return CommonUtil.JsonResponseFail("false");
+            }
+        } catch (Exception ex) {
+
+        }
+        return "";
+    }
+
     @RequestMapping(value = "admin/deleteProduct.htm", method = RequestMethod.POST)
     @ResponseBody
-    public String UpdateProduct(HttpServletRequest request, HttpServletResponse response,
+    public String DeleteProduct(HttpServletRequest request, HttpServletResponse response,
             @RequestParam(value = "productID") String productID) {
         ProductBussiness pb = new ProductBussiness();
         if (pb.DeleteProduct(productID)) {
+            return CommonUtil.JsonResponseOK("true");
+        } else {
+            return CommonUtil.JsonResponseFail("false");
+        }
+    }
+
+    @RequestMapping(value = "admin/deleteCategory.htm", method = RequestMethod.POST)
+    @ResponseBody
+    public String DeleteCategory(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam(value = "cateID") String cateID) {
+        ProductBussiness pb = new ProductBussiness();
+        if (pb.DeleteCategory(cateID)) {
             return CommonUtil.JsonResponseOK("true");
         } else {
             return CommonUtil.JsonResponseFail("false");
@@ -112,10 +146,52 @@ public class ProductController {
             }
         }
         ProductBussiness pb = new ProductBussiness();
-        if (pb.AddProduct(productID, productName, supplierID, categoryID, quantityPerUnit, unitPrice, unitsInStock, unitsOnOrder,imagePath)) {
-              return "redirect:../admin/productlist.htm";
+        if (pb.AddProduct(productID, productName, supplierID, categoryID, quantityPerUnit, unitPrice, unitsInStock, unitsOnOrder, imagePath)) {
+            return "redirect:../admin/productlist.htm";
         } else {
             return "redirect:../admin/addProduct.htm";
+        }
+    }
+
+    @RequestMapping(value = "admin/addCategoryAction.htm", method = RequestMethod.POST)
+    public String AddCategory(HttpServletRequest request, HttpServletResponse response,
+            @RequestParam(value = "cateName") String cateName,
+            @RequestParam(value = "description") String description,
+            @RequestParam(value = "file") MultipartFile file) {
+        byte[] image = null;
+        if (!file.isEmpty()) {
+            try {
+                byte[] bytes = file.getBytes();
+                image = bytes;
+                String name = file.getOriginalFilename();
+                // Creating the directory to store file
+                String rootPath = System.getProperty("catalina.home");
+                File dir = new File(rootPath + File.separator + "tmpFiles");
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+
+                // Create the file on server
+                File serverFile = new File(dir.getAbsolutePath()
+                        + File.separator + name);
+                BufferedOutputStream stream = new BufferedOutputStream(
+                        new FileOutputStream(serverFile));
+                stream.write(bytes);
+                stream.close();
+                Path from = serverFile.toPath(); //convert from File to Path
+                long millis = System.currentTimeMillis();
+                Path to = Paths.get(request.getSession().getServletContext().getRealPath("/img") + "/" + millis + name); //convert from String to Path
+                Files.move(from, to, StandardCopyOption.ATOMIC_MOVE);
+
+            } catch (Exception ex) {
+
+            }
+        }
+        ProductBussiness pb = new ProductBussiness();
+        if (pb.AddCategory(cateName, description, image)) {
+            return "redirect:../admin/category.htm";
+        } else {
+            return "redirect:../admin/addCategory.htm";
         }
     }
 }

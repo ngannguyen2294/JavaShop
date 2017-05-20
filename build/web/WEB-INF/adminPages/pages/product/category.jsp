@@ -3,6 +3,7 @@
     Created on : Mar 17, 2017, 11:27:54 PM
     Author     : NGANNV
 --%>
+<%@page import="utils.CommonUtil"%>
 <%@page import="java.util.Base64"%>
 <%@page import="models.Categories"%>
 <%@page import="java.sql.ResultSet"%>
@@ -56,10 +57,10 @@
                     <div class="page-content">
                         <div class="row">
                             <div class="col-xs-12">
-                                <h3 class="header smaller lighter blue">All Products</h3>
+                                <h3 class="header smaller lighter blue">All Categories</h3>
 
                                 <div class="clearfix">
-                                    <button class="btn btn-primary" onclick="location.href = '../admin/addProduct.htm'"><i class="fa fa-plus" aria-hidden="true"></i> Add New Product</button>
+                                    <button class="btn btn-primary" onclick="location.href = '../admin/addCategory.htm'"><i class="fa fa-plus" aria-hidden="true"></i> Add New Category</button>
                                     <div class="pull-right tableTools-container"></div>
                                 </div>
 
@@ -100,18 +101,17 @@
                                                 List<Categories> cateList = Categories.getAllCategories();
                                                 int i = 1;
                                                 for (Categories cate : cateList) {
-                                                 
+
                                                     out.print("<tr id='cateID-" + cate.getCategoryId() + "'>"
                                                             + "<td></td>"
                                                             + "<td>" + (i++) + "</td>"
                                                             + "<td class='catename'>" + cate.getCategoryName() + "</td>"
                                                             + "<td class='description'>" + cate.getDescription() + "</td>"
-                                                            + "<td class='picture'><img class='img-responsive' alt='img' src='data:image/jpeg;base64," +cate.getPicture()+ "'/></td>"
+                                                            + "<td class='picture'><img class='img-responsive' alt='img' src='data:image/jpeg;base64," + cate.getPicture() + "'/></td>"
                                                             + "<td class='cateID' cateID='" + cate.getCategoryId() + "' onclick='showModalEdit(this)'><a href='#' class='tooltip-success' data-rel='tooltip' title='Edit'><span class='green'><i class='ace-icon fa fa-pencil-square-o bigger-120'></i></span></a></td>"
                                                             + "<td class='deleteCate' cateID='" + cate.getCategoryId() + "' onclick='' ><a data-href='' class='tooltip-error' data-toggle='modal' data-target='#confirm-delete' data-rel='tooltip' title='Delete'><span class='red'><i class='ace-icon fa fa-trash-o bigger-120'></i></span></a></td>"
                                                             + "</tr>"
-                                                
-                                             );
+                                                    );
                                                 }
                                             } catch (Exception ex) {
                                                 out.print(ex.toString());
@@ -159,7 +159,7 @@
                             <span class="sr-only">Close</span>
                         </button>
                         <h4 class="modal-title" id="myModalLabel">
-                            Edit Product
+                            Edit Category
                         </h4>
                     </div>
 
@@ -170,34 +170,16 @@
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <input type="hidden" id="cateID" name="cateID"/>
-                                    <label for="productName">Product Name</label>
+                                    <label for="cateName">Category Name</label>
                                     <input type="text" class="form-control"
-                                           id="productName" name="productName"/>
+                                           id="cateName" name="cateName"/>
                                 </div>
-
-                            </div>
-                            <div class="row">
-
                                 <div class="form-group col-md-6">
-                                    <label for="quantityperunit">Quantity per Unit</label>
-                                    <input type="text" id="quantityperunit" name="quantityPerUnit" class="form-control"/>
+                                    <label for="description">Description</label>
+                                    <input type="text" id="description" name="description" class="form-control"/>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="unitprice">Unit Price</label>
-                                    <input type="text" id="unitprice" name="unitPrice" class="form-control"/>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="unitinstock">Units In Stock</label>
-                                    <input type="text" id="unitinstock" name="unitsInStock" name="unitinstock" class="form-control"/>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="unitonorder">Units On Orders</label>
-                                    <input type="text" id="unitonorder"  name="unitsOnOrder" class="form-control"/>
-                                </div>
                                 <div class="form-group col-md-6">
                                     <label for="image">Image</label>
                                     <input type="hidden" name="image" id="imagePath"/>
@@ -205,14 +187,13 @@
                                     <button class="btn btn-primary" type="button" onclick="uploadImage()">Upload</button>
 
                                 </div>
-                            </div>
-                            <div class="row">
 
+                                <div class="row">
+                                </div>
                                 <div class="form-group col-md-12">
                                     <label for="image">Image</label>
                                     <img class="img-responsive" id="image" src=""/>
-                                </div>
-                            </div>
+                                </div> </div>
                     </div>
                     </form>
                     <!-- Modal Footer -->
@@ -239,7 +220,7 @@
                 var data = new FormData();
                 data.append('file', $('#imageFile')[0].files[0]);
                 $.ajax({
-                    url: '../image/upload.htm', // url where to submit the request
+                    url: '../image/uploadToBase64.htm', // url where to submit the request
                     type: "POST", // type of action POST || GET
                     enctype: 'multipart/form-data',
                     processData: false, // tell jQuery not to process the data
@@ -247,7 +228,7 @@
                     data: data, // post data || get data
                     success: function (data) {
                         $("#imagePath").val(data);
-                        $("#image").attr('src', "../" + data);
+                        $("#image").attr('src', 'data:image/jpeg;base64,'+data);
                     }
                 })
             }
@@ -271,9 +252,9 @@
             }
             );
             $('.btn-ok').on('click', function (e) {
-                var cateID = $('.selected').find('.deleteProduct').attr('productid');
+                var cateID = $('.selected').find('.deleteCate').attr('cateID');
                 $.ajax({
-                    url: '../admin/deleteProduct.htm', // url where to submit the request
+                    url: '../admin/deleteCategory.htm', // url where to submit the request
                     type: "POST", // type of action POST || GET
 
                     data: {cateID: cateID}, // post data || get data
@@ -300,28 +281,19 @@
             {
                 var cateID = $(obj).attr("cateID");
                 $("#imagePath").val($("#cateID-" + cateID + " td.image img").attr('src'));
-                $("#image").attr('src', $("#cateID-" + cateID + " td.image img").attr('src'));
+                $("#image").attr('src', $("#cateID-" + cateID + " td.picture img").attr('src'));
                 var cateID = $(obj).attr("cateID");
-                var supID = $(obj).attr("supID");
                 $('#editModal').modal('show');
                 var table = $('#dynamic-table').DataTable();
                 $('#dynamic-table').on('click', 'tr', function () {
                     var data = table.row(this).data();
                     $("#cateID").val(cateID);
-                    $("#categoryID").val(cateID);
-                    $("#supplierID").val(supID);
-                    $("#productName").val($("#cateID-" + cateID + " td.productname").text());
-                    $("#supplier").val($("#cateID-" + cateID + " td.supplier").text());
-                    $("#category").val($("#cateID-" + cateID + " td.category").text());
-                    $("#quantityperunit").val($("#cateID-" + cateID + " td.quantityperunit").text());
-                    $("#unitprice").val($("#cateID-" + cateID + " td.unitprice").text());
-                    $("#unitinstock").val($("#cateID-" + cateID + " td.unitinstock").text());
-                    $("#unitonorder").val($("#cateID-" + cateID + " td.unitonorder").text());
+                    $("#cateName").val($("#cateID-" + cateID + " td.catename").text());
+                    $("#description").val($("#cateID-" + cateID + " td.description").text());
                 });
                 $("#submit").on('click', function () {
-                    console.log($("#productform").serialize());
                     $.ajax({
-                        url: '../admin/updateProduct.htm', // url where to submit the request
+                        url: '../admin/updateCategory.htm', // url where to submit the request
                         type: "POST", // type of action POST || GET
 
                         data: $("#productform").serialize(), // post data || get data
@@ -330,16 +302,9 @@
                             if (data.status == 'ok')
                             {
                                 $('#editModal').modal('hide');
-                                $("#cateID-" + cateID + " td.productname").text($("#productName").val());
-                                $("#cateID-" + cateID + " td.supplier").text($("#supplier").val());
-                                $("#cateID-" + cateID + " td.category").text($("#category").val());
-                                $("#cateID-" + cateID + " td.quantityperunit").text($("#quantityperunit").val());
-                                $("#cateID-" + cateID + " td.unitprice").text($("#unitprice").val());
-                                $("#cateID-" + cateID + " td.unitinstock").text($("#unitinstock").val());
-                                $("#cateID-" + cateID + " td.unitonorder").text($("#unitonorder").val());
-                                //  $("#cateID-" + cateID + " td.image").html();
-                                $("#cateID-" + cateID + " td.catesupID").attr('cateID', $("#categoryID").val()).attr('supID', $("#supplierID").val());
-                                $("tr.selected td.image img").attr('src', $("#image").attr('src'));
+                                $("#cateID-" + cateID + " td.catename").text($("#cateName").val());
+                                $("#cateID-" + cateID + " td.description").text($("#description").val());
+                                $("tr.selected td.picture img").attr('src', $("#image").attr('src'));
                             }
                         },
                         error: function (xhr, resp, text) {
