@@ -4,11 +4,22 @@
     Author     : luan.nt
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="models.Products"%>
+<%@page import="models.Categories"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
+<jsp:useBean id = "ProductDAO" class = "model.bussiness.ProductBussiness" 
+             scope = "page"/>
+<jsp:useBean id = "Categories" class = "model.bussiness.CategoryBussiness" 
+             scope = "page"/>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <%@ page language="java" contentType="text/html; charset=UTF-8"
+                 pageEncoding="UTF-8"%>
+        <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+        <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+        <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+        <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
         <title>Shop Page</title>
     </head>
     <body>
@@ -30,15 +41,26 @@
                             <div class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav">
                                     <li><a href="home.htm">Home</a></li>
-                                    <li class="active"><a href="shop.htm">Shop page</a></li>
-                                    <li><a href="product.htm">Cart</a></li>
-                                    <li><a href="#">Checkout</a></li>
-                                    <li><a href="#">Category</a></li>
-                                    <li><a href="#">Others</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                </ul>
-                            </div>  
-                        </div>
+                                    <li class="dropdown active">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="shop.htm">Category
+                                            <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                        <%
+                                            List<Categories> cate = Categories.getAllCategories();
+                                            for (Categories c : cate) {
+                                        %>
+                                        <li>
+                                            <a href="shop.htm?category=<%=c.getCategoryId()%>"><%=c.getCategoryName()%></a>
+                                        </li>
+                                        <%
+                                            }
+                                        %>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Cart</a></li>
+                                <li><a href="#">Checkout</a></li>
+                            </ul>         
+                        </div>  
                     </div>
                 </div>
             </div> <!-- End mainmenu area -->
@@ -48,7 +70,25 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="product-bit-title text-center">
-                                <h2>Shop</h2>
+                                <%
+                                    String cateid = "";
+                                    String productid = "";
+                                    if (request.getParameter("category") != null) {
+                                        cateid = request.getParameter("category");
+                                    }
+                                    if (request.getParameter("product") != null) {
+                                        productid = request.getParameter("product");
+                                    }
+                                    List<Products> product = ProductDAO.GetProductByID(productid);
+                                    Products currentProduct = product.get(0);
+                                    Categories category = new Categories();
+                                    for (Categories c : cate) {
+                                        if (c.getCategoryId() == Integer.parseInt(cateid)) {
+                                            category = c;
+                                        }
+                                    }
+                                %>
+                                <h2><%=category.getCategoryName()%></h2>
                             </div>
                         </div>
                     </div>
@@ -60,79 +100,53 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="single-sidebar">
-                                <h2 class="sidebar-title">Search Products</h2>
-                                <form action="">
-                                    <input type="text" placeholder="Search products...">
-                                    <input type="submit" value="Search">
-                                </form>
-                            </div>
-                            <div class="single-sidebar">
-                                <h2 class="sidebar-title">Products</h2>
-                                <div class="thubmnail-recent">
-                                    <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                                    <h2><a href="">Sony Smart TV - 2015</a></h2>
-                                    <div class="product-sidebar-price">
-                                        <ins>$700.00</ins> <del>$100.00</del>
-                                    </div>
-                                </div>
-                                <div class="thubmnail-recent">
-                                    <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                                    <h2><a href="">Sony Smart TV - 2015</a></h2>
-                                    <div class="product-sidebar-price">
-                                        <ins>$700.00</ins> <del>$100.00</del>
-                                    </div>
-                                </div>
-                                <div class="thubmnail-recent">
-                                    <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                                    <h2><a href="">Sony Smart TV - 2015</a></h2>
-                                    <div class="product-sidebar-price">
-                                        <ins>$700.00</ins> <del>$100.00</del>
-                                    </div>
-                                </div>
-                                <div class="thubmnail-recent">
-                                    <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                                    <h2><a href="">Sony Smart TV - 2015</a></h2>
-                                    <div class="product-sidebar-price">
-                                        <ins>$700.00</ins> <del>$100.00</del>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="single-sidebar">
                                 <h2 class="sidebar-title">Recent Posts</h2>
-                                <ul>
-                                    <li><a href="">Sony Smart TV - 2015</a></li>
-                                    <li><a href="">Sony Smart TV - 2015</a></li>
-                                    <li><a href="">Sony Smart TV - 2015</a></li>
-                                    <li><a href="">Sony Smart TV - 2015</a></li>
-                                    <li><a href="">Sony Smart TV - 2015</a></li>
-                                </ul>
+                                <%
+                                    List<Products> productNew = ProductDAO.GetProductNew();
+                                    for (Products itemProductNew : productNew) {
+                                %>
+                                <div class="thubmnail-recent">
+                                    <img src="<%=itemProductNew.getImage()%>" class="recent-thumb" alt="">
+                                    <h2><a href="product.htm?category=<%=itemProductNew.getCategories().getCategoryId()%>&product=<%=itemProductNew.getProductId()%>"><%=itemProductNew.getProductName()%></a></h2>
+                                    <div class="product-sidebar-price">
+                                        <ins>
+                                            <fmt:formatNumber type = "number" maxFractionDigits = "0" value = "<%=itemProductNew.getUnitPriceSale()%>" /><u>đ</u>
+                                        </ins>
+                                        <del>
+                                            <fmt:formatNumber type = "number" maxFractionDigits = "0" value = "<%=itemProductNew.getUnitPrice()%>" /><u>đ</u>
+                                        </del>
+                                    </div>
+                                </div>
+                                <%
+                                    }
+                                %>
                             </div>
                         </div>
                         <div class="col-md-8">
                             <div class="product-content-right">
                                 <div class="product-breadcroumb">
-                                    <a href="">Home</a>
-                                    <a href="">Category Name</a>
-                                    <a href="">Sony Smart TV - 2015</a>
+                                    <a href="home.htm">Home</a>
+                                    <a href="shop.htm?category=<%=category.getCategoryId()%>"><%=category.getCategoryName()%></a>
+                                    <a href="product.htm?category=<%=currentProduct.getCategories().getCategoryId()%>&product=<%=currentProduct.getProductId()%>"><%=currentProduct.getProductName()%></a>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="product-images">
                                             <div class="product-main-img">
-                                                <img src="img/product-2.jpg" alt="">
-                                            </div>
-                                            <div class="product-gallery">
-                                                <img src="img/product-thumb-1.jpg" alt="">
-                                                <img src="img/product-thumb-2.jpg" alt="">
-                                                <img src="img/product-thumb-3.jpg" alt="">
+                                                <img src="<%=currentProduct.getImage()%>" alt="">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="product-inner">
-                                            <h2 class="product-name">Sony Smart TV - 2015</h2>
+                                            <h2 class="product-name"><%=currentProduct.getProductName()%></h2>
                                             <div class="product-inner-price">
-                                                <ins>$700.00</ins> <del>$100.00</del>
+                                                <ins>
+                                                    <fmt:formatNumber type = "number" maxFractionDigits = "0" value = "<%=currentProduct.getUnitPriceSale()%>" /><u>đ</u>
+                                                </ins>
+                                                <del>
+                                                    <fmt:formatNumber type = "number" maxFractionDigits = "0" value = "<%=currentProduct.getUnitPrice()%>" /><u>đ</u>
+                                                </del>
                                             </div>
                                             <form action="" class="cart">
                                                 <div class="quantity">
@@ -141,37 +155,17 @@
                                                 <button class="add_to_cart_button" type="submit">Add to cart</button>
                                             </form>
                                             <div class="product-inner-category">
-                                                <p>Category: <a href="">Summer</a>. Tags: <a href="">awesome</a>, <a href="">best</a>, <a href="">sale</a>, <a href="">shoes</a>. </p>
+                                                <p>Category: <a href=""><%=currentProduct.getCategories().getCategoryName()%></a></p>
                                             </div>
                                             <div role="tabpanel">
                                                 <ul class="product-tab" role="tablist">
                                                     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Description</a></li>
-                                                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Reviews</a></li>
                                                 </ul>
                                                 <div class="tab-content">
                                                     <div role="tabpanel" class="tab-pane fade in active" id="home">
                                                         <h2>Product Description</h2>
                                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tristique, diam in consequat iaculis, est purus iaculis mauris, imperdiet facilisis ante ligula at nulla. Quisque volutpat nulla risus, id maximus ex aliquet ut. Suspendisse potenti. Nulla varius lectus id turpis dignissim porta. Quisque magna arcu, blandit quis felis vehicula, feugiat gravida diam. Nullam nec turpis ligula. Aliquam quis blandit elit, ac sodales nisl. Aliquam eget dolor eget elit malesuada aliquet. In varius lorem lorem, semper bibendum lectus lobortis ac.</p>
                                                         <p>Mauris placerat vitae lorem gravida viverra. Mauris in fringilla ex. Nulla facilisi. Etiam scelerisque tincidunt quam facilisis lobortis. In malesuada pulvinar neque a consectetur. Nunc aliquam gravida purus, non malesuada sem accumsan in. Morbi vel sodales libero.</p>
-                                                    </div>
-                                                    <div role="tabpanel" class="tab-pane fade" id="profile">
-                                                        <h2>Reviews</h2>
-                                                        <div class="submit-review">
-                                                            <p><label for="name">Name</label> <input name="name" type="text"></p>
-                                                            <p><label for="email">Email</label> <input name="email" type="email"></p>
-                                                            <div class="rating-chooser">
-                                                                <p>Your rating</p>
-                                                                <div class="rating-wrap-post">
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                    <i class="fa fa-star"></i>
-                                                                </div>
-                                                            </div>
-                                                            <p><label for="review">Your review</label> <textarea name="review" id="" cols="30" rows="10"></textarea></p>
-                                                            <p><input type="submit" value="Submit"></p>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -181,84 +175,31 @@
                                 <div class="related-products-wrapper">
                                     <h2 class="related-products-title">Related Products</h2>
                                     <div class="related-products-carousel">
+
+                                        <%
+                                            for (Products itemProductNew : productNew) {
+                                        %>
                                         <div class="single-product">
                                             <div class="product-f-image">
-                                                <img src="img/product-1.jpg" alt="">
+                                                <img src="<%=itemProductNew.getImage()%>" alt="">
                                                 <div class="product-hover">
                                                     <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                                    <a href="product.htm?category=<%=itemProductNew.getCategories().getCategoryId()%>&product=<%=itemProductNew.getProductId()%>" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                                 </div>
                                             </div>
-                                            <h2><a href="">Sony Smart TV - 2015</a></h2>
+                                            <h2><a href="product.htm?category=<%=itemProductNew.getCategories().getCategoryId()%>&product=<%=itemProductNew.getProductId()%>"><%=itemProductNew.getProductName()%></a></h2>
                                             <div class="product-carousel-price">
-                                                <ins>$700.00</ins> <del>$100.00</del>
+                                                <ins>
+                                                    <fmt:formatNumber type = "number" maxFractionDigits = "0" value = "<%=itemProductNew.getUnitPriceSale()%>" /><u>đ</u>
+                                                </ins>
+                                                <del>
+                                                    <fmt:formatNumber type = "number" maxFractionDigits = "0" value = "<%=itemProductNew.getUnitPrice()%>" /><u>đ</u>
+                                                </del>
                                             </div>
                                         </div>
-                                        <div class="single-product">
-                                            <div class="product-f-image">
-                                                <img src="img/product-2.jpg" alt="">
-                                                <div class="product-hover">
-                                                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                                </div>
-                                            </div>
-                                            <h2><a href="">Apple new mac book 2015 March :P</a></h2>
-                                            <div class="product-carousel-price">
-                                                <ins>$899.00</ins> <del>$999.00</del>
-                                            </div>
-                                        </div>
-                                        <div class="single-product">
-                                            <div class="product-f-image">
-                                                <img src="img/product-3.jpg" alt="">
-                                                <div class="product-hover">
-                                                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                                </div>
-                                            </div>
-                                            <h2><a href="">Apple new i phone 6</a></h2>
-                                            <div class="product-carousel-price">
-                                                <ins>$400.00</ins> <del>$425.00</del>
-                                            </div>
-                                        </div>
-                                        <div class="single-product">
-                                            <div class="product-f-image">
-                                                <img src="img/product-4.jpg" alt="">
-                                                <div class="product-hover">
-                                                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                                </div>
-                                            </div>
-                                            <h2><a href="">Sony playstation microsoft</a></h2>
-                                            <div class="product-carousel-price">
-                                                <ins>$200.00</ins> <del>$225.00</del>
-                                            </div>
-                                        </div>
-                                        <div class="single-product">
-                                            <div class="product-f-image">
-                                                <img src="img/product-5.jpg" alt="">
-                                                <div class="product-hover">
-                                                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                                </div>
-                                            </div>
-                                            <h2><a href="">Sony Smart Air Condtion</a></h2>
-                                            <div class="product-carousel-price">
-                                                <ins>$1200.00</ins> <del>$1355.00</del>
-                                            </div>
-                                        </div>
-                                        <div class="single-product">
-                                            <div class="product-f-image">
-                                                <img src="img/product-6.jpg" alt="">
-                                                <div class="product-hover">
-                                                    <a href="" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                    <a href="" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                                </div>
-                                            </div>
-                                            <h2><a href="">Samsung gallaxy note 4</a></h2>
-                                            <div class="product-carousel-price">
-                                                <ins>$400.00</ins>
-                                            </div>
-                                        </div>
+                                        <%
+                                            }
+                                        %>
                                     </div>
                                 </div>
                             </div>
@@ -266,6 +207,6 @@
                     </div>
                 </div>
             </div>
-        <jsp:include page="footer.jsp"></jsp:include>
+            <jsp:include page="footer.jsp"></jsp:include>
     </body>
 </html>

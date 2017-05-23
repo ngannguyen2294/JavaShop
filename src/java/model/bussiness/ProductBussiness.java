@@ -31,6 +31,47 @@ public class ProductBussiness {
         List<Products> list = query.list();
         return list;
     }
+	
+	public List<Products> GetProductByCateID(String id) {
+        try {
+            SQLQuery query = session.createSQLQuery("select * from products as p where p.CategoryID= :cateid order by p.ProductID");
+            query.addEntity(Products.class);
+            query.setParameter("cateid", id);
+            List<Products> rows = query.list();
+            return rows;
+
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
+        return null;
+    }
+    
+    public List<Products> GetProductByID(String id) {
+        try {
+            SQLQuery query = session.createSQLQuery("select * from products as p where p.ProductID= :id ;");
+            query.addEntity(Products.class);
+            query.setParameter("id", id);
+            List<Products> rows = query.list();
+            return rows;
+
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
+        return null;
+    }
+    
+    public List<Products> GetProductNew() {
+        try {
+            SQLQuery query = session.createSQLQuery("SELECT * FROM products ORDER BY ProductID DESC LIMIT 5");
+            query.addEntity(Products.class);
+            List<Products> rows = query.list();
+            return rows;
+
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
+        return null;
+    }
 
     public List<Products> GetAllProductListInfor() {
         try {
