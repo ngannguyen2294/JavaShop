@@ -31,8 +31,8 @@ public class ProductBussiness {
         List<Products> list = query.list();
         return list;
     }
-	
-	public List<Products> GetProductByCateID(String id) {
+
+    public List<Products> GetProductByCateID(String id) {
         try {
             SQLQuery query = session.createSQLQuery("select * from products as p where p.CategoryID= :cateid order by p.ProductID");
             query.addEntity(Products.class);
@@ -45,7 +45,7 @@ public class ProductBussiness {
         }
         return null;
     }
-    
+
     public List<Products> GetProductByID(String id) {
         try {
             SQLQuery query = session.createSQLQuery("select * from products as p where p.ProductID= :id ;");
@@ -59,7 +59,7 @@ public class ProductBussiness {
         }
         return null;
     }
-    
+
     public List<Products> GetProductNew() {
         try {
             SQLQuery query = session.createSQLQuery("SELECT * FROM products ORDER BY ProductID DESC LIMIT 5");
@@ -98,11 +98,12 @@ public class ProductBussiness {
             session.close();
             return true;
         } catch (Exception ex) {
-             session.close();
+            session.close();
             return false;
         }
     }
-      public Boolean DeleteCategory(String cateID) {
+
+    public Boolean DeleteCategory(String cateID) {
         try {
             session.getTransaction().begin();
             SQLQuery query = session.createSQLQuery("DELETE FROM categories WHERE CategoryID = :cateID ;");
@@ -113,7 +114,7 @@ public class ProductBussiness {
             session.close();
             return true;
         } catch (Exception ex) {
-             session.close();
+            session.close();
             return false;
         }
     }
@@ -146,7 +147,8 @@ public class ProductBussiness {
             return false;
         }
     }
-     public Boolean UpdateCategory(String cateID, String cateName, String description, byte[] image) {
+
+    public Boolean UpdateCategory(String cateID, String cateName, String description, byte[] image) {
         try {
             session.getTransaction().begin();
             SQLQuery query = session.createSQLQuery("update categories set CategoryName = :cateName,Description = :description,"
@@ -164,7 +166,8 @@ public class ProductBussiness {
             return false;
         }
     }
-     public Boolean AddProduct(String productID, String productName, String supplierID,
+
+    public Boolean AddProduct(String productID, String productName, String supplierID,
             String categoryID, String quantityPerUnit, String unitPrice,
             String unitsInStock, String unitsOnOrder, String image) {
         try {
@@ -188,12 +191,13 @@ public class ProductBussiness {
             session.close();
             return true;
         } catch (Exception ex) {
-             session.close();
+            session.close();
             return false;
         }
     }
-      public Boolean AddCategory(String cateName, String description,
-          byte[] image) {
+
+    public Boolean AddCategory(String cateName, String description,
+            byte[] image) {
         try {
             session.getTransaction().begin();
             SQLQuery query = session.createSQLQuery("INSERT INTO categories(CategoryName, Description, Picture)"
@@ -207,7 +211,7 @@ public class ProductBussiness {
             session.close();
             return true;
         } catch (Exception ex) {
-             session.close();
+            session.close();
             return false;
         }
     }
