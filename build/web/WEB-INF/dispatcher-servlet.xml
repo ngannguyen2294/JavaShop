@@ -30,7 +30,7 @@
                 <prop key="image/upload.htm">ImageUploadController</prop>
                    <prop key="image/uploadToBase64.htm">ImageUploadController</prop>
                 
-                
+                    <prop key="admin/order.htm">orderPageController</prop>
                 <prop key="admin/productlist.htm">productPageController</prop>
                    <prop key="admin/updateProduct.htm">productBussinessController</prop>
                       <prop key="admin/updateCategory.htm">productBussinessController</prop>
@@ -88,4 +88,8 @@
     <bean name="categoryController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="adminPages/pages/product/category" />
+        <bean name="orderPageController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="adminPages/pages/order/list" />
+    
 </beans>

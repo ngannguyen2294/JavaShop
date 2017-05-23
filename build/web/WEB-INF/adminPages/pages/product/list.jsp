@@ -121,7 +121,7 @@
                                                             + "<td class='unitprice'>" + product.getUnitPrice() + "</td>"
                                                             + "<td class='unitinstock'>" + product.getUnitsInStock() + "</td>"
                                                             + "<td class='unitonorder'>" + product.getUnitsOnOrder() + "</td>"
-                                                            + "<td class='image'><img id='productImage' src='.." + product.getImage() + "' height='70' width='70' onclick='showImage(this)'/></td>"
+                                                            + "<td class='image'><img id='productImage' src='../" + product.getImage() + "' height='70' width='70' onclick='showImage(this)'/></td>"
                                                             + "<td class='catesupID' productID='" + product.getProductId() + "' cateID='" + product.getCategories().getCategoryId() + "' supID='" + product.getSuppliers().getSupplierId() + "' onclick='showModalEdit(this)'><a href='#' class='tooltip-success' data-rel='tooltip' title='Edit'><span class='green'><i class='ace-icon fa fa-pencil-square-o bigger-120'></i></span></a></td>"
                                                             + "<td class='deleteProduct' productID='" + product.getProductId() + "' onclick='' ><a data-href='' class='tooltip-error' data-toggle='modal' data-target='#confirm-delete' data-rel='tooltip' title='Delete'><span class='red'><i class='ace-icon fa fa-trash-o bigger-120'></i></span></a></td>"
                                                             + "</tr>");

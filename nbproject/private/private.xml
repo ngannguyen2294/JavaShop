@@ -2,29 +2,34 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group/>
         <group name="JavaShop">
             <file>file:/D:/Study/J2EE/JavaShop/src/java/hibernate.cfg.xml</file>
-            <file>file:/D:/Study/J2EE/JavaShop/src/java/controller/ImageUploadController.java</file>
+            <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/storePages/home.jsp</file>
+            <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/order/list.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/product/category.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/controller/LoginController.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/applicationContext.xml</file>
-            <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/dispatcher-servlet.xml</file>
-            <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Products.java</file>
-            <file>file:/D:/Study/J2EE/JavaShop/src/java/controller/ProductController.java</file>
-            <file>file:/D:/Study/J2EE/JavaShop/src/java/utils/CommonUtil.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/hibernate.reveng.xml</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/product/addProduct.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/utils/shaSecure.java</file>
+            <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Categories.java</file>
+            <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Orders.hbm.xml</file>
+            <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/login.jsp</file>
+            <file>file:/D:/Study/J2EE/JavaShop/src/java/controller/ImageUploadController.java</file>
+            <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/dispatcher-servlet.xml</file>
+            <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Products.java</file>
+            <file>file:/D:/Study/J2EE/JavaShop/src/java/controller/ProductController.java</file>
+            <file>file:/D:/Study/J2EE/JavaShop/src/java/model/bussiness/OrderBussiness.java</file>
+            <file>file:/D:/Study/J2EE/JavaShop/src/java/utils/CommonUtil.java</file>
+            <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Orders.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/model/bussiness/CategoryBussiness.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/product/list.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/navbar.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/product/addCategory.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/model/bussiness/ProductBussiness.java</file>
-            <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Categories.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/header.jsp</file>
-            <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/login.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/sidebar.jsp</file>
         </group>
-        <group/>
     </open-files>
 </project-private>

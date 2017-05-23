@@ -74,6 +74,16 @@
 
          
         </li>
+  <li class="">
+            <a href="../admin/order.htm">
+                <i class="menu-icon ace-icon fa fa-shopping-cart bigger-160"></i>
+                <span class="menu-text">
+                   Orders
+                </span>
+            </a>
+
+         
+        </li>
 
         <li class="">
             <a href="#" class="dropdown-toggle">

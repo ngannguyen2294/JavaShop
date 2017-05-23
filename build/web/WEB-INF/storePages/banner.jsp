@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
     </head>
     <body>
         <div class="site-branding-area">
@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="logo">
-                            <h1><a href="../storePages/home.htm"><img style="width:130px;height: 100px" src="img/logo.png"></a></h1>
+                            <h1><a href="home.htm"><img style="width:130px;height: 100px" src="img/logo.png"></a></h1>
                         </div>
                     </div>
 

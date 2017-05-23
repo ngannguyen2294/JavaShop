@@ -3,10 +3,8 @@
     Created on : Mar 17, 2017, 11:27:54 PM
     Author     : NGANNV
 --%>
-<%@page import="models.Suppliers"%>
-<%@page import="models.Categories"%>
 <%@page import="java.sql.ResultSet"%>
-<%@page import="models.Products"%>
+<%@page import="models.Orders"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,8 +15,10 @@
 <jsp:useBean id = "Categories" class = "model.bussiness.CategoryBussiness" 
              scope = "page"/>
 <html>
+    <jsp:useBean id = "Orders" class = "model.bussiness.OrderBussiness" 
+                 scope = "page"/>
     <head>
-        <title>Product List</title>
+        <title>Orders</title>
     </head>
     <body class="no-skin">
         <%@ include file="../header.jsp" %>
@@ -60,15 +60,14 @@
                     <div class="page-content">
                         <div class="row">
                             <div class="col-xs-12">
-                                <h3 class="header smaller lighter blue">All Products</h3>
+                                <h3 class="header smaller lighter blue">All Orders</h3>
 
                                 <div class="clearfix">
-                                       <button class="btn btn-primary" onclick="location.href='../admin/addProduct.htm'"><i class="fa fa-plus" aria-hidden="true"></i> Add New Product</button>
                                     <div class="pull-right tableTools-container"></div>
                                 </div>
-                             
+
                                 <div class="table-header">
-                                    Product List
+                                    Orders
                                 </div>
 
                                 <!-- div.table-responsive -->
@@ -87,20 +86,12 @@
                                                         <span class="lbl"></span>
                                                     </label>
                                                 </th>
-                                                <th>STT</th>
-                                                <th>Product Name</th>
-                                                <th>Supplier</th>
+                                                <th>Order ID</th>
+                                                <th>Status</th>
+                                                <th>Customer</th>
 
-                                                <th>
-                                                    <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-                                                    Category
-                                                </th>
-                                                <th>Quantity per Unit</th>
-
-                                                <th> Unit Price</th>
-                                                <th> Units In Stock</th>
-                                                <th> Units On Order</th>
-                                                <th>Image</th>  
+                                                <th>Order Date</th>
+                                                <th>Total</th> 
                                                 <th>Edit</th>
                                                 <th>Delete</th>
                                             </tr>
@@ -108,22 +99,17 @@
                                         <tbody>
                                         <c:set var="root" value="${request.contextPath}/" />
                                         <%                                                try {
-                                                List<Products> productlist = Products.GetAllProductListInfor();
-                                                int i = 1;
-                                                for (Products product : productlist) {
-                                                    out.print("<tr id='productID-" + product.getProductId() + "'>"
+                                                List<Orders> orderList = Orders.GetAllOrder();
+                                                for (Orders order : orderList) {
+                                                    out.print("<tr id='orderID-" + order.getOrderId() + "'>"
                                                             + "<td></td>"
-                                                            + "<td>" + (i++) + "</td>"
-                                                            + "<td class='productname'>" + product.getProductName() + "</td>"
-                                                            + "<td class='supplier'>" + product.getSuppliers().getCompanyName() + "</td>"
-                                                            + "<td class='category'>" + product.getCategories().getCategoryName() + "</td>"
-                                                            + "<td class='quantityperunit'>" + product.getQuantityPerUnit() + "</td>"
-                                                            + "<td class='unitprice'>" + product.getUnitPrice() + "</td>"
-                                                            + "<td class='unitinstock'>" + product.getUnitsInStock() + "</td>"
-                                                            + "<td class='unitonorder'>" + product.getUnitsOnOrder() + "</td>"
-                                                            + "<td class='image'><img id='productImage' src='../" + product.getImage() + "' height='70' width='70' onclick='showImage(this)'/></td>"
-                                                            + "<td class='catesupID' productID='" + product.getProductId() + "' cateID='" + product.getCategories().getCategoryId() + "' supID='" + product.getSuppliers().getSupplierId() + "' onclick='showModalEdit(this)'><a href='#' class='tooltip-success' data-rel='tooltip' title='Edit'><span class='green'><i class='ace-icon fa fa-pencil-square-o bigger-120'></i></span></a></td>"
-                                                            + "<td class='deleteProduct' productID='" + product.getProductId() + "' onclick='' ><a data-href='' class='tooltip-error' data-toggle='modal' data-target='#confirm-delete' data-rel='tooltip' title='Delete'><span class='red'><i class='ace-icon fa fa-trash-o bigger-120'></i></span></a></td>"
+                                                            + "<td>" + order.getOrderId() + "</td>"
+                                                            + "<td class='status'><span class='label " + Orders.GetStatusLabelHtml(order.getStatus()) + "'>" + order.getStatus() + "</span></td>"
+                                                            + "<td class='date'>" + order.getCustomers().getContactName() + "</td>"
+                                                            + "<td class='date'>" + order.getOrderDate() + "</td>"
+                                                            + "<td class='total'>" + Orders.GetTotalAmount(order) + "</td>"
+                                                            + "<td class='catesupID' orderID='" + order.getOrderId() + "' onclick='showModalEdit(this)'><a href='#' class='tooltip-success' data-rel='tooltip' title='Edit'><span class='green'><i class='ace-icon fa fa-pencil-square-o bigger-120'></i></span></a></td>"
+                                                            + "<td class='deleteProduct' orderID='" + order.getOrderId() + "' onclick='' ><a data-href='' class='tooltip-error' data-toggle='modal' data-target='#confirm-delete' data-rel='tooltip' title='Delete'><span class='red'><i class='ace-icon fa fa-trash-o bigger-120'></i></span></a></td>"
                                                             + "</tr>");
                                                 }
                                             } catch (Exception ex) {
@@ -145,7 +131,7 @@
                         Warning!
                     </div>
                     <div class="modal-body">
-                        Are you sure want to delete this product?
+                        Are you sure want to delete this order?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -176,81 +162,6 @@
                         </h4>
                     </div>
 
-                    <!-- Modal Body -->
-                    <div class="modal-body">
-
-                        <form id="productform" role="form" method="post">
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <input type="hidden" id="productID" name="productID"/>
-                                    <label for="productName">Product Name</label>
-                                    <input type="text" class="form-control"
-                                           id="productName" name="productName"/>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="supplier">Supplier</label>
-                                    <input type="hidden" name="supplierID" id="supplierID"/>
-                                    <select id="supplier" class="form-control" onchange="selectSupplier(this)">
-                                        <% List<Suppliers> supplierList = Supplier.getAllSupplier();
-                                            for (Suppliers sup : supplierList) {
-                                                out.print("<option supID='" + sup.getSupplierId() + "'>" + sup.getCompanyName() + "</option>");
-                                            }
-                                        %>              
-
-
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="category">Category</label>
-                                    <input type="hidden" name="categoryID" id="categoryID"/>
-                                    <select id="category" class="form-control" onchange="selectCate(this)">
-                                        <% List<Categories> categoriesList = Categories.getAllCategories();
-                                            for (Categories cate : categoriesList) {
-                                                out.print("<option cateID='" + cate.getCategoryId() + "'>" + cate.getCategoryName() + "</option>");
-                                            }
-                                        %>              
-
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="quantityperunit">Quantity per Unit</label>
-                                    <input type="text" id="quantityperunit" name="quantityPerUnit" class="form-control"/>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="unitprice">Unit Price</label>
-                                    <input type="text" id="unitprice" name="unitPrice" class="form-control"/>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="unitinstock">Units In Stock</label>
-                                    <input type="text" id="unitinstock" name="unitsInStock" name="unitinstock" class="form-control"/>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-md-6">
-                                    <label for="unitonorder">Units On Orders</label>
-                                    <input type="text" id="unitonorder"  name="unitsOnOrder" class="form-control"/>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="image">Image</label>
-                                    <input type="hidden" name="image" id="imagePath"/>
-                                    <input id="imageFile" type="file" accept="image/*">
-                                    <button class="btn btn-primary" type="button" onclick="uploadImage()">Upload</button>
-
-                                </div>
-                            </div>
-                            <div class="row">
-
-                                <div class="form-group col-md-12">
-                                    <label for="image">Image</label>
-                                    <img class="img-responsive" id="image" src=""/>
-                                </div>
-                            </div>
-                    </div>
-                    </form>
                     <!-- Modal Footer -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default"
@@ -299,7 +210,7 @@
             ;
             $('#dynamic-table').on('click', 'tr', function (e) {
                 if ($(this).hasClass('selected')) {
-                 //   $(this).removeClass('selected');
+                    //   $(this).removeClass('selected');
                 } else {
                     myTable.$('tr.selected').removeClass('selected');
                     $(this).addClass('selected');
@@ -307,12 +218,12 @@
             }
             );
             $('.btn-ok').on('click', function (e) {
-                var productID = $('.selected').find('.deleteProduct').attr('productid');
+                var orderID = $('.selected').find('.deleteProduct').attr('orderid');
                 $.ajax({
                     url: '../admin/deleteProduct.htm', // url where to submit the request
                     type: "POST", // type of action POST || GET
 
-                    data: {productID: productID}, // post data || get data
+                    data: {orderID: orderID}, // post data || get data
                     success: function (result) {
                         var data = JSON.parse(result);
                         if (data.status == 'ok')
@@ -334,47 +245,47 @@
 
             function showModalEdit(obj)
             {
-                var productID = $(obj).attr("productID");
-                 $("#imagePath").val($("#productID-" + productID + " td.image img").attr('src'));
-                  $("#image").attr('src',   $("#productID-" + productID + " td.image img").attr('src'));
+                var orderID = $(obj).attr("orderID");
+                $("#imagePath").val($("#orderID-" + orderID + " td.image img").attr('src'));
+                $("#image").attr('src', $("#orderID-" + orderID + " td.image img").attr('src'));
                 var cateID = $(obj).attr("cateID");
                 var supID = $(obj).attr("supID");
                 $('#editModal').modal('show');
                 var table = $('#dynamic-table').DataTable();
                 $('#dynamic-table').on('click', 'tr', function () {
                     var data = table.row(this).data();
-                    $("#productID").val(productID);
+                    $("#orderID").val(orderID);
                     $("#categoryID").val(cateID);
                     $("#supplierID").val(supID);
-                    $("#productName").val($("#productID-" + productID + " td.productname").text());
-                    $("#supplier").val($("#productID-" + productID + " td.supplier").text());
-                    $("#category").val($("#productID-" + productID + " td.category").text());
-                    $("#quantityperunit").val($("#productID-" + productID + " td.quantityperunit").text());
-                    $("#unitprice").val($("#productID-" + productID + " td.unitprice").text());
-                    $("#unitinstock").val($("#productID-" + productID + " td.unitinstock").text());
-                    $("#unitonorder").val($("#productID-" + productID + " td.unitonorder").text());
+                    $("#orderName").val($("#orderID-" + orderID + " td.ordername").text());
+                    $("#supplier").val($("#orderID-" + orderID + " td.supplier").text());
+                    $("#category").val($("#orderID-" + orderID + " td.category").text());
+                    $("#quantityperunit").val($("#orderID-" + orderID + " td.quantityperunit").text());
+                    $("#unitprice").val($("#orderID-" + orderID + " td.unitprice").text());
+                    $("#unitinstock").val($("#orderID-" + orderID + " td.unitinstock").text());
+                    $("#unitonorder").val($("#orderID-" + orderID + " td.unitonorder").text());
                 });
                 $("#submit").on('click', function () {
-                    console.log($("#productform").serialize());
+                    console.log($("#orderform").serialize());
                     $.ajax({
                         url: '../admin/updateProduct.htm', // url where to submit the request
                         type: "POST", // type of action POST || GET
 
-                        data: $("#productform").serialize(), // post data || get data
+                        data: $("#orderform").serialize(), // post data || get data
                         success: function (result) {
                             var data = JSON.parse(result);
                             if (data.status == 'ok')
                             {
                                 $('#editModal').modal('hide');
-                                $("#productID-" + productID + " td.productname").text($("#productName").val());
-                                $("#productID-" + productID + " td.supplier").text($("#supplier").val());
-                                $("#productID-" + productID + " td.category").text($("#category").val());
-                                $("#productID-" + productID + " td.quantityperunit").text($("#quantityperunit").val());
-                                $("#productID-" + productID + " td.unitprice").text($("#unitprice").val());
-                                $("#productID-" + productID + " td.unitinstock").text($("#unitinstock").val());
-                                $("#productID-" + productID + " td.unitonorder").text($("#unitonorder").val());
-                                //  $("#productID-" + productID + " td.image").html();
-                                $("#productID-" + productID + " td.catesupID").attr('cateID', $("#categoryID").val()).attr('supID', $("#supplierID").val());
+                                $("#orderID-" + orderID + " td.ordername").text($("#orderName").val());
+                                $("#orderID-" + orderID + " td.supplier").text($("#supplier").val());
+                                $("#orderID-" + orderID + " td.category").text($("#category").val());
+                                $("#orderID-" + orderID + " td.quantityperunit").text($("#quantityperunit").val());
+                                $("#orderID-" + orderID + " td.unitprice").text($("#unitprice").val());
+                                $("#orderID-" + orderID + " td.unitinstock").text($("#unitinstock").val());
+                                $("#orderID-" + orderID + " td.unitonorder").text($("#unitonorder").val());
+                                //  $("#orderID-" + orderID + " td.image").html();
+                                $("#orderID-" + orderID + " td.catesupID").attr('cateID', $("#categoryID").val()).attr('supID', $("#supplierID").val());
                                 $("tr.selected td.image img").attr('src', $("#image").attr('src'));
                             }
                         },
@@ -568,13 +479,13 @@
             )
         </script>
         <style>
-            #productImage {
+            #orderImage {
                 border-radius: 5px;
                 cursor: pointer;
                 transition: 0.3s;
             }
 
-            #productImage:hover {opacity: 0.7;}
+            #orderImage:hover {opacity: 0.7;}
 
             /* The Modal (background) */
             .modal2 {
