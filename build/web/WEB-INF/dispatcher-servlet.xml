@@ -22,6 +22,8 @@
                 <prop key="home.htm">indexController</prop>
                 <prop key="shop.htm">shopController</prop>
                 <prop key="product.htm">productController</prop>
+                <prop key="addCart.htm">CartController</prop>
+                <prop key="cart.htm">cartController</prop>
                 <prop key="admin/admin.htm">adminIndexController</prop>
                 <prop key="admin/logout.htm">adminPageController</prop>
                     <prop key="admin/category.htm">categoryController</prop>
@@ -51,6 +53,9 @@
     <bean id="adminPageController"
           class="controller.LoginController"
     />
+    <bean id="CartController"
+          class="controller.CartController"
+    />
      <bean id="productBussinessController"
           class="controller.ProductController"
     />
@@ -70,6 +75,9 @@
     <bean name="productController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="storePages/product" />
+    <bean name="cartController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="storePages/cart" />
     <bean name="adminIndexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="adminPages/base" />

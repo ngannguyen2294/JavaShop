@@ -1,51 +1,50 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Mar 29, 2017 4:38:48 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="models.Products" table="products" catalog="javashop" optimistic-lock="version">
-        <id name="productId" type="java.lang.Integer">
-            <column name="ProductID" />
-            <generator class="identity" />
-        </id>
-        <many-to-one name="categories" class="models.Categories" fetch="select">
-            <column name="CategoryID" />
-        </many-to-one>
-        <many-to-one name="suppliers" class="models.Suppliers" fetch="select">
-            <column name="SupplierID" />
-        </many-to-one>
-        <property name="productName" type="string">
-            <column name="ProductName" length="40" not-null="true" />
-        </property>
-        <property name="quantityPerUnit" type="string">
-            <column name="QuantityPerUnit" length="20" />
-        </property>
-        <property name="unitPrice" type="big_decimal">
-            <column name="UnitPrice" precision="10" scale="4" />
-        </property>
-        <property name="unitsInStock" type="java.lang.Short">
-            <column name="UnitsInStock" />
-        </property>
-        <property name="unitsOnOrder" type="java.lang.Short">
-            <column name="UnitsOnOrder" />
-        </property>
-        <property name="reorderLevel" type="java.lang.Short">
-            <column name="ReorderLevel" />
-        </property>
-        <property name="discontinued" type="boolean">
-            <column name="Discontinued" not-null="true" />
-        </property>
-        <property name="image" type="string">
-            <column name="Image" not-null="true" />
-        </property>
-        <property name="unitPriceSale" type="int">
-            <column name="UnitPriceSale" not-null="false" />
-        </property>
-        <set name="orderdetailses" table="orderdetails" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ProductID" not-null="true" />
-            </key>
-            <one-to-many class="models.Orderdetails" />
-        </set>
-    </class>
+  <class catalog="javashop" name="models.Products" optimistic-lock="version" table="products">
+    <id name="productId" type="java.lang.Integer">
+      <column name="ProductID"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="models.Categories" fetch="select" name="categories">
+      <column name="CategoryID"/>
+    </many-to-one>
+    <many-to-one class="models.Suppliers" fetch="select" name="suppliers">
+      <column name="SupplierID"/>
+    </many-to-one>
+    <property name="productName" type="string">
+      <column length="40" name="ProductName" not-null="true"/>
+    </property>
+    <property name="quantityPerUnit" type="string">
+      <column length="20" name="QuantityPerUnit"/>
+    </property>
+    <property name="unitPrice" type="int">
+      <column name="UnitPrice" not-null="false"/>
+    </property>
+    <property name="unitsInStock" type="java.lang.Short">
+      <column name="UnitsInStock"/>
+    </property>
+    <property name="unitsOnOrder" type="java.lang.Short">
+      <column name="UnitsOnOrder"/>
+    </property>
+    <property name="reorderLevel" type="java.lang.Short">
+      <column name="ReorderLevel"/>
+    </property>
+    <property name="description" type="string">
+      <column name="Description" not-null="true"/>
+    </property>
+    <property name="image" type="string">
+      <column name="Image" not-null="true"/>
+    </property>
+    <property name="unitPriceSale" type="int">
+      <column name="UnitPriceSale" not-null="false"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="orderdetailses" table="orderdetails">
+      <key>
+        <column name="ProductID" not-null="true"/>
+      </key>
+      <one-to-many class="models.Orderdetails"/>
+    </set>
+  </class>
 </hibernate-mapping>

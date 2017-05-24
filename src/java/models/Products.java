@@ -17,11 +17,11 @@ public class Products  implements java.io.Serializable {
      private Suppliers suppliers;
      private String productName;
      private String quantityPerUnit;
-     private BigDecimal unitPrice;
+     private int unitPrice;
      private Short unitsInStock;
      private Short unitsOnOrder;
      private Short reorderLevel;
-     private boolean discontinued;
+     private String description;
      private String image;
      private int unitPriceSale;
      private Set orderdetailses = new HashSet(0);
@@ -32,13 +32,13 @@ public class Products  implements java.io.Serializable {
     }
 
 	
-    public Products(String productName, boolean discontinued, String image, int unitPriceSale) {
+    public Products(String productName, String discontinued, String image, int unitPriceSale) {
         this.productName = productName;
-        this.discontinued = discontinued;
+        this.description = description;
         this.image = image;
         this.unitPriceSale = unitPriceSale;
     }
-    public Products(Categories categories, Suppliers suppliers, String productName, String quantityPerUnit, BigDecimal unitPrice, Short unitsInStock, Short unitsOnOrder, Short reorderLevel, boolean discontinued, String image, int unitPriceSale, Set orderdetailses) {
+    public Products(Categories categories, Suppliers suppliers, String productName, String quantityPerUnit, int unitPrice, Short unitsInStock, Short unitsOnOrder, Short reorderLevel, String description, String image, int unitPriceSale, Set orderdetailses) {
        this.categories = categories;
        this.suppliers = suppliers;
        this.productName = productName;
@@ -47,7 +47,7 @@ public class Products  implements java.io.Serializable {
        this.unitsInStock = unitsInStock;
        this.unitsOnOrder = unitsOnOrder;
        this.reorderLevel = reorderLevel;
-       this.discontinued = discontinued;
+       this.description = description;
        this.image = image;
        this.unitPriceSale = unitPriceSale;
        this.orderdetailses = orderdetailses;
@@ -70,6 +70,14 @@ public class Products  implements java.io.Serializable {
     public Suppliers getSuppliers() {
         return this.suppliers;
     }
+
+    public int getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(int unitPrice) {
+        this.unitPrice = unitPrice;
+    }
     
     public void setSuppliers(Suppliers suppliers) {
         this.suppliers = suppliers;
@@ -88,13 +96,7 @@ public class Products  implements java.io.Serializable {
     public void setQuantityPerUnit(String quantityPerUnit) {
         this.quantityPerUnit = quantityPerUnit;
     }
-    public BigDecimal getUnitPrice() {
-        return this.unitPrice;
-    }
     
-    public void setUnitPrice(BigDecimal unitPrice) {
-        this.unitPrice = unitPrice;
-    }
     public Short getUnitsInStock() {
         return this.unitsInStock;
     }
@@ -116,13 +118,15 @@ public class Products  implements java.io.Serializable {
     public void setReorderLevel(Short reorderLevel) {
         this.reorderLevel = reorderLevel;
     }
-    public boolean isDiscontinued() {
-        return this.discontinued;
+
+    public String getDescription() {
+        return description;
     }
-    
-    public void setDiscontinued(boolean discontinued) {
-        this.discontinued = discontinued;
+
+    public void setDescription(String description) {
+        this.description = description;
     }
+
     public String getImage() {
         return this.image;
     }
