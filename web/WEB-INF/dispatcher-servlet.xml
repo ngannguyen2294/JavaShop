@@ -26,22 +26,24 @@
                 <prop key="cart.htm">cartController</prop>
                 <prop key="admin/admin.htm">adminIndexController</prop>
                 <prop key="admin/logout.htm">adminPageController</prop>
-                    <prop key="admin/category.htm">categoryController</prop>
+                <prop key="admin/category.htm">categoryController</prop>
                 <prop key="admin/login.htm">loginPageController</prop>
                 <prop key="admin/actionlogin.htm">adminPageController</prop>
                 <prop key="image/upload.htm">ImageUploadController</prop>
-                   <prop key="image/uploadToBase64.htm">ImageUploadController</prop>
+                <prop key="image/uploadToBase64.htm">ImageUploadController</prop>
                 
-                    <prop key="admin/order.htm">orderPageController</prop>
+                <prop key="admin/order.htm">orderPageController</prop>
+                <prop key="admin/orderdetails.htm">orderdetailsController</prop>
+                <prop key="admin/orderdetailsView.htm">orderdetailsViewController</prop>
                 <prop key="admin/productlist.htm">productPageController</prop>
-                   <prop key="admin/updateProduct.htm">productBussinessController</prop>
-                      <prop key="admin/updateCategory.htm">productBussinessController</prop>
-                       <prop key="admin/deleteCategory.htm">productBussinessController</prop>
-                   <prop key="admin/deleteProduct.htm">productBussinessController</prop>
-                    <prop key="admin/addProduct.htm">addProduct</prop>
-                     <prop key="admin/addCategory.htm">addCategory</prop>
-                     <prop key="admin/addProductAction.htm">productBussinessController</prop>
-                     <prop key="admin/addCategoryAction.htm">productBussinessController</prop>
+                <prop key="admin/updateProduct.htm">productBussinessController</prop>
+                <prop key="admin/updateCategory.htm">productBussinessController</prop>
+                <prop key="admin/deleteCategory.htm">productBussinessController</prop>
+                <prop key="admin/deleteProduct.htm">productBussinessController</prop>
+                <prop key="admin/addProduct.htm">addProduct</prop>
+                <prop key="admin/addCategory.htm">addCategory</prop>
+                <prop key="admin/addProductAction.htm">productBussinessController</prop>
+                <prop key="admin/addCategoryAction.htm">productBussinessController</prop>
             </props>
         </property>
     </bean>
@@ -56,11 +58,14 @@
     <bean id="CartController"
           class="controller.CartController"
     />
-     <bean id="productBussinessController"
-          class="controller.ProductController"
+    <bean id="productBussinessController"
+           class="controller.ProductController"
     />
-      <bean id="ImageUploadController"
-          class="controller.ImageUploadController"
+    <bean id="ImageUploadController"
+            class="controller.ImageUploadController"
+    />
+    <bean id="orderdetailsController"
+                class="controller.OrderController"
     />
 
     <!--
@@ -90,14 +95,18 @@
     <bean name="addProduct"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="adminPages/pages/product/addProduct" />
-      <bean name="addCategory"
-          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-          p:viewName="adminPages/pages/product/addCategory" />
+    <bean name="addCategory"
+            class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+            p:viewName="adminPages/pages/product/addCategory" />
     <bean name="categoryController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="adminPages/pages/product/category" />
-        <bean name="orderPageController"
-          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-          p:viewName="adminPages/pages/order/list" />
+    <bean name="orderPageController"
+              class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+              p:viewName="adminPages/pages/order/list" />
+       <bean name="orderdetailsViewController"
+              class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+              p:viewName="adminPages/pages/order/details" />
+    
     
 </beans>

@@ -92,8 +92,7 @@
 
                                                 <th>Order Date</th>
                                                 <th>Total</th> 
-                                                <th>Edit</th>
-                                                <th>Delete</th>
+                                                <th>View</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -108,8 +107,7 @@
                                                             + "<td class='date'>" + order.getCustomers().getContactName() + "</td>"
                                                             + "<td class='date'>" + order.getOrderDate() + "</td>"
                                                             + "<td class='total'>" + Orders.GetTotalAmount(order) + "</td>"
-                                                            + "<td class='catesupID' orderID='" + order.getOrderId() + "' onclick='showModalEdit(this)'><a href='#' class='tooltip-success' data-rel='tooltip' title='Edit'><span class='green'><i class='ace-icon fa fa-pencil-square-o bigger-120'></i></span></a></td>"
-                                                            + "<td class='deleteProduct' orderID='" + order.getOrderId() + "' onclick='' ><a data-href='' class='tooltip-error' data-toggle='modal' data-target='#confirm-delete' data-rel='tooltip' title='Delete'><span class='red'><i class='ace-icon fa fa-trash-o bigger-120'></i></span></a></td>"
+                                                            + "<td class='catesupID' orderID='" + order.getOrderId() + "'><a href='#' class='tooltip-success' data-rel='tooltip' title='View'><span class='green'><i class='ace-icon fa fa-eye bigger-120'></i></span></a></td>"
                                                             + "</tr>");
                                                 }
                                             } catch (Exception ex) {
@@ -124,90 +122,15 @@
 
                         </div>  </div> </div></div>
         </div>
-        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        Warning!
-                    </div>
-                    <div class="modal-body">
-                        Are you sure want to delete this order?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-danger btn-ok">Delete</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="imageModal" class="modal2">
-            <span class="close" id="closeImage">&times;</span>
-            <img class="modal-content2" id="img01">
-            <div id="caption"></div>
-        </div>
-
-        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" 
-             aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <!-- Modal Header -->
-                    <div class="modal-header">
-                        <button type="button" class="close" 
-                                data-dismiss="modal">
-                            <span aria-hidden="true">&times;</span>
-                            <span class="sr-only">Close</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">
-                            Edit Product
-                        </h4>
-                    </div>
-
-                    <!-- Modal Footer -->
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default"
-                                data-dismiss="modal">
-                            Close
-                        </button>
-                        <button type="button" id="submit" class="btn btn-primary">
-                            Save changes
-                        </button>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
+     
+    
 
 
 
         <!-- inline scripts related to this page -->
         <script type="text/javascript">
-            function uploadImage() {
-                var data = new FormData();
-                data.append('file', $('#imageFile')[0].files[0]);
-                $.ajax({
-                    url: '../image/upload.htm', // url where to submit the request
-                    type: "POST", // type of action POST || GET
-                    enctype: 'multipart/form-data',
-                    processData: false, // tell jQuery not to process the data
-                    contentType: false, // tell jQuery not to set contentType
-                    data: data, // post data || get data
-                    success: function (data) {
-                        $("#imagePath").val(data);
-                        $("#image").attr('src', "../" + data);
-                    }
-                })
-            }
             var myTable =
                     $('#dynamic-table').DataTable();
-            function deleteProduct() {
-
-                myTable
-                        .row($(this).parents('tr'))
-                        .remove()
-                        .draw();
-            }
-            ;
             $('#dynamic-table').on('click', 'tr', function (e) {
                 if ($(this).hasClass('selected')) {
                     //   $(this).removeClass('selected');
@@ -233,70 +156,6 @@
                         }
                     }})
             });
-
-            function selectCate(obj)
-            {
-                $("#categoryID").val(($(obj).find(":selected").attr("cateID")));
-            }
-            function selectSupplier(obj)
-            {
-                $("#supplierID").val(($(obj).find(":selected").attr("supID")));
-            }
-
-            function showModalEdit(obj)
-            {
-                var orderID = $(obj).attr("orderID");
-                $("#imagePath").val($("#orderID-" + orderID + " td.image img").attr('src'));
-                $("#image").attr('src', $("#orderID-" + orderID + " td.image img").attr('src'));
-                var cateID = $(obj).attr("cateID");
-                var supID = $(obj).attr("supID");
-                $('#editModal').modal('show');
-                var table = $('#dynamic-table').DataTable();
-                $('#dynamic-table').on('click', 'tr', function () {
-                    var data = table.row(this).data();
-                    $("#orderID").val(orderID);
-                    $("#categoryID").val(cateID);
-                    $("#supplierID").val(supID);
-                    $("#orderName").val($("#orderID-" + orderID + " td.ordername").text());
-                    $("#supplier").val($("#orderID-" + orderID + " td.supplier").text());
-                    $("#category").val($("#orderID-" + orderID + " td.category").text());
-                    $("#quantityperunit").val($("#orderID-" + orderID + " td.quantityperunit").text());
-                    $("#unitprice").val($("#orderID-" + orderID + " td.unitprice").text());
-                    $("#unitinstock").val($("#orderID-" + orderID + " td.unitinstock").text());
-                    $("#unitonorder").val($("#orderID-" + orderID + " td.unitonorder").text());
-                });
-                $("#submit").on('click', function () {
-                    console.log($("#orderform").serialize());
-                    $.ajax({
-                        url: '../admin/updateProduct.htm', // url where to submit the request
-                        type: "POST", // type of action POST || GET
-
-                        data: $("#orderform").serialize(), // post data || get data
-                        success: function (result) {
-                            var data = JSON.parse(result);
-                            if (data.status == 'ok')
-                            {
-                                $('#editModal').modal('hide');
-                                $("#orderID-" + orderID + " td.ordername").text($("#orderName").val());
-                                $("#orderID-" + orderID + " td.supplier").text($("#supplier").val());
-                                $("#orderID-" + orderID + " td.category").text($("#category").val());
-                                $("#orderID-" + orderID + " td.quantityperunit").text($("#quantityperunit").val());
-                                $("#orderID-" + orderID + " td.unitprice").text($("#unitprice").val());
-                                $("#orderID-" + orderID + " td.unitinstock").text($("#unitinstock").val());
-                                $("#orderID-" + orderID + " td.unitonorder").text($("#unitonorder").val());
-                                //  $("#orderID-" + orderID + " td.image").html();
-                                $("#orderID-" + orderID + " td.catesupID").attr('cateID', $("#categoryID").val()).attr('supID', $("#supplierID").val());
-                                $("tr.selected td.image img").attr('src', $("#image").attr('src'));
-                            }
-                        },
-                        error: function (xhr, resp, text) {
-                            console.log(xhr.responseText);
-                        }
-                    })
-                });
-            }
-
-
             jQuery(function ($) {
 
 
@@ -565,31 +424,5 @@
                 }
             }
         </style>
-
-
-
-
-        <script>
-            function showImage(obj)
-            {
-                // Get the modal
-                var modal = document.getElementById('imageModal');
-                // Get the image and insert it inside the modal - use its "alt" text as a caption
-
-                var modalImg = document.getElementById("img01");
-                var captionText = document.getElementById("caption");
-                modal.style.display = "block";
-                modalImg.src = obj.src;
-                captionText.innerHTML = obj.alt;
-                // Get the <span> element that closes the modal
-
-            }
-
-
-            // When the user clicks on <span> (x), close the modal
-            $("#closeImage").click(function () {
-                $("#imageModal").css("display", "none");
-            });
-        </script>
     </body>
 </html>

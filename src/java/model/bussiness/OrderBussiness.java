@@ -33,7 +33,13 @@ public class OrderBussiness {
         List<Orders> list = query.list();
         return list;
     }
-
+  public Orders GetOrderbyID(String OrderID) {
+        SQLQuery query = session.createSQLQuery("select * from orders where OrderID = :orderid");
+        query.addEntity(Orders.class);
+         query.setParameter("orderid", OrderID);
+        List<Orders> list = query.list();
+        return list.get(0);
+    }
     public String GetStatusLabelHtml(String status) {
         switch (status) {
             case "Pending":
