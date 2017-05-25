@@ -124,8 +124,7 @@
                             </thead>
                             <tbody>
                             <c:forEach items="${order.getOrderdetailses()}" var="orderdetails">
-                                <tr>  <td>1</td>  
-                              </tr>
+                               ${orderdetails.getQuantity()}
                             </c:forEach>
                             </tbody> 
                         </table>

@@ -2,15 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/J2eeShop/web/WEB-INF/storePages/product.jsp</file>
-            <file>file:/D:/J2eeShop/web/WEB-INF/storePages/shop.jsp</file>
-            <file>file:/D:/J2eeShop/src/java/models/Cart.java</file>
-            <file>file:/D:/J2eeShop/web/WEB-INF/storePages/home.jsp</file>
-            <file>file:/D:/J2eeShop/web/WEB-INF/storePages/cart.jsp</file>
-            <file>file:/D:/J2eeShop/src/java/controller/CartController.java</file>
-            <file>file:/D:/J2eeShop/src/java/model/bussiness/ProductBussiness.java</file>
-        </group>
         <group name="JavaShop">
             <file>file:/D:/Study/J2EE/JavaShop/src/java/hibernate.cfg.xml</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/storePages/home.jsp</file>
@@ -18,19 +9,13 @@
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/product/category.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/controller/LoginController.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/applicationContext.xml</file>
-            <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Orderdetails.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/hibernate.reveng.xml</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/product/addProduct.jsp</file>
-            <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Customers.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/utils/shaSecure.java</file>
-            <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Employees.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Categories.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Orders.hbm.xml</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/login.jsp</file>
-            <file>file:/D:/Study/J2EE/JavaShop/src/java/models/OrderdetailsId.java</file>
-            <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/order/details.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/controller/ImageUploadController.java</file>
-            <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/storePages/product.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/dispatcher-servlet.xml</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Products.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/controller/ProductController.java</file>
@@ -41,10 +26,18 @@
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/product/list.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/navbar.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/product/addCategory.jsp</file>
-            <file>file:/D:/Study/J2EE/JavaShop/src/java/controller/OrderController.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/model/bussiness/ProductBussiness.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/header.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/sidebar.jsp</file>
+        </group>
+        <group>
+            <file>file:/D:/J2eeShop/web/WEB-INF/storePages/product.jsp</file>
+            <file>file:/D:/J2eeShop/web/WEB-INF/storePages/shop.jsp</file>
+            <file>file:/D:/J2eeShop/src/java/models/Cart.java</file>
+            <file>file:/D:/J2eeShop/web/WEB-INF/storePages/home.jsp</file>
+            <file>file:/D:/J2eeShop/web/WEB-INF/storePages/cart.jsp</file>
+            <file>file:/D:/J2eeShop/src/java/controller/CartController.java</file>
+            <file>file:/D:/J2eeShop/src/java/model/bussiness/ProductBussiness.java</file>
         </group>
     </open-files>
 </project-private>
