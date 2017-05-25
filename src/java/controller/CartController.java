@@ -39,22 +39,17 @@ public class CartController {
     public String addCart(HttpServletRequest request, HttpServletResponse response) {
 
         HttpSession session = request.getSession();
-        String command = request.getParameter("command");
         String productid = request.getParameter("productid");
         Cart cart = (Cart) session.getAttribute("cart");
         try {
             List<Products> list = productDAO.GetProductByID(productid);
             int idproduct = Integer.parseInt(productid);
             Products products = list.get(0);
-            switch (command) {
-                case "plus":
-                    if (cart.getCartItems().containsKey(idproduct)) {
-                        cart.insertToCart(idproduct, new CartItem(products,
-                                cart.getCartItems().get(idproduct).getQuantity()));
-                    } else {
-                        cart.insertToCart(idproduct, new CartItem(products, 1));
-                    }
-                    break;
+            if (cart.getCartItems().containsKey(idproduct)) {
+                cart.insertToCart(idproduct, new CartItem(products,
+                        cart.getCartItems().get(idproduct).getQuantity()));
+            } else {
+                cart.insertToCart(idproduct, new CartItem(products, 1));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,6 +60,7 @@ public class CartController {
     }
 
     @RequestMapping(value = "addCart.htm", method = RequestMethod.POST)
+    @ResponseBody
     public String addCartPost(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "productid") String productid, @RequestParam(value = "quantity") String quantity) {
         HttpSession session = request.getSession();
         Cart cart = (Cart) session.getAttribute("cart");
@@ -81,9 +77,68 @@ public class CartController {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return "redirect:/home.htm";
+            return "fail";
+        }
+        String value = String.valueOf(cart.total());
+
+        session.setAttribute("cart", cart);
+        if (value.length() > 6) {
+            value = value.replaceFirst("(\\d{1,3})(\\d{3})(\\d{3})", "$1,$2,$3");
+        } else if (value.length() >= 5 && value.length() <= 6) {
+            value = value.replaceFirst("(\\d{2,3})(\\d{3})", "$1,$2");
+        } else {
+            value = value.replaceFirst("(\\d{1})(\\d+)", "$1,$2");
+        }
+        String json = "{\"price\":\"" + value + "\",\"total\":\"" + cart.countItem() + "\",\"mes\":\"Add to card success. Please check your Cart\"}";
+        return json;
+    }
+
+    @RequestMapping(value = "removeCart.htm", method = RequestMethod.GET)
+    public String removeCart(HttpServletRequest request, HttpServletResponse response) {
+
+        HttpSession session = request.getSession();
+        String productid = request.getParameter("productid");
+        Cart cart = (Cart) session.getAttribute("cart");
+        try {
+            List<Products> list = productDAO.GetProductByID(productid);
+            int idproduct = Integer.parseInt(productid);
+            cart.removeToCart(idproduct);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/cart.htm";
         }
         session.setAttribute("cart", cart);
-        return "redirect:/home.htm";
+        return "redirect:/cart.htm";
+    }
+
+    @RequestMapping(value = "editCart.htm", method = RequestMethod.POST)
+    @ResponseBody
+    public String editCart(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "productid") String productid, @RequestParam(value = "value") String quantity) {
+
+        HttpSession session = request.getSession();
+        Cart cart = (Cart) session.getAttribute("cart");
+        try {
+            List<Products> list = productDAO.GetProductByID(productid);
+            int idproduct = Integer.parseInt(productid);
+            int quantityparse = Integer.parseInt(quantity);
+            Products products = list.get(0);
+            cart.editToCart(idproduct, new CartItem(products, quantityparse));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return String.valueOf(cart.total());
+        }
+        String value = String.valueOf(cart.total());
+
+        session.setAttribute("cart", cart);
+        if (value.length() > 6) {
+            value = value.replaceFirst("(\\d{1,3})(\\d{3})(\\d{3})", "$1,$2,$3");
+        } else if (value.length() >= 5 && value.length() <= 6) {
+            value = value.replaceFirst("(\\d{2,3})(\\d{3})", "$1,$2");
+        } else {
+            value = value.replaceFirst("(\\d{1})(\\d+)", "$1,$2");
+        }
+        return value;
     }
 }

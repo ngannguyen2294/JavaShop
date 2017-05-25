@@ -33,11 +33,9 @@
         <group>
             <file>file:/D:/J2eeShop/web/WEB-INF/storePages/product.jsp</file>
             <file>file:/D:/J2eeShop/web/WEB-INF/storePages/shop.jsp</file>
-            <file>file:/D:/J2eeShop/src/java/models/Cart.java</file>
-            <file>file:/D:/J2eeShop/web/WEB-INF/storePages/home.jsp</file>
             <file>file:/D:/J2eeShop/web/WEB-INF/storePages/cart.jsp</file>
+            <file>file:/D:/J2eeShop/web/WEB-INF/storePages/banner.jsp</file>
             <file>file:/D:/J2eeShop/src/java/controller/CartController.java</file>
-            <file>file:/D:/J2eeShop/src/java/model/bussiness/ProductBussiness.java</file>
         </group>
     </open-files>
 </project-private>

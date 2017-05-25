@@ -152,8 +152,8 @@
                                                 <div class="quantity">
                                                     <input type="number" size="4" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
                                                 </div>
-                                                <input type="hidden" value="<%=currentProduct.getProductId()%>" name="productid" >
-                                                <button class="add_to_cart_button" type="submit">Add to cart</button>
+                                                <input class="productid" type="hidden" value="<%=currentProduct.getProductId()%>" name="productid" >
+                                                <button class="add_to_cart_button" type="button">Add to cart</button>
                                             </form>
                                             <div class="product-inner-category">
                                                 <p>Category: <a href=""><%=currentProduct.getCategories().getCategoryName()%></a></p>
@@ -208,5 +208,21 @@
                 </div>
             </div>
             <jsp:include page="footer.jsp"></jsp:include>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $('.add_to_cart_button').click(function () {
+                        var getqty = $(this).closest('.cart').find('.qty');
+                        var getid = $(this).closest('.cart').find('.productid');
+                        var qty = getqty.val();
+                        var productid = getid.val();
+                        $.post("addCart.htm", {productid: productid, quantity: qty}, function (data) {
+                            var obj = jQuery.parseJSON(data);
+                            $('.total').html(obj.price + "<u>đ</u>");
+                            $('.product-count').html(obj.total);
+                            alert(obj.mes);
+                        });
+                    });
+                });
+            </script>
     </body>
 </html>
