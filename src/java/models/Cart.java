@@ -12,7 +12,7 @@ import java.util.Map;
  *
  * @author luan.nt
  */
-public class Cart implements java.io.Serializable{
+public class Cart implements java.io.Serializable {
 
     private HashMap<Integer, CartItem> cartItems;
 
@@ -35,8 +35,8 @@ public class Cart implements java.io.Serializable{
     public void insertToCart(int key, CartItem item) {
         boolean bln = cartItems.containsKey(key);
         if (bln) {
-            int quantity_old = item.getQuantity();
-            item.setQuantity(quantity_old + cartItems.get(key).getQuantity());
+            int quantity_new = item.getQuantity();
+            item.setQuantity(quantity_new + cartItems.get(key).getQuantity());
             cartItems.put(item.getProduct().getProductId(), item);
         } else {
             cartItems.put(item.getProduct().getProductId(), item);
@@ -50,6 +50,13 @@ public class Cart implements java.io.Serializable{
         }
     }
 
+    public void editToCart(int key, CartItem item) {
+        boolean bln = cartItems.containsKey(key);
+        if (bln) {
+            cartItems.put(item.getProduct().getProductId(), item);
+        }
+    }
+
     public int countItem() {
         int count = 0;
         count = cartItems.size();
@@ -59,7 +66,11 @@ public class Cart implements java.io.Serializable{
     public int total() {
         int count = 0;
         for (Map.Entry<Integer, CartItem> list : cartItems.entrySet()) {
-            count += list.getValue().getProduct().getUnitPrice()* list.getValue().getQuantity();
+            if (list.getValue().getProduct().getUnitPriceSale() > 0) {
+                count += list.getValue().getProduct().getUnitPriceSale() * list.getValue().getQuantity();
+            } else {
+                count += list.getValue().getProduct().getUnitPrice() * list.getValue().getQuantity();
+            }
         }
         return count;
     }

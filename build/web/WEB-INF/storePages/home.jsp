@@ -124,7 +124,7 @@
                                     <div class="product-f-image">
                                         <img src="<%=product.getImage()%>" alt="">
                                         <div class="product-hover">
-                                            <a href="addCart.htm?command=plus&productid=<%=product.getProductId()%>" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                            <a href="addCart.htm?productid=<%=product.getProductId()%>" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                             <a href="product.htm?category=<%=product.getCategories().getCategoryId()%>&product=<%=product.getProductId()%>" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>

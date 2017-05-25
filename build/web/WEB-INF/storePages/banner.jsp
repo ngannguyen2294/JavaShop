@@ -33,7 +33,7 @@
 
                     <div class="col-sm-6">
                         <div class="shopping-item">
-                            <a href="cart.htm">Cart - <span class="cart-amunt">
+                            <a href="cart.htm">Cart - <span id="total" class="total cart-amunt">
                                     <fmt:formatNumber type = "number" maxFractionDigits = "0" value = "<%=cart.total()%>" /><u>đ</u></span>
                                 <i class="fa fa-shopping-cart"></i>
                                 <span class="product-count"><%=cart.countItem()%></span>

@@ -23,6 +23,8 @@
                 <prop key="shop.htm">shopController</prop>
                 <prop key="product.htm">productController</prop>
                 <prop key="addCart.htm">CartController</prop>
+                <prop key="editCart.htm">CartController</prop>
+                <prop key="removeCart.htm">CartController</prop>
                 <prop key="cart.htm">cartController</prop>
                 <prop key="admin/admin.htm">adminIndexController</prop>
                 <prop key="admin/logout.htm">adminPageController</prop>
