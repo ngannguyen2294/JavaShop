@@ -64,6 +64,7 @@
 
                                 <div class="clearfix">
                                     <div class="pull-right tableTools-container"></div>
+                                     <button class="btn btn-primary" onclick="location.href = '../admin/addCategory.htm'"><i class="fa fa-plus" aria-hidden="true"></i> Add New Order</button>
                                 </div>
 
                                 <div class="table-header">
@@ -107,7 +108,7 @@
                                                             + "<td class='date'>" + order.getCustomers().getContactName() + "</td>"
                                                             + "<td class='date'>" + order.getOrderDate() + "</td>"
                                                             + "<td class='total'>" + Orders.GetTotalAmount(order) + "</td>"
-                                                            + "<td class='catesupID' orderID='" + order.getOrderId() + "'><a href='#' class='tooltip-success' data-rel='tooltip' title='View'><span class='green'><i class='ace-icon fa fa-eye bigger-120'></i></span></a></td>"
+                                                            + "<td class='catesupID' orderID='" + order.getOrderId() + "'><a href='../admin/orderdetails.htm?OrderID="+order.getOrderId() +"' class='tooltip-success' data-rel='tooltip' title='View'><span class='green'><i class='ace-icon fa fa-eye bigger-120'></i></span></a></td>"
                                                             + "</tr>");
                                                 }
                                             } catch (Exception ex) {

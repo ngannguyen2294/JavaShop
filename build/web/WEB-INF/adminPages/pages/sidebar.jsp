@@ -66,7 +66,7 @@
         </li>
         <li class="">
             <a href="../admin/category.htm">
-                <i class="menu-icon fa fa-list"></i>
+                <i class="menu-icon fa fa-folder-open"></i>
                 <span class="menu-text">
                    Category
                 </span>
