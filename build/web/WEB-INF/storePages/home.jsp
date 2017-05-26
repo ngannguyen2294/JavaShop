@@ -63,8 +63,8 @@
                                         %>
                                     </ul>
                                 </li>
-                                <li><a href="#">Cart</a></li>
-                                <li><a href="#">Checkout</a></li>
+                                <li><a href="cart.htm">Cart</a></li>
+                                <li><a href="checkout.htm">Checkout</a></li>
                             </ul>         
                         </div>  
                     </div>
@@ -124,7 +124,8 @@
                                     <div class="product-f-image">
                                         <img src="<%=product.getImage()%>" alt="">
                                         <div class="product-hover">
-                                            <a href="addCart.htm?productid=<%=product.getProductId()%>" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                            <input class="productid" type="hidden" id="productid" value="<%=product.getProductId()%>">
+                                            <a href="#addCart" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                             <a href="product.htm?category=<%=product.getCategories().getCategoryId()%>&product=<%=product.getProductId()%>" class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                         </div>
                                     </div>
@@ -170,5 +171,19 @@
             </div>
         </div> <!-- End brands area -->
         <jsp:include page="footer.jsp"></jsp:include>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('a[href="#addCart"]').click(function () {
+                    var getid = $(this).closest('.product-hover').find('.productid');
+                    var productid = getid.val();
+                    $.post("addCart.htm", {productid: productid, quantity: 1}, function (data) {
+                        var obj = jQuery.parseJSON(data);
+                        $('.total').html(obj.price + "<u>đ</u>");
+                        $('.product-count').html(obj.total);
+                        alert(obj.mes);
+                    });
+                });
+            });
+        </script>
     </body>
 </html>

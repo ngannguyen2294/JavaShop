@@ -50,7 +50,7 @@
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
                                 <li><a href="home.htm">Home</a></li>
-                                <li class="dropdown active">
+                                <li class="dropdown">
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="shop.htm">Category
                                         <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
@@ -64,8 +64,8 @@
                                             %>
                                     </ul>
                                 </li>
-                                <li><a href="cart.htm">Cart</a></li>
-                                <li><a href="#">Checkout</a></li>
+                                <li class="active"><a href="cart.htm">Cart</a></li>
+                                <li><a href="checkout.htm">Checkout</a></li>
                             </ul>         
                         </div>  
                     </div>
@@ -169,7 +169,6 @@
                                             %>
                                             <tr>
                                                 <td class="actions" colspan="6">
-                                                    <input type="submit" value="Update Cart" name="update_cart" class="button">
                                                     <input type="submit" value="Checkout" name="proceed" class="checkout-button button alt wc-forward">
                                                 </td>
                                             </tr>
@@ -217,7 +216,7 @@
             $(document).ready(function () {
                 $('.minus').click(function () {
                     var getqty = $(this).closest('.quantity').find('.qty');
-                    var getid  = $(this).closest('.quantity').find('.productid');
+                    var getid = $(this).closest('.quantity').find('.productid');
                     var minusqty = parseInt(getqty.val()) - 1;
                     if (minusqty <= 0) {
                         minusqty = 1
@@ -226,18 +225,23 @@
                     getqty.val(minusqty);
                     var productid = getid.val();
                     $.post("editCart.htm", {productid: productid, value: minusqty}, function (data) {
-                        $('.total').html(data + "<u>đ</u>");
+                        var obj = jQuery.parseJSON(data);
+                        $('.total').html(obj.price + "<u>đ</u>");
+                        $('.product-count').html(obj.total);
                     });
                 });
+                
                 $('.plus').click(function () {
                     var getqty = $(this).closest('.quantity').find('.qty');
-                    var getid  = $(this).closest('.quantity').find('.productid');
+                    var getid = $(this).closest('.quantity').find('.productid');
                     var plusqty = parseInt(getqty.val()) + 1;
                     getqty.val(plusqty);
 
                     var productid = getid.val();
                     $.post("editCart.htm", {productid: productid, value: plusqty}, function (data) {
-                        $('.total').html(data + "<u>đ</u>");
+                        var obj = jQuery.parseJSON(data);
+                        $('.total').html(obj.price + "<u>đ</u>");
+                        $('.product-count').html(obj.total);
                     });
                 });
             });

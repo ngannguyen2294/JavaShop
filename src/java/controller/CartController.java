@@ -36,6 +36,7 @@ public class CartController {
     private final ProductBussiness productDAO = new ProductBussiness();
 
     @RequestMapping(value = "addCart.htm", method = RequestMethod.GET)
+    @ResponseBody
     public String addCart(HttpServletRequest request, HttpServletResponse response) {
 
         HttpSession session = request.getSession();
@@ -53,10 +54,10 @@ public class CartController {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return "redirect:/home.htm";
+            return "fail";
         }
         session.setAttribute("cart", cart);
-        return "redirect:/home.htm";
+        return "success";
     }
 
     @RequestMapping(value = "addCart.htm", method = RequestMethod.POST)
@@ -139,6 +140,7 @@ public class CartController {
         } else {
             value = value.replaceFirst("(\\d{1})(\\d+)", "$1,$2");
         }
-        return value;
+        String json = "{\"price\":\"" + value + "\",\"total\":\"" + cart.countItem() + "\"}";
+        return json;
     }
 }

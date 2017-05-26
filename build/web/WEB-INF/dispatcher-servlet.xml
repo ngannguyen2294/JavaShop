@@ -26,6 +26,7 @@
                 <prop key="editCart.htm">CartController</prop>
                 <prop key="removeCart.htm">CartController</prop>
                 <prop key="cart.htm">cartController</prop>
+                <prop key="checkout.htm">checkoutController</prop>
                 <prop key="admin/admin.htm">adminIndexController</prop>
                 <prop key="admin/logout.htm">adminPageController</prop>
                 <prop key="admin/category.htm">categoryController</prop>
@@ -85,6 +86,10 @@
     <bean name="cartController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="storePages/cart" />
+    <bean name="checkoutController"
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="storePages/checkout" />
+    
     <bean name="adminIndexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="adminPages/base" />

@@ -59,7 +59,9 @@ public class Cart implements java.io.Serializable {
 
     public int countItem() {
         int count = 0;
-        count = cartItems.size();
+        for (Map.Entry<Integer, CartItem> list : cartItems.entrySet()) {
+            count += list.getValue().getQuantity();
+        }
         return count;
     }
 
