@@ -27,6 +27,8 @@
                 <prop key="removeCart.htm">CartController</prop>
                 <prop key="cart.htm">cartController</prop>
                 <prop key="checkout.htm">checkoutController</prop>
+                <prop key="gotoCheckout">CartController</prop>
+
                 <prop key="admin/admin.htm">adminIndexController</prop>
                 <prop key="admin/logout.htm">adminPageController</prop>
                 <prop key="admin/category.htm">categoryController</prop>

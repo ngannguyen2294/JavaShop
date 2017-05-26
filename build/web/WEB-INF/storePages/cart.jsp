@@ -169,7 +169,7 @@
                                             %>
                                             <tr>
                                                 <td class="actions" colspan="6">
-                                                    <input type="submit" value="Checkout" name="proceed" class="checkout-button button alt wc-forward">
+                                                    <a href="checkout.htm" value="Checkout" name="proceed" class="checkout-button button alt wc-forward">Checkout</a>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -230,7 +230,7 @@
                         $('.product-count').html(obj.total);
                     });
                 });
-                
+
                 $('.plus').click(function () {
                     var getqty = $(this).closest('.quantity').find('.qty');
                     var getid = $(this).closest('.quantity').find('.productid');

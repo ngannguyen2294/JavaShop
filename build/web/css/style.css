@@ -893,8 +893,6 @@ text-transform: uppercase;}
   top: -56px;
 }
 
-
-
 table.shop_table {
     border-bottom: 1px solid #ddd;
     border-right: 1px solid #ddd;
@@ -933,6 +931,17 @@ td.product-quantity div.quantity {
 }
 td.actions div.coupon {
     float: left;
+}
+td.actions a.checkout-button {
+    background: none repeat scroll 0 0 #5a88ca;
+    border: medium none;
+    color: #fff;
+    padding: 11px 25px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+td.actions a.checkout-button:hover {
+    background-color: #222
 }
 .cart-collaterals {
     overflow: hidden;

@@ -40,13 +40,6 @@
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/header.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/sidebar.jsp</file>
         </group>
-        <group>
-            <file>file:/D:/J2eeShop/web/WEB-INF/storePages/checkout.jsp</file>
-            <file>file:/D:/J2eeShop/web/WEB-INF/storePages/product.jsp</file>
-            <file>file:/D:/J2eeShop/web/WEB-INF/storePages/home.jsp</file>
-            <file>file:/D:/J2eeShop/src/java/models/Cart.java</file>
-            <file>file:/D:/J2eeShop/web/WEB-INF/storePages/cart.jsp</file>
-            <file>file:/D:/J2eeShop/src/java/controller/CartController.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
