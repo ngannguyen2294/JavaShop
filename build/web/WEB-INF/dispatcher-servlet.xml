@@ -28,7 +28,6 @@
                 <prop key="cart.htm">cartController</prop>
                 <prop key="checkout.htm">checkoutController</prop>
                 <prop key="gotoCheckout">CartController</prop>
-
                 <prop key="admin/admin.htm">adminIndexController</prop>
                 <prop key="admin/logout.htm">adminPageController</prop>
                 <prop key="admin/category.htm">categoryController</prop>
@@ -36,9 +35,10 @@
                 <prop key="admin/actionlogin.htm">adminPageController</prop>
                 <prop key="image/upload.htm">ImageUploadController</prop>
                 <prop key="image/uploadToBase64.htm">ImageUploadController</prop>
-                
+                  <prop key="admin">adminIndexController</prop>
                 <prop key="admin/order.htm">orderPageController</prop>
                 <prop key="admin/orderdetails.htm">orderdetailsController</prop>
+                  <prop key="admin/updateOrder.htm">orderdetailsController</prop>
                 <prop key="admin/orderdetailsView.htm">orderdetailsViewController</prop>
                 <prop key="admin/productlist.htm">productPageController</prop>
                 <prop key="admin/updateProduct.htm">productBussinessController</prop>

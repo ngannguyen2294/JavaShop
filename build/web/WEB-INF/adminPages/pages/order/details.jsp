@@ -56,23 +56,23 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <h3 class="header smaller lighter blue">Order Details</h3>
-  
-                                <form id="orderForm" role="form" method="post"    enctype="multipart/form-data" action="../admin/addProductAction.htm">
+
+                                <form id="orderForm" role="form" method="post"    enctype="multipart/form-data" action="../admin/updateOrder.htm">
                                     <div class="row">
                                         <div class="form-group col-md-4">
-                                            <input type="hidden" id="orderID" name="productID"/>
-                                            <label for="orderID">Order ID</label>
+                                            <input type="hidden" id="orderID" name="OrderID" value="${order.getOrderId()}"/>
+                                            <label for="OrderID">Order ID</label>
                                             <input type="text" class="form-control"
-                                                   id="orderID" name="orderID" value="${order.getOrderId()}" disabled/>
+                                                   id="orderID" name="OrderID" value="${order.getOrderId()}" disabled/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="customer">Customer</label>
                                             <input type="text" class="form-control"
-                                                   id="customer" name="customer" value="${order.getCustomers().getCompanyName()}"/>
+                                                   id="customer" name="customer" value="${order.getCustomers().getCompanyName()}" disabled/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="employee">Employee</label>
-                                            <input type="text" id="employee" name="employee" value="${order.getEmployees().getFirstName()}" class="form-control"/>
+                                            <input type="text" id="employee" name="employee" value="${order.getEmployees().getFirstName()}" class="form-control" disabled/>
                                         </div>
                                     </div>
 
@@ -90,9 +90,9 @@
                                             <label for="shipcity">Ship City</label>
                                             <input type="text" id="shipcity"  name="shipcity" value="${order.getShipCity()}" class="form-control"/>
                                         </div>
-                                        <div class="form-group col-md-4">
+                                        <div class="form-group col-md-6">
                                             <label for="status" class="col-md-2">Status</label>                                              
-                                            <select class="col-md-3" id="status" name="status">
+                                            <select class="col-md-4" id="status" name="status">
                                                 <option value="Pending" ${order.getStatus() =='Pending' ? 'selected' : ''}> Pending</option>
                                                 <option value="Processing" ${order.getStatus() =='Processing' ? 'selected' : ''} >Processing</option>
                                                 <option value="Complete" ${order.getStatus() =='Complete' ? 'selected' : ''}>Complete</option>
@@ -102,9 +102,9 @@
                                     <div class="row">
 
                                     </div>
+                                    <button type="submit" class="btn btn-primary" id="submit">Save</button>     </form> </div> 
+                        </div>
 
-                            </div>
-                            <button type="submit" class="btn btn-primary" id="submit">Save</button>     </form> </div> 
                         <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                             <thead>
                                 <tr>
@@ -124,29 +124,64 @@
                                 </tr>
                             </thead>
                             <tbody>
-<% int i=0; %>
+                                <% int i = 0; %>
                                 <c:forEach items="${order.getOrderdetailses()}" var="orderdetails">
                                     <tr>
                                         <td>   </td>
-                                        <td> <% i++; out.print(i); %></td>
+                                        <td> <% i++;
+                                            out.print(i);%></td>
                                         <td>  ${orderdetails.getProducts().getProductName()} </td>
                                         <td>      ${orderdetails.getUnitPrice()}</td>
                                         <td>      ${orderdetails.getQuantity()}</td>
                                         <td>      ${orderdetails.getDiscount()}</td>
-                                         <td>      ${orderdetails.getUnitPrice()*orderdetails.getQuantity()}</td>
+                                        <td>      ${orderdetails.getUnitPrice()*orderdetails.getQuantity()}</td>
                                     </tr>
                                 </c:forEach>
 
                             </tbody> 
+
                         </table>
                     </div> 
                 </div> 
             </div>  
         </div> 
-                                
-                                 <script type="text/javascript">
+
+        <script type="text/javascript">
             var myTable =
-                    $('#dynamic-table').DataTable();
+                    $('#dynamic-table').DataTable({
+                "footerCallback": function (row, data, start, end, display) {
+                    var api = this.api(), data;
+
+                    // Remove the formatting to get integer data for summation
+                    var intVal = function (i) {
+                        return typeof i === 'string' ?
+                                i.replace(/[\$,]/g, '') * 1 :
+                                typeof i === 'number' ?
+                                i : 0;
+                    };
+
+                    // Total over all pages
+                    total = api
+                            .column(6)
+                            .data()
+                            .reduce(function (a, b) {
+                                return intVal(a) + intVal(b);
+                            }, 0);
+
+                    // Total over this page
+                    pageTotal = api
+                            .column(6, {page: 'current'})
+                            .data()
+                            .reduce(function (a, b) {
+                                return intVal(a) + intVal(b);
+                            }, 0);
+
+                    // Update footer
+                    $(api.column(6).footer()).html(
+                            '$' + pageTotal + ' ( $' + total + ' total)'
+                            );
+                }
+            });
             $('#dynamic-table').on('click', 'tr', function (e) {
                 if ($(this).hasClass('selected')) {
                     //   $(this).removeClass('selected');
@@ -354,5 +389,5 @@
             )
         </script>
     </body>
-        
+
 </html>

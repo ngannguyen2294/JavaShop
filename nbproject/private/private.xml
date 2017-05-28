@@ -2,11 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group/>
         <group name="JavaShop">
             <file>file:/D:/Study/J2EE/JavaShop/src/java/hibernate.cfg.xml</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/storePages/home.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/order/list.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/product/category.jsp</file>
+            <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Orderdetails.hbm.xml</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/controller/LoginController.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/applicationContext.xml</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Orderdetails.java</file>
@@ -14,6 +16,7 @@
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/product/addProduct.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Customers.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/utils/shaSecure.java</file>
+            <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/web.xml</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Employees.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Categories.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Orders.hbm.xml</file>
@@ -25,6 +28,7 @@
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/storePages/product.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/storePages/cart.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/models/HibernateUtil.java</file>
+            <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/base.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/dispatcher-servlet.xml</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Products.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/controller/ProductController.java</file>
@@ -40,6 +44,5 @@
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/header.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/sidebar.jsp</file>
         </group>
-        <group/>
     </open-files>
 </project-private>

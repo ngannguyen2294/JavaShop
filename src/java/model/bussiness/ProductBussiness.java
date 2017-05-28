@@ -137,7 +137,7 @@ public class ProductBussiness {
             query.setParameter("unitprice", unitPrice);
             query.setParameter("unitsinstock", unitsInStock);
             query.setParameter("unitsonorder", unitsOnOrder);
-            query.setParameter("image", image);
+            query.setParameter("image", image.replace("../", ""));
             query.setParameter("productid", productID);
             query.executeUpdate();
             session.getTransaction().commit();

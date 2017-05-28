@@ -139,7 +139,7 @@ public class ProductController {
                 long millis = System.currentTimeMillis();
                 Path to = Paths.get(request.getSession().getServletContext().getRealPath("/img") + "/" + millis + name); //convert from String to Path
                 Files.move(from, to, StandardCopyOption.ATOMIC_MOVE);
-                imagePath = "/img/" + millis + name;
+                imagePath = "img/" + millis + name;
 
             } catch (Exception ex) {
 

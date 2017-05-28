@@ -33,13 +33,15 @@ public class OrderBussiness {
         List<Orders> list = query.list();
         return list;
     }
-  public Orders GetOrderbyID(String OrderID) {
+
+    public Orders GetOrderbyID(String OrderID) {
         SQLQuery query = session.createSQLQuery("select * from orders where OrderID = :orderid");
         query.addEntity(Orders.class);
-         query.setParameter("orderid", OrderID);
+        query.setParameter("orderid", OrderID);
         List<Orders> list = query.list();
         return list.get(0);
     }
+
     public String GetStatusLabelHtml(String status) {
         switch (status) {
             case "Pending":
@@ -50,6 +52,26 @@ public class OrderBussiness {
                 return "label-success";
         }
         return "";
+    }
+
+    public Boolean UpdateOrder(String orderdate, String shipaddress, String shipcity, String OrderID,String status) {
+        try {
+            session.getTransaction().begin();
+            SQLQuery query = session.createSQLQuery("update orders set OrderDate = :orderdate,ShipAddress = :shipaddress,"
+                    + "ShipCity = :shipcity,Status=:status where OrderID = :OrderID");
+            query.addEntity(Orders.class);
+            query.setParameter("orderdate", orderdate);
+            query.setParameter("shipaddress", shipaddress);
+            query.setParameter("shipcity", shipcity);
+            query.setParameter("OrderID", OrderID);
+             query.setParameter("status", status);
+            query.executeUpdate();
+            session.getTransaction().commit();
+            session.close();
+            return true;
+        } catch (Exception ex) {
+            return false;
+        }
     }
 
     public BigDecimal GetTotalAmount(Orders order) {
