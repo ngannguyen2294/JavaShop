@@ -43,9 +43,9 @@
                             </li>
 
                             <li>
-                                <a href="#">Tables</a>
+                                <a href="#">Product</a>
                             </li>
-                            <li class="active">Simple &amp; Dynamic</li>
+                            <li class="active">Product List</li>
                         </ul><!-- /.breadcrumb -->
 
                         <div class="nav-search" id="nav-search">
@@ -63,10 +63,10 @@
                                 <h3 class="header smaller lighter blue">All Products</h3>
 
                                 <div class="clearfix">
-                                       <button class="btn btn-primary" onclick="location.href='../admin/addProduct.htm'"><i class="fa fa-plus" aria-hidden="true"></i> Add New Product</button>
+                                    <button class="btn btn-primary" onclick="location.href = '../admin/addProduct.htm'"><i class="fa fa-plus" aria-hidden="true"></i> Add New Product</button>
                                     <div class="pull-right tableTools-container"></div>
                                 </div>
-                             
+
                                 <div class="table-header">
                                     Product List
                                 </div>
@@ -98,6 +98,7 @@
                                                 <th>Quantity per Unit</th>
 
                                                 <th> Unit Price</th>
+                                                <th>Price Sale</th>
                                                 <th> Units In Stock</th>
                                                 <th> Units On Order</th>
                                                 <th>Image</th>  
@@ -119,6 +120,7 @@
                                                             + "<td class='category'>" + product.getCategories().getCategoryName() + "</td>"
                                                             + "<td class='quantityperunit'>" + product.getQuantityPerUnit() + "</td>"
                                                             + "<td class='unitprice'>" + product.getUnitPrice() + "</td>"
+                                                            + "<td class='pricesale'>" + product.getUnitPriceSale() + "</td>"
                                                             + "<td class='unitinstock'>" + product.getUnitsInStock() + "</td>"
                                                             + "<td class='unitonorder'>" + product.getUnitsOnOrder() + "</td>"
                                                             + "<td class='image'><img id='productImage' src='../" + product.getImage() + "' height='70' width='70' onclick='showImage(this)'/></td>"
@@ -220,9 +222,13 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-3">
                                     <label for="unitprice">Unit Price</label>
                                     <input type="text" id="unitprice" name="unitPrice" class="form-control"/>
+                                </div>
+                                 <div class="form-group col-md-3">
+                                    <label for="pricesale">Unit Price Sale</label>
+                                    <input type="text" id="pricesale" name="pricesale" class="form-control"/>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="unitinstock">Units In Stock</label>
@@ -299,7 +305,7 @@
             ;
             $('#dynamic-table').on('click', 'tr', function (e) {
                 if ($(this).hasClass('selected')) {
-                 //   $(this).removeClass('selected');
+                    //   $(this).removeClass('selected');
                 } else {
                     myTable.$('tr.selected').removeClass('selected');
                     $(this).addClass('selected');
@@ -335,8 +341,8 @@
             function showModalEdit(obj)
             {
                 var productID = $(obj).attr("productID");
-                 $("#imagePath").val($("#productID-" + productID + " td.image img").attr('src'));
-                  $("#image").attr('src',   $("#productID-" + productID + " td.image img").attr('src'));
+                $("#imagePath").val($("#productID-" + productID + " td.image img").attr('src'));
+                $("#image").attr('src', $("#productID-" + productID + " td.image img").attr('src'));
                 var cateID = $(obj).attr("cateID");
                 var supID = $(obj).attr("supID");
                 $('#editModal').modal('show');
@@ -351,6 +357,7 @@
                     $("#category").val($("#productID-" + productID + " td.category").text());
                     $("#quantityperunit").val($("#productID-" + productID + " td.quantityperunit").text());
                     $("#unitprice").val($("#productID-" + productID + " td.unitprice").text());
+                     $("#pricesale").val($("#productID-" + productID + " td.pricesale").text());
                     $("#unitinstock").val($("#productID-" + productID + " td.unitinstock").text());
                     $("#unitonorder").val($("#productID-" + productID + " td.unitonorder").text());
                 });
@@ -371,6 +378,7 @@
                                 $("#productID-" + productID + " td.category").text($("#category").val());
                                 $("#productID-" + productID + " td.quantityperunit").text($("#quantityperunit").val());
                                 $("#productID-" + productID + " td.unitprice").text($("#unitprice").val());
+                                 $("#productID-" + productID + " td.pricesale").text($("#pricesale").val());
                                 $("#productID-" + productID + " td.unitinstock").text($("#unitinstock").val());
                                 $("#productID-" + productID + " td.unitonorder").text($("#unitonorder").val());
                                 //  $("#productID-" + productID + " td.image").html();

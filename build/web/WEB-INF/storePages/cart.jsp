@@ -112,6 +112,10 @@
                             %>
                         </div>
                     </div>
+                        <% if(cart.getCartItems().isEmpty()) {
+                            %>
+                            <div class="col-md-8">Your cart is empty!</div>
+                        <% } else { %>
                     <div class="col-md-8">
                         <div class="product-content-right">
                             <div class="woocommerce">
@@ -208,6 +212,7 @@
                             </div>
                         </div>
                     </div>
+                                                            <% } %>
                 </div>
             </div>
         </div>

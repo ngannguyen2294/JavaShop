@@ -13,6 +13,7 @@
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/applicationContext.xml</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Orderdetails.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/hibernate.reveng.xml</file>
+            <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/storePages/checkout.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/product/addProduct.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Customers.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/utils/shaSecure.java</file>
@@ -22,12 +23,14 @@
             <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Orders.hbm.xml</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/login.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/model/bussiness/SupplierBussiness.java</file>
+            <file>file:/D:/Study/J2EE/JavaShop/src/java/controller/CartController.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/models/OrderdetailsId.java</file>
+            <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Cart.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/pages/order/details.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/controller/ImageUploadController.java</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/storePages/product.jsp</file>
-            <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/storePages/cart.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/models/HibernateUtil.java</file>
+            <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/storePages/cart.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/adminPages/base.jsp</file>
             <file>file:/D:/Study/J2EE/JavaShop/web/WEB-INF/dispatcher-servlet.xml</file>
             <file>file:/D:/Study/J2EE/JavaShop/src/java/models/Products.java</file>

@@ -43,9 +43,9 @@
                             </li>
 
                             <li>
-                                <a href="#">Tables</a>
+                                <a href="#">Order</a>
                             </li>
-                            <li class="active">Simple &amp; Dynamic</li>
+                            <li class="active">Order List</li>
                         </ul><!-- /.breadcrumb -->
 
                         <div class="nav-search" id="nav-search">
@@ -64,7 +64,7 @@
 
                                 <div class="clearfix">
                                     <div class="pull-right tableTools-container"></div>
-                                     <button class="btn btn-primary" onclick="location.href = '../admin/addCategory.htm'"><i class="fa fa-plus" aria-hidden="true"></i> Add New Order</button>
+                                    <button class="btn btn-primary" onclick="location.href = '../admin/addCategory.htm'"><i class="fa fa-plus" aria-hidden="true"></i> Add New Order</button>
                                 </div>
 
                                 <div class="table-header">
@@ -92,6 +92,7 @@
                                                 <th>Customer</th>
 
                                                 <th>Order Date</th>
+                                                <th>Email</th>
                                                 <th>Total</th> 
                                                 <th>View</th>
                                             </tr>
@@ -105,10 +106,11 @@
                                                             + "<td></td>"
                                                             + "<td>" + order.getOrderId() + "</td>"
                                                             + "<td class='status'><span class='label " + Orders.GetStatusLabelHtml(order.getStatus()) + "'>" + order.getStatus() + "</span></td>"
-                                                            + "<td class='date'>" + order.getCustomers().getContactName() + "</td>"
+                                                            + "<td class='date'>" + order.getShipName() + "</td>"
                                                             + "<td class='date'>" + order.getOrderDate() + "</td>"
+                                                            + "<td class='email'>" + order.getEmail() + "</td>"
                                                             + "<td class='total'>" + Orders.GetTotalAmount(order) + "</td>"
-                                                            + "<td class='catesupID' orderID='" + order.getOrderId() + "'><a href='../admin/orderdetails.htm?OrderID="+order.getOrderId() +"' class='tooltip-success' data-rel='tooltip' title='View'><span class='green'><i class='ace-icon fa fa-eye bigger-120'></i></span></a></td>"
+                                                            + "<td class='catesupID' orderID='" + order.getOrderId() + "'><a href='../admin/orderdetails.htm?OrderID=" + order.getOrderId() + "' class='tooltip-success' data-rel='tooltip' title='View'><span class='green'><i class='ace-icon fa fa-eye bigger-120'></i></span></a></td>"
                                                             + "</tr>");
                                                 }
                                             } catch (Exception ex) {
@@ -123,8 +125,8 @@
 
                         </div>  </div> </div></div>
         </div>
-     
-    
+
+
 
 
 

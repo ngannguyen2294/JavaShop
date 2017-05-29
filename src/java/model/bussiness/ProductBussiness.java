@@ -120,13 +120,13 @@ public class ProductBussiness {
     }
 
     public Boolean UpdateProduct(String productID, String productName, String supplierID,
-            String categoryID, String quantityPerUnit, String unitPrice,
+            String categoryID, String quantityPerUnit, String unitPrice,String pricesale,
             String unitsInStock, String unitsOnOrder, String image) {
         try {
             session.getTransaction().begin();
             //   SQLQuery query = session.createSQLQuery("update `products` set ProductName=123 where ProductID='1'");
             SQLQuery query = session.createSQLQuery("update products set ProductName = :productname,SupplierID = :supplierid,"
-                    + "CategoryID = :categoryid,QuantityPerUnit = :quantityperunit,UnitPrice = :unitprice,"
+                    + "CategoryID = :categoryid,QuantityPerUnit = :quantityperunit,UnitPrice = :unitprice, UnitPriceSale = :pricesale,"
                     + "UnitsInStock = :unitsinstock, UnitsOnOrder = :unitsonorder,"
                     + "Image = :image where ProductID = :productid ;");
             query.addEntity(Products.class);
@@ -135,6 +135,7 @@ public class ProductBussiness {
             query.setParameter("categoryid", categoryID);
             query.setParameter("quantityperunit", quantityPerUnit);
             query.setParameter("unitprice", unitPrice);
+            query.setParameter("pricesale", pricesale);
             query.setParameter("unitsinstock", unitsInStock);
             query.setParameter("unitsonorder", unitsOnOrder);
             query.setParameter("image", image.replace("../", ""));

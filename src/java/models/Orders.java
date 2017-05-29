@@ -25,13 +25,15 @@ public class Orders implements java.io.Serializable {
     private String shipRegion;
     private String shipPostalCode;
     private String shipCountry;
+    private String email;
+    private String phone;
     private String status;
     private Set orderdetailses = new HashSet(0);
 
     public Orders() {
     }
 
-    public Orders(Customers customers, Employees employees, Shippers shippers, Date orderDate, Date requiredDate, Date shippedDate, BigDecimal freight, String shipName, String shipAddress, String shipCity, String shipRegion, String shipPostalCode, String shipCountry, String status, Set orderdetailses) {
+    public Orders(Customers customers, Employees employees, Shippers shippers, Date orderDate, Date requiredDate, Date shippedDate, BigDecimal freight, String shipName, String shipAddress, String shipCity, String shipRegion, String shipPostalCode, String shipCountry, String email,String phone,String status, Set orderdetailses) {
         this.customers = customers;
         this.employees = employees;
         this.shippers = shippers;
@@ -45,6 +47,8 @@ public class Orders implements java.io.Serializable {
         this.shipRegion = shipRegion;
         this.shipPostalCode = shipPostalCode;
         this.shipCountry = shipCountry;
+        this.email=email;
+        this.phone=phone;
         this.status = status;
         this.orderdetailses = orderdetailses;
     }
@@ -169,6 +173,20 @@ public class Orders implements java.io.Serializable {
         this.shipCountry = shipCountry;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+      public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPhone() {
+        return this.phone;
+    }
     public Set getOrderdetailses() {
         return this.orderdetailses;
     }

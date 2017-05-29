@@ -68,7 +68,7 @@
                                         <div class="form-group col-md-4">
                                             <label for="customer">Customer</label>
                                             <input type="text" class="form-control"
-                                                   id="customer" name="customer" value="${order.getCustomers().getCompanyName()}" disabled/>
+                                                   id="customer" name="customer" value="${order.getShipName()}" disabled/>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="employee">Employee</label>
@@ -90,16 +90,32 @@
                                             <label for="shipcity">Ship City</label>
                                             <input type="text" id="shipcity"  name="shipcity" value="${order.getShipCity()}" class="form-control"/>
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="status" class="col-md-2">Status</label>                                              
-                                            <select class="col-md-4" id="status" name="status">
-                                                <option value="Pending" ${order.getStatus() =='Pending' ? 'selected' : ''}> Pending</option>
-                                                <option value="Processing" ${order.getStatus() =='Processing' ? 'selected' : ''} >Processing</option>
-                                                <option value="Complete" ${order.getStatus() =='Complete' ? 'selected' : ''}>Complete</option>
-                                            </select>
+
+                                    </div>
+                                    <div class="row">
+                                          <div class="form-group col-md-4">
+                                            <label for="shipcountry">Ship Country</label>
+                                            <input type="text" id="shipcountry"  name="shipcountry" value="${order.getShipCountry()}" class="form-control"/>
+
+                                        </div>
+                                              <div class="form-group col-md-4">
+                                            <label for="phone">Phone</label>
+                                            <input type="text" id="phone"  name="phone" value="${order.getPhone()}" class="form-control"/>
+
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="shipcity">Email</label>
+                                            <input type="text" id="email"  name="email" value="${order.getEmail()}" class="form-control"/>
+
                                         </div>
                                     </div>
                                     <div class="row">
+                                        <label for="status" class="col-md-2">Status</label>                                              
+                                        <select class="col-md-4" id="status" name="status">
+                                            <option value="Pending" ${order.getStatus() =='Pending' ? 'selected' : ''}> Pending</option>
+                                            <option value="Processing" ${order.getStatus() =='Processing' ? 'selected' : ''} >Processing</option>
+                                            <option value="Complete" ${order.getStatus() =='Complete' ? 'selected' : ''}>Complete</option>
+                                        </select>
 
                                     </div>
                                     <button type="submit" class="btn btn-primary" id="submit">Save</button>     </form> </div> 

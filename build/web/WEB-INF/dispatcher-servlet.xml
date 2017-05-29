@@ -35,10 +35,10 @@
                 <prop key="admin/actionlogin.htm">adminPageController</prop>
                 <prop key="image/upload.htm">ImageUploadController</prop>
                 <prop key="image/uploadToBase64.htm">ImageUploadController</prop>
-                  <prop key="admin">adminIndexController</prop>
                 <prop key="admin/order.htm">orderPageController</prop>
                 <prop key="admin/orderdetails.htm">orderdetailsController</prop>
-                  <prop key="admin/updateOrder.htm">orderdetailsController</prop>
+                <prop key="admin/updateOrder.htm">orderdetailsController</prop>
+                    <prop key="admin/addNewOrder.htm">orderdetailsController</prop>
                 <prop key="admin/orderdetailsView.htm">orderdetailsViewController</prop>
                 <prop key="admin/productlist.htm">productPageController</prop>
                 <prop key="admin/updateProduct.htm">productBussinessController</prop>
@@ -64,13 +64,13 @@
           class="controller.CartController"
     />
     <bean id="productBussinessController"
-           class="controller.ProductController"
+          class="controller.ProductController"
     />
     <bean id="ImageUploadController"
-            class="controller.ImageUploadController"
+          class="controller.ImageUploadController"
     />
     <bean id="orderdetailsController"
-                class="controller.OrderController"
+          class="controller.OrderController"
     />
 
     <!--
@@ -105,17 +105,17 @@
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="adminPages/pages/product/addProduct" />
     <bean name="addCategory"
-            class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-            p:viewName="adminPages/pages/product/addCategory" />
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="adminPages/pages/product/addCategory" />
     <bean name="categoryController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="adminPages/pages/product/category" />
     <bean name="orderPageController"
-              class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-              p:viewName="adminPages/pages/order/list" />
-       <bean name="orderdetailsViewController"
-              class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-              p:viewName="adminPages/pages/order/details" />
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="adminPages/pages/order/list" />
+    <bean name="orderdetailsViewController"
+             class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+             p:viewName="adminPages/pages/order/details" />
     
     
 </beans>

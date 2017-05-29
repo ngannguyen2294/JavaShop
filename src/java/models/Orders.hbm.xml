@@ -47,6 +47,12 @@
         <property name="shipCountry" type="string">
             <column name="ShipCountry" length="15" />
         </property>
+          <property name="email" type="string">
+            <column name="Email" length="50" />
+        </property>
+           <property name="phone" type="string">
+            <column name="Phone" length="20" />
+        </property>
          <property name="status" type="string">
             <column name="Status" length="10" />
         </property>

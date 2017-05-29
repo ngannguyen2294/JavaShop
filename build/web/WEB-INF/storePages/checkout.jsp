@@ -123,7 +123,7 @@
                     <div class="col-md-8">
                         <div class="product-content-right">
                             <div class="woocommerce">
-                                <form enctype="multipart/form-data" action="#" class="checkout" method="post" name="checkout">
+                                <form enctype="multipart/form-data" action="admin/addNewOrder.htm" class="checkout" method="post" name="checkout">
                                     <div id="customer_details" class="">
                                         <div class="col-3">
                                             <div class="woocommerce-billing-fields">
@@ -131,38 +131,38 @@
                                                 <p id="billing_first_name_field" class="form-row form-row-first validate-required">
                                                     <label class="" for="billing_first_name">First Name <abbr title="required" class="required">*</abbr>
                                                     </label>
-                                                    <input type="text" value="" placeholder="" id="billing_first_name" name="billing_first_name" class="input-text ">
+                                                    <input type="text" value="" placeholder="" id="billing_first_name" name="billing_first_name" class="input-text" required="true">
                                                 </p>
                                                 <p id="billing_last_name_field" class="form-row form-row-last validate-required">
                                                     <label class="" for="billing_last_name">Last Name <abbr title="required" class="required">*</abbr>
                                                     </label>
-                                                    <input type="text" value="" placeholder="" id="billing_last_name" name="billing_last_name" class="input-text ">
+                                                    <input type="text" value="" placeholder="" id="billing_last_name" name="billing_last_name" class="input-text" required="true">
                                                 </p>
                                                 <div class="clear"></div>
                                                 <p id="billing_address_1_field" class="form-row form-row-wide address-field validate-required">
                                                     <label class="" for="billing_address_1">Address <abbr title="required" class="required">*</abbr>
                                                     </label>
-                                                    <input type="text" value="" placeholder="Street address" id="billing_address_1" name="billing_address_1" class="input-text ">
+                                                    <input type="text" value="" placeholder="Street address" id="billing_address_1" name="billing_address_1" class="input-text" required="true">
                                                 </p>
                                                 <p id="billing_city_field" class="form-row form-row-wide address-field validate-required" data-o_class="form-row form-row-wide address-field validate-required">
                                                     <label class="" for="billing_city">Town / City <abbr title="required" class="required">*</abbr>
                                                     </label>
-                                                    <input type="text" value="" placeholder="Town / City" id="billing_city" name="billing_city" class="input-text ">
+                                                    <input type="text" value="" placeholder="Town / City" id="billing_city" name="billing_city" class="input-text" required="true">
                                                 </p>
                                                 <p id="billing_state_field" class="form-row form-row-first address-field validate-state" data-o_class="form-row form-row-first address-field validate-state">
                                                     <label class="" for="billing_state">County</label>
-                                                    <input type="text" id="billing_state" name="billing_state" placeholder="State / County" value="" class="input-text ">
+                                                    <input type="text" id="billing_state" name="billing_state" placeholder="State / County" value="" class="input-text">
                                                 </p>
                                                 <div class="clear"></div>
                                                 <p id="billing_email_field" class="form-row form-row-first validate-required validate-email">
                                                     <label class="" for="billing_email">Email Address <abbr title="required" class="required">*</abbr>
                                                     </label>
-                                                    <input type="text" value="" placeholder="" id="billing_email" name="billing_email" class="input-text ">
+                                                    <input type="email" value="" placeholder="" id="billing_email" name="billing_email" class="input-text" required="true">
                                                 </p>
                                                 <p id="billing_phone_field" class="form-row form-row-last validate-required validate-phone">
                                                     <label class="" for="billing_phone">Phone <abbr title="required" class="required">*</abbr>
                                                     </label>
-                                                    <input type="text" value="" placeholder="" id="billing_phone" name="billing_phone" class="input-text ">
+                                                    <input type="text" value="" placeholder="" id="billing_phone" name="billing_phone" class="input-text" required="true">
                                                 </p>
                                                 <div class="clear"></div>
                                             </div>
@@ -178,12 +178,17 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
+                                                  <% float total=0;
+                                                for (Map.Entry<Integer, CartItem> list : cart.getCartItems().entrySet()) {
+                                                    total+=list.getValue().getProduct().getUnitPriceSale()*list.getValue().getQuantity();
+                                            %>
                                                 <tr class="cart_item">
                                                     <td class="product-name">
-                                                        Ship Your Idea <strong class="product-quantity">× 1</strong> </td>
+                                                        <%=list.getValue().getProduct().getProductName()%> <strong class="product-quantity">x <%=list.getValue().getQuantity()%></strong> </td>
                                                     <td class="product-total">
-                                                        <span class="amount">£15.00</span> </td>
+                                                        <span class="amount"><%=list.getValue().getProduct().getUnitPriceSale()*list.getValue().getQuantity()%> đ</span> </td>
                                                 </tr>
+                                                <% } %>
                                             </tbody>
                                             <tfoot>
                                                 <tr class="shipping">
@@ -195,7 +200,7 @@
                                                 </tr>
                                                 <tr class="order-total">
                                                     <th>Order Total</th>
-                                                    <td><strong><span class="amount">£15.00</span></strong> </td>
+                                                    <td><strong><span class="amount"><% out.print(total); %> đ</span></strong> </td>
                                                 </tr>
                                             </tfoot>
                                         </table>

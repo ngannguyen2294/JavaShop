@@ -44,12 +44,13 @@ public class ProductController {
             @RequestParam(value = "categoryID") String categoryID,
             @RequestParam(value = "quantityPerUnit") String quantityPerUnit,
             @RequestParam(value = "unitPrice") String unitPrice,
+            @RequestParam(value = "pricesale") String pricesale,
             @RequestParam(value = "unitsInStock") String unitsInStock,
             @RequestParam(value = "unitsOnOrder") String unitsOnOrder,
             @RequestParam(value = "image") String image) {
         try {
             ProductBussiness pb = new ProductBussiness();
-            if (pb.UpdateProduct(productID, productName, supplierID, categoryID, quantityPerUnit, unitPrice, unitsInStock, unitsOnOrder, image)) {
+            if (pb.UpdateProduct(productID, productName, supplierID, categoryID, quantityPerUnit, unitPrice,pricesale, unitsInStock, unitsOnOrder, image)) {
                 return CommonUtil.JsonResponseOK("true");
             } else {
                 return CommonUtil.JsonResponseFail("false");

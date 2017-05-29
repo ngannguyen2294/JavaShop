@@ -15,7 +15,8 @@
             
                       <jsp:include page="pages/navbar.jsp"/>
                       
-                      
+                   <jsp:useBean id = "Orders" class = "model.bussiness.OrderBussiness" 
+                 scope = "page"/>       
   
         <div class="main-container ace-save-state" id="main-container">
       
@@ -50,7 +51,17 @@
                     <div class="page-content">
                     <div class="row">
                       
+<div class="infobox infobox-pink">
+											<div class="infobox-icon">
+												<i class="ace-icon fa fa-shopping-cart"></i>
+											</div>
 
+											<div class="infobox-data">
+												<span class="infobox-data-number">   <% out.print(Orders.GetPendingOrder()); %></span>
+												<div class="infobox-content">new orders</div>
+											</div>
+											<div class="stat stat-important">4%</div>
+										</div>
                     </div>  </div> </div></div>
         </div>
            
