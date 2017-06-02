@@ -34,9 +34,9 @@
 							</li>
 
 							<li>
-								<a href="#">Tables</a>
+								<a href="#">Java Shop</a>
 							</li>
-							<li class="active">Simple &amp; Dynamic</li>
+							
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">

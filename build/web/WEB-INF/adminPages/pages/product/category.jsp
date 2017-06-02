@@ -107,7 +107,7 @@
                                                             + "<td>" + (i++) + "</td>"
                                                             + "<td class='catename'>" + cate.getCategoryName() + "</td>"
                                                             + "<td class='description'>" + cate.getDescription() + "</td>"
-                                                            + "<td class='picture'><img class='img-responsive' alt='img' src='data:image/jpeg;base64," + cate.getPicture() + "'/></td>"
+                                                            + "<td class='picture'><img class='img-responsive' alt='img' src='data:image/jpeg;base64," + cate.getPicture() + "' style='width:100px;heigh:100px'/></td>"
                                                             + "<td class='cateID' cateID='" + cate.getCategoryId() + "' onclick='showModalEdit(this)'><a href='#' class='tooltip-success' data-rel='tooltip' title='Edit'><span class='green'><i class='ace-icon fa fa-pencil-square-o bigger-120'></i></span></a></td>"
                                                             + "<td class='deleteCate' cateID='" + cate.getCategoryId() + "' onclick='' ><a data-href='' class='tooltip-error' data-toggle='modal' data-target='#confirm-delete' data-rel='tooltip' title='Delete'><span class='red'><i class='ace-icon fa fa-trash-o bigger-120'></i></span></a></td>"
                                                             + "</tr>"
@@ -228,7 +228,7 @@
                     data: data, // post data || get data
                     success: function (data) {
                         $("#imagePath").val(data);
-                        $("#image").attr('src', 'data:image/jpeg;base64,'+data);
+                        $("#image").attr('src', 'data:image/jpeg;base64,' + data);
                     }
                 })
             }
@@ -280,7 +280,7 @@
             function showModalEdit(obj)
             {
                 var cateID = $(obj).attr("cateID");
-                $("#imagePath").val($("#cateID-" + cateID + " td.image img").attr('src'));
+                $("#imagePath").val($("#cateID-" + cateID + " td.picture img").attr('src'));
                 $("#image").attr('src', $("#cateID-" + cateID + " td.picture img").attr('src'));
                 var cateID = $(obj).attr("cateID");
                 $('#editModal').modal('show');

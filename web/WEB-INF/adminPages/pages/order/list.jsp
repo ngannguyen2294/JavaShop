@@ -64,7 +64,7 @@
 
                                 <div class="clearfix">
                                     <div class="pull-right tableTools-container"></div>
-                                    <button class="btn btn-primary" onclick="location.href = '../admin/addCategory.htm'"><i class="fa fa-plus" aria-hidden="true"></i> Add New Order</button>
+                                 
                                 </div>
 
                                 <div class="table-header">

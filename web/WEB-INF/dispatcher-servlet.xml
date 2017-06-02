@@ -38,7 +38,8 @@
                 <prop key="admin/order.htm">orderPageController</prop>
                 <prop key="admin/orderdetails.htm">orderdetailsController</prop>
                 <prop key="admin/updateOrder.htm">orderdetailsController</prop>
-                    <prop key="admin/addNewOrder.htm">orderdetailsController</prop>
+                <prop key="admin/addNewOrder.htm">orderdetailsController</prop>
+                <prop key="/admin/">adminIndexController</prop>
                 <prop key="admin/orderdetailsView.htm">orderdetailsViewController</prop>
                 <prop key="admin/productlist.htm">productPageController</prop>
                 <prop key="admin/updateProduct.htm">productBussinessController</prop>
@@ -114,8 +115,8 @@
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="adminPages/pages/order/list" />
     <bean name="orderdetailsViewController"
-             class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-             p:viewName="adminPages/pages/order/details" />
+          class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+          p:viewName="adminPages/pages/order/details" />
     
     
 </beans>

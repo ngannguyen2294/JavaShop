@@ -20,12 +20,12 @@
                     <div class="col-md-3 col-sm-6">
                         <div class="footer-about-us">
                             <h2>J2ee<span>Store</span></h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
+                            <p>Whatever you’ve got in mind, we’ve got inside.</p>
                             <div class="footer-social">
-                                <a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm#" target="_blank"><i class="fa fa-facebook"></i></a>
-                                <a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm#" target="_blank"><i class="fa fa-twitter"></i></a>
-                                <a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm#" target="_blank"><i class="fa fa-youtube"></i></a>
-                                <a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm#" target="_blank"><i class="fa fa-linkedin"></i></a>
+                                <a href="https://www.facebook.com/UIT.Fanpage" target="_blank"><i class="fa fa-facebook"></i></a>
+                                <a href="https://www.facebook.com/UIT.Fanpage" target="_blank"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.facebook.com/UIT.Fanpage" target="_blank"><i class="fa fa-youtube"></i></a>
+                                <a href="https://www.facebook.com/UIT.Fanpage" target="_blank"><i class="fa fa-linkedin"></i></a>
                             </div>
                         </div>
                     </div>
@@ -34,11 +34,11 @@
                         <div class="footer-menu">
                             <h2 class="footer-wid-title">User Navigation </h2>
                             <ul>
-                                <li><a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm#">My account</a></li>
-                                <li><a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm#">Order history</a></li>
-                                <li><a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm#">Wishlist</a></li>
-                                <li><a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm#">Vendor contact</a></li>
-                                <li><a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm#">Front page</a></li>
+                                <li><a href="https://www.facebook.com/UIT.Fanpage">My account</a></li>
+                                <li><a href="https://www.facebook.com/UIT.Fanpage">Order history</a></li>
+                                <li><a href="https://www.facebook.com/UIT.Fanpage">Wishlist</a></li>
+                                <li><a href="https://www.facebook.com/UIT.Fanpage">Vendor contact</a></li>
+                                <li><a href="https://www.facebook.com/UIT.Fanpage">Front page</a></li>
                             </ul>                        
                         </div>
                     </div>
@@ -47,11 +47,11 @@
                         <div class="footer-menu">
                             <h2 class="footer-wid-title">Categories</h2>
                             <ul>
-                                <li><a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm#">Mobile Phone</a></li>
-                                <li><a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm#">Home accesseries</a></li>
-                                <li><a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm#">LED TV</a></li>
-                                <li><a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm#">Computer</a></li>
-                                <li><a href="https://www.freshdesignweb.com/demo/template/ustora/index.htm#">Gadets</a></li>
+                                <li><a href="https://www.facebook.com/UIT.Fanpage">Mobile Phone</a></li>
+                                <li><a href="https://www.facebook.com/UIT.Fanpage">Home accesseries</a></li>
+                                <li><a href="https://www.facebook.com/UIT.Fanpage">LED TV</a></li>
+                                <li><a href="https://www.facebook.com/UIT.Fanpage">Computer</a></li>
+                                <li><a href="https://www.facebook.com/UIT.Fanpage">Gadets</a></li>
                             </ul>                        
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                             <h2 class="footer-wid-title">Newsletter</h2>
                             <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
                             <div class="newsletter-form">
-                                <form action="https://www.freshdesignweb.com/demo/template/ustora/index.htm#">
+                                <form action="https://www.facebook.com/UIT.Fanpage">
                                     <input type="email" placeholder="Type your email">
                                     <input type="submit" value="Subscribe">
                                 </form>
@@ -81,14 +81,14 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                  <!--  <div class="col-md-4">
                         <div class="footer-card-icon">
                             <i class="fa fa-cc-discover"></i>
                             <i class="fa fa-cc-mastercard"></i>
                             <i class="fa fa-cc-paypal"></i>
                             <i class="fa fa-cc-visa"></i>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div> <!-- End footer bottom area -->

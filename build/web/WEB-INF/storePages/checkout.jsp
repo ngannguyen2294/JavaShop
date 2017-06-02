@@ -88,38 +88,33 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="single-sidebar">
-                            <h2 class="sidebar-title">Products</h2>
+                         <div class="single-sidebar">
+                            <h2 class="sidebar-title">Recent Posts</h2>
+                            <%
+                                List<Products> productNew = ProductDAO.GetProductNew();
+                                for (Products itemProductNew : productNew) {
+                            %>
                             <div class="thubmnail-recent">
-                                <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                                <h2><a href="single-product.htm">Sony Smart TV - 2015</a></h2>
+                                <img src="<%=itemProductNew.getImage()%>" class="recent-thumb" alt="">
+                                <h2><a href="product.htm?category=<%=itemProductNew.getCategories().getCategoryId()%>&product=<%=itemProductNew.getProductId()%>"><%=itemProductNew.getProductName()%></a></h2>
                                 <div class="product-sidebar-price">
-                                    <ins>$700.00</ins> <del>$100.00</del>
+                                    <ins>
+                                        <fmt:formatNumber type = "number" maxFractionDigits = "0" value = "<%=itemProductNew.getUnitPriceSale()%>" /><u>đ</u>
+                                    </ins>
+                                    <del>
+                                        <fmt:formatNumber type = "number" maxFractionDigits = "0" value = "<%=itemProductNew.getUnitPrice()%>" /><u>đ</u>
+                                    </del>
                                 </div>
                             </div>
-                            <div class="thubmnail-recent">
-                                <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                                <h2><a href="single-product.htm">Sony Smart TV - 2015</a></h2>
-                                <div class="product-sidebar-price">
-                                    <ins>$700.00</ins> <del>$100.00</del>
-                                </div>
-                            </div>
-                            <div class="thubmnail-recent">
-                                <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                                <h2><a href="single-product.htm">Sony Smart TV - 2015</a></h2>
-                                <div class="product-sidebar-price">
-                                    <ins>$700.00</ins> <del>$100.00</del>
-                                </div>
-                            </div>
-                            <div class="thubmnail-recent">
-                                <img src="img/product-thumb-1.jpg" class="recent-thumb" alt="">
-                                <h2><a href="single-product.htm">Sony Smart TV - 2015</a></h2>
-                                <div class="product-sidebar-price">
-                                    <ins>$700.00</ins> <del>$100.00</del>
-                                </div>
-                            </div>
+                            <%
+                                }
+                            %>
                         </div>
                     </div>
+                    <% if(cart.getCartItems().isEmpty()) {
+                            %>
+                            <div class="col-md-8">Your cart is empty!</div>
+                        <% } else { %>
                     <div class="col-md-8">
                         <div class="product-content-right">
                             <div class="woocommerce">
@@ -215,6 +210,7 @@
                             </div>
                         </div>
                     </div>
+                                                <% }%>
                 </div>
             </div>
         </div>

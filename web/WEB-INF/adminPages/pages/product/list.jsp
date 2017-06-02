@@ -226,7 +226,7 @@
                                     <label for="unitprice">Unit Price</label>
                                     <input type="text" id="unitprice" name="unitPrice" class="form-control"/>
                                 </div>
-                                 <div class="form-group col-md-3">
+                                <div class="form-group col-md-3">
                                     <label for="pricesale">Unit Price Sale</label>
                                     <input type="text" id="pricesale" name="pricesale" class="form-control"/>
                                 </div>
@@ -357,40 +357,43 @@
                     $("#category").val($("#productID-" + productID + " td.category").text());
                     $("#quantityperunit").val($("#productID-" + productID + " td.quantityperunit").text());
                     $("#unitprice").val($("#productID-" + productID + " td.unitprice").text());
-                     $("#pricesale").val($("#productID-" + productID + " td.pricesale").text());
+                    $("#pricesale").val($("#productID-" + productID + " td.pricesale").text());
                     $("#unitinstock").val($("#productID-" + productID + " td.unitinstock").text());
                     $("#unitonorder").val($("#productID-" + productID + " td.unitonorder").text());
                 });
-                $("#submit").on('click', function () {
-                    console.log($("#productform").serialize());
-                    $.ajax({
-                        url: '../admin/updateProduct.htm', // url where to submit the request
-                        type: "POST", // type of action POST || GET
+                $("#submit").off("click")
+                        .on("click", function (e) {
+                            e.preventDefault();
+                            $.ajax({
+                                url: '../admin/updateProduct.htm', // url where to submit the request
+                                type: "POST", // type of action POST || GET
 
-                        data: $("#productform").serialize(), // post data || get data
-                        success: function (result) {
-                            var data = JSON.parse(result);
-                            if (data.status == 'ok')
-                            {
-                                $('#editModal').modal('hide');
-                                $("#productID-" + productID + " td.productname").text($("#productName").val());
-                                $("#productID-" + productID + " td.supplier").text($("#supplier").val());
-                                $("#productID-" + productID + " td.category").text($("#category").val());
-                                $("#productID-" + productID + " td.quantityperunit").text($("#quantityperunit").val());
-                                $("#productID-" + productID + " td.unitprice").text($("#unitprice").val());
-                                 $("#productID-" + productID + " td.pricesale").text($("#pricesale").val());
-                                $("#productID-" + productID + " td.unitinstock").text($("#unitinstock").val());
-                                $("#productID-" + productID + " td.unitonorder").text($("#unitonorder").val());
-                                //  $("#productID-" + productID + " td.image").html();
-                                $("#productID-" + productID + " td.catesupID").attr('cateID', $("#categoryID").val()).attr('supID', $("#supplierID").val());
-                                $("tr.selected td.image img").attr('src', $("#image").attr('src'));
-                            }
-                        },
-                        error: function (xhr, resp, text) {
-                            console.log(xhr.responseText);
-                        }
-                    })
-                });
+                                data: $("#productform").serialize(), // post data || get data
+                                success: function (result) {
+                                    var data = JSON.parse(result);
+                                    if (data.status == 'ok')
+                                    {
+                                        console.log(productID);
+                                        $('#editModal').modal('hide');
+                                        $("#productID-" + productID + " td.productname").text($("#productName").val());
+                                        $("#productID-" + productID + " td.supplier").text($("#supplier").val());
+                                        $("#productID-" + productID + " td.category").text($("#category").val());
+                                        $("#productID-" + productID + " td.quantityperunit").text($("#quantityperunit").val());
+                                        $("#productID-" + productID + " td.unitprice").text($("#unitprice").val());
+                                        $("#productID-" + productID + " td.pricesale").text($("#pricesale").val());
+                                        $("#productID-" + productID + " td.unitinstock").text($("#unitinstock").val());
+                                        $("#productID-" + productID + " td.unitonorder").text($("#unitonorder").val());
+                                        //  $("#productID-" + productID + " td.image").html();
+                                        $("#productID-" + productID + " td.catesupID").attr('cateID', $("#categoryID").val()).attr('supID', $("#supplierID").val());
+                                        $("tr.selected td.image img").attr('src', $("#image").attr('src'));
+
+                                    }
+                                },
+                                error: function (xhr, resp, text) {
+                                    console.log(xhr.responseText);
+                                }
+                            });
+                        });
             }
 
 

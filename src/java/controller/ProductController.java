@@ -50,7 +50,7 @@ public class ProductController {
             @RequestParam(value = "image") String image) {
         try {
             ProductBussiness pb = new ProductBussiness();
-            if (pb.UpdateProduct(productID, productName, supplierID, categoryID, quantityPerUnit, unitPrice,pricesale, unitsInStock, unitsOnOrder, image)) {
+            if (pb.UpdateProduct(productID, productName, supplierID, categoryID, quantityPerUnit, unitPrice,pricesale, unitsInStock, unitsOnOrder, image.replace("..//",""))) {
                 return CommonUtil.JsonResponseOK("true");
             } else {
                 return CommonUtil.JsonResponseFail("false");
@@ -69,7 +69,7 @@ public class ProductController {
             @RequestParam(value = "cateID") String cateID,
             @RequestParam(value = "image") String image) {
         try {
-            image = image.replace("data:image/jpeg;base64", "");
+            image = image.replace("data:image/jpeg;base64,", "");
             ProductBussiness pb = new ProductBussiness();
             if (pb.UpdateCategory(cateID, cateName, description, Base64.decode(image))) {
                 return CommonUtil.JsonResponseOK("true");

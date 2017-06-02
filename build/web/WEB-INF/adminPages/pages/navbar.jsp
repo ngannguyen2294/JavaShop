@@ -21,7 +21,7 @@
             <a href="admin.htm" class="navbar-brand">
                 <small>
                     <i class="fa fa-leaf"></i>
-                    Ace Admin
+                    Java Shop Admin
                 </small>
             </a>
         </div>
